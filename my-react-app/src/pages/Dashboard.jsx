@@ -9,6 +9,7 @@ import {
 } from "../components";
 
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
+import DashboardCard from "../components/DashboardCard";
 
 const Dashboard = () => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
@@ -34,17 +35,19 @@ const Dashboard = () => {
   return (
     <>
 
-      <div className="  w-full h-full flex  pl-5 pt-[20px] ">
+      <div className="  w-full h-full flex  pl-8 pt-[32px] overflow-hidden ">
         <div className="grid  grid-cols-3 w-full">
           <div className="col-span-2 flex flex-col">
-            <div className=" w-full h-[30%] rounded-lg bg-customGray flex justify-center items-center">
+            <div className=" w-full h-[18%] rounded-lg bg-customGray flex justify-center items-center">
               <h1 className="text-[34px]">
                   Welcome to Dashboard yialla test !
               </h1>
             </div>
-            <div className="mt-3 text-center flex-grow">
-           
+            <div className="text-center flex-grow flex flex-row justify-between w-[100%]  h-[50%]  mt-6">
+             <DashboardCard isMytrajets={false}  />
+             <DashboardCard isMytrajets={true} />
             </div>
+            
           </div>
           <div className="w-full h-full">
             <div className="flex flex-col px-3 w-full items-center h-full">
@@ -99,9 +102,7 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className=" mt-3 w-full h-full ">
-                <div className="relative">
                   <Carousel />
-                </div>
               </div>
             </div>
 

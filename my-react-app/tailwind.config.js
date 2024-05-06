@@ -38,6 +38,8 @@ export default {
                     "typingMobile 2s steps(20) infinite alternate, blink .7s infinite",
             },
             colors: {
+                customYellowLighter:"#94958E",
+                customYellow:"#9C904A",
                 customGray: '#F9FAFB',
                 primary: "#050816",
                 secondary: "#aaa6c3",
@@ -47,6 +49,7 @@ export default {
                 "white-100": "#f3f3f3",
             },
             boxShadow: {
+                custom: '0 4px 9px rgba(252, 211, 77, 1)',
                 card: "0px 35px 120px -15px #211e35",
             },
             screens: {

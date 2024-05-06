@@ -37,7 +37,7 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-gray-100 text-gray-800 ${
+      className={`min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white-500 text-gray-800 ${
         open ? "w-64" : "w-0"
       }`}
     >
