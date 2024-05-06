@@ -94,7 +94,7 @@ export default function NavBar({
                               className="border border-gray-300 sm:text-sm w-[300px] rounded-full pt-2 pb-2 pl-10 px-3 py-2"
                             />
                             <span
-                              onClick={() => setOpenModal((prev) => !prev)}
+                              onClick={() =>  ((prev) => !prev)}
                               ref={colisRef}
                               className="cursor-pointer  absolute right-0 h-full rounded-lg w-20"
                             >
