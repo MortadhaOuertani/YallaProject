@@ -20,7 +20,7 @@ import StickyNote2OutlinedIcon from "@mui/icons-material/StickyNote2Outlined";
 import MarkunreadMailboxOutlinedIcon from "@mui/icons-material/MarkunreadMailboxOutlined";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
-
+import ForkRightIcon from '@mui/icons-material/ForkRight';
 export const menus = [
   {
     title: "Generale",
@@ -31,6 +31,11 @@ export const menus = [
     name: "Mes Annonces",
     link: "/notifications",
     icon: MarkunreadMailboxOutlinedIcon,
+  },
+  {
+    name: "Mes trajets",
+    link: "/trajets",
+    icon: ForkRightIcon,
   },
   {
     title: "Mes outils",

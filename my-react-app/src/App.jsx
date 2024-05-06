@@ -24,6 +24,8 @@ import {
   Notifications,
   Login,
   SignUp,
+  RouteListe,
+  
 } from "./pages";
 import { useEffect, useRef, useState } from "react";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
@@ -120,6 +122,7 @@ function App() {
                     <Route path="/setting" element={<Setting />} />
                     <Route path="/payments" element={<Payments />} />
                     <Route path="/notifications" element={<Notifications />} />
+                    <Route path="/trajets" element={<RouteListe />} />
                     <Route path="/carnet-d-adresse" element={<AddressBook />} />
                     <Route path="/" element={<Home />} />
                   </Routes>
