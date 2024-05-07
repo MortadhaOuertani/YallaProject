@@ -33,7 +33,7 @@ export default function NavBar({
 
   };
  
-  useEffect(() => {
+ useEffect(() => {
     const handleClickOutsidetrans = (event) => {
       if (colisRef.current && !colisRef.current.contains(event.target)) {
         setOpenModal(false);
@@ -47,7 +47,7 @@ export default function NavBar({
     return () => {
       document.body.removeEventListener('click', handleClickOutsidetrans);
     };
-  }, [openModal]);
+  }, []);
 
 
 
@@ -70,7 +70,7 @@ export default function NavBar({
     return () => {
       document.body.removeEventListener('click', handleClickOutside);
     };
-  }, [openModalTrans]);
+  }, []);
 
 
 

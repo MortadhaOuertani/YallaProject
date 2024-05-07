@@ -8,6 +8,7 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
   const [openSubMenu, setOpenSubMenu] = useState(null);
   const [submenuRotation, setSubmenuRotation] = useState([]);
   const location = useLocation(); // Obtenez l'URL actuelle
+
   const handleContentScroll = () => {
     const sidebar = document.getElementById("sidebar");
     if (sidebar && contentRef.current) {
@@ -16,7 +17,8 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
   };
 
   const logedOut = () => {
-    localStorage.clear();    
+    localStorage.clear();
+    
     navgate("/");
   };
 
