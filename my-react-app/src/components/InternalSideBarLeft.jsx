@@ -6,22 +6,25 @@ import { FiLogOut } from "react-icons/fi";
 
 const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
   const [openSubMenu, setOpenSubMenu] = useState(null);
+  const [opensidebar, setOpenSideBar] = useState(false);
+
   const [submenuRotation, setSubmenuRotation] = useState([]);
   const location = useLocation(); // Obtenez l'URL actuelle
-
   const handleContentScroll = () => {
     const sidebar = document.getElementById("sidebar");
     if (sidebar && contentRef.current) {
       sidebar.scrollTop = contentRef.current.scrollTop;
     }
   };
-
+  const movesidebar = ()=>{
+    setOpenSideBar(!opensidebar)
+  }
   const logedOut = () => {
+    setIsDropdownOpen(false);
+    setIsLogedIn(false);
     localStorage.clear();
-    
     navgate("/");
   };
-
 
   useEffect(() => {
     const sidebar = document.getElementById("sidebar");
@@ -45,15 +48,21 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white-500 text-gray-800 ${open ? "w-64" : "w-0"
-        }`}
+      className={` min-h-screen flex flex-col flex-auto absolute  flex-shrink-0 antialiased bg-gray-100 text-gray-800 ${
+        open ? "w-64" : "w-0"
+      }`}
     >
+<div onClick={movesidebar} className={`absolute z-299 w-10 h-10 bg-red-500 top-20 ${opensidebar ? "left-[250px] md:left-[250px]" : "left-[-20px] md:left-[-20px]"} transition-all duration-300 ease-in-out`}>
+
+      </div>
       <div
-        className="fixed flex flex-col top-0 left-0 w-64 bg-gray-50 h-full border-r"
+        className={`fixed flex flex-col transition-all duration-300 ease-in-out  top-0 left-0 ${opensidebar?"":"md:left-0 sm:left-[-260px] transform xs:left-[-260px]"} w-64 bg-gray-50 h-full border-r`}
         id="sidebar"
       >
-        <div className="flex items-center justify-center h-14 border-b"></div>
-        <div className="overflow-y-auto overflow-x-hidden flex-grow">
+        <div className="flex items-center justify-center h-14 border-b">
+          <div>Sidebar Navigation By iAmine</div>
+        </div>
+        <div className="overflow-y-hidden overflow-x-hidden flex-grow ">
           <ul className="flex flex-col py-4 space-y-1">
             {menus.map((menu, idx) => (
               <li key={idx} className={`${menu.title ? "px-5" : ""}`}>
@@ -70,10 +79,11 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
                     onClick={() =>
                       menu.menu ? toggleSubMenu(idx) : setOpen(false)
                     }
-                    className={`relative flex flex-row items-center h-11 focus:outline-none text-gray-600 border-r-4 border-transparent pr-6 ${location.pathname === menu.link
+                    className={`relative flex flex-row items-center h-11 focus:outline-none text-gray-600 border-r-4 border-transparent pr-6 ${
+                      location.pathname === menu.link
                         ? "bg-gray-100 text-gray-800 border-yellow-400"
                         : "hover:bg-gray-50 hover:text-gray-800 hover:border-yellow-400"
-                      }`}
+                    }`}
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       {React.createElement(menu.icon, {
@@ -94,28 +104,26 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
               </li>
             ))}
           </ul>
-          <div className=" w-full h-30 absolute bottom-0 flex flex-col px-[40px] pb-10  ">
-            
-              <div className="flex flex-col gap-4  h-full ">
-                <Link
-                  to="/setting"
-                  className="flex items-center justify-start gap-2 white-space-nowrap "
-                >
-                  <RiSettings4Line size={20} color="050816" />
-
-                  <span>Paramétres</span>
-                </Link>
-                <div
-                  onClick={logedOut}
-                  className="flex cursor-pointer items-center justify-start gap-2 whitespace-nowrap "
-                >
-                  <FiLogOut size={20} color="050816" />
-
-                  <span className=""> Se Déconnecter </span>
-                </div>
-            </div>
           </div>
-        </div>
+          <div className="bg-customGrayDarker flex flex-col items-center justify-center pl-[20%]">
+  <Link onClick={() => setIsDropdownOpen(false)} to="/setting" className="w-full">
+    <div className="flex items-center justify-between pt-3">
+      <div className="flex items-center gap-2">
+        <RiSettings4Line size={20} color="#050816" />
+        <span className="sm:inline">Paramètres</span>
+      </div>
+    </div>
+  </Link>
+  <div onClick={logedOut} className="w-full">
+    <div className="flex items-center justify-start pb-3 pt-1">
+      <div className="flex items-center gap-2">
+        <FiLogOut size={20} color="#050816" />
+        <span className="sm:inline">Se Déconnecter</span>
+      </div>
+    </div>
+  </div>
+</div>
+
       </div>
     </div>
   );

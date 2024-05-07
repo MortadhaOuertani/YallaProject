@@ -13,6 +13,9 @@ export default function NavBar({
   TransRef,
   setOpenModalTrans,
   openModal,
+  TransReftwo,
+  openModalTrans2,
+  setOpenModalTrans2,
   setOpenModal,
   isLogedIn,
   setIsLogedIn,
@@ -32,11 +35,12 @@ export default function NavBar({
     console.log(openModal)
 
   };
- 
- useEffect(() => {
+
+  useEffect(() => {
     const handleClickOutsidetrans = (event) => {
       if (colisRef.current && !colisRef.current.contains(event.target)) {
-        setOpenModal(false);
+        setOpenModal(false)
+
       }
     };
 
@@ -47,19 +51,22 @@ export default function NavBar({
     return () => {
       document.body.removeEventListener('click', handleClickOutsidetrans);
     };
-  }, []);
+  }, [openModal]);
 
 
 
   const handleTransbuttonClick = (event) => {
     setOpenModalTrans(!openModalTrans);
   };
+  const handleTransbuttonClick2 = (event) => {
+    setOpenModalTrans2(!openModalTrans2);
+  };
 
 
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (TransRef.current && !TransRef.current.contains(event.target)) {
-        setOpenModalTrans(false);
+
       }
     };
 
@@ -71,6 +78,22 @@ export default function NavBar({
       document.body.removeEventListener('click', handleClickOutside);
     };
   }, []);
+  useEffect(() => {
+    const handleClickOutside2 = (event) => {
+      if (TransReftwo.current && !TransReftwo.current.contains(event.target)) {
+
+      }
+    };
+
+    // Add event listener to the document body
+    document.body.addEventListener('click', handleClickOutside2);
+
+    // Clean up the event listener
+    return () => {
+      document.body.removeEventListener('click', handleClickOutside2);
+    };
+  }, []);
+
 
 
 
@@ -101,39 +124,53 @@ export default function NavBar({
               <div className="ml-5 min-w-[100px]">
                 <img src={logo} className="block btn- w-[100px] h-auto" alt="" />
               </div>
+              <div className=" flex flex-row left-[14%] absolute">
+                <div className="z-90" ref={TransRef}
+                  onClick={() => handleTransbuttonClick()}>
+                  <p
 
+                    className=" flex lg:block 
+                       hidden   top-[21px] ml-10 cursor-pointer text-black-500">
+                    Transporteur
+                    <KeyboardArrowDownRoundedIcon className="ml-[-2px]" />
+
+                  </p>
+                </div>
+                <div className="z-90" ref={TransReftwo}
+                  onClick={() => handleTransbuttonClick2()}
+
+                >                  <p
+
+                  className=" flex lg:block
+                       hidden   top-[21px] whitespace-nowrap ml-5  cursor-pointer text-black-500">
+                    Transporteur2
+                    <KeyboardArrowDownRoundedIcon className="ml-[-2px]" />
+
+                  </p>
+                </div>
+              </div>
               <div className="justify-end items-center flex">
                 {isLogedIn ? (
                   <>
-                    <div className=" flex ">
-                      <div z-90 ref={TransRef}
-                        onClick={() => handleTransbuttonClick()}>
-                        <p
+                    <div className="flex ">
 
-                          className=" flex lg:block 
-                       hidden  absolute top-[21px]  cursor-pointer text-black-500">
-                          Transporteur
-                          <KeyboardArrowDownRoundedIcon className="ml-[-2px]" />
-
-                        </p>
-                      </div>
                       <p
                         className="w-full pt-1 mr-5 pb- ml-20 pl-1 bg-white text-gray-700 rounded-full transition-all duration-200
                 hover:text-gray-900 focus:outline-none"
                       >
-                        <div className="lg:block  ml-40 hidden relative max-w-xs mr-20">
+                        <div className="lg:block   ml-40 hidden relative max-w-xs mr-20">
                           <p className="pl-3 items-center flex absolute inset-y-0 left-0 pointer-events-none">
                             <span className="justify-center items-center flex">
                               <span className="justify-center items-center flex">
-                                <span className="items-center justify-center flex">
+                                <span className="items-center  justify-center flex">
                                   <svg
-                                    className="w-5 h-5 text-gray-400"
+                                    className="w-5 h-5 relative left-20 text-gray-400"
                                     fill="none"
                                     viewbox="0 0 24 24"
                                     stroke="currentColor"
                                     stroke-width="2"
                                   >
-                                    <path
+                                    <path className=""
                                       stroke-linecap="round"
                                       stroke-linejoin="round"
                                       d="M21 21l-6-6m2-5a7 7 0
@@ -145,12 +182,12 @@ export default function NavBar({
                             </span>
                           </p>
 
-                          <span className=""
+                          <span className=" flex relative left-20 "
                           >
                             <input
-                              placeholder="Chercher un colis "
+                              placeholder="Chercher  "
                               type="search" disabled
-                              className="border cursor-pointer border-gray-300 sm:text-sm lg:w-[300px] md:w-[200px] rounded-full pt-2 pb-2 pl-10 px-3 py-2"
+                              className="border  cursor-pointer  border-gray-300 sm:text-sm lg:w-[220px] md:w-[200px] rounded-full pt-2 pb-2 pl-10 px-3 py-2"
                             />
                             <span
                               className="cursor-pointer absolute right-0 h-full rounded-lg w-20"
@@ -166,7 +203,7 @@ export default function NavBar({
                           <div
                             ref={colisRef}
                             onClick={() => handleButtonClick()}
-                            className="  cursor-pointer w-[295px] py-5 rounded-full left-[2px] bottom-[0px] absolute"></div>
+                            className="  cursor-pointer w-[295px] py-5 z-90 rounded-full left-[2px] bottom-[0px] absolute"></div>
 
                         </div>
                       </p>

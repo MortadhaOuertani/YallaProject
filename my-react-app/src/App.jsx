@@ -35,7 +35,9 @@ function App() {
   const [open, setOpen] = useState(true);
   const [openModal, setOpenModal] = useState(false);
   const [openModalTrans, setOpenModalTrans] = useState(false);
+  const [openModalTrans2, setOpenModalTrans2] = useState(false);
   const contentRef = useRef(null);
+  const TransRef2 = useRef(null);
   const [isLogedIn, setIsLogedIn] = useState(true);
   const colisRef = useRef(null);
   const TransRef = useRef(null);
@@ -66,10 +68,13 @@ function App() {
           <div className="w-full ">
             <NavBar
               TransRef={TransRef}
+              TransReftwo={TransRef2}
               openModal={openModal}
               setOpenModal={setOpenModal}
               openModalTrans={openModalTrans}
               setOpenModalTrans={setOpenModalTrans}
+              openModalTrans2={openModalTrans2}
+              setOpenModalTrans2={setOpenModalTrans2}
               isLogedIn={isLogedIn}
               setIsLogedIn={setIsLogedIn}
               colisRef={colisRef}
@@ -162,12 +167,20 @@ function App() {
       </div>
       
       <div
-        className={`bg-white border shadow-md w-60 h-28 fixed z-60 top-[-150px] right-[47%] rounded-lg transition-transform ${openModalTrans ? ' transform translate-y-[200%] delay-8' : ''
+        className={`bg-white border shadow-md w-60 h-30 fixed z-60 top-[-150px] left-[13%] rounded-lg transition-transform ${openModalTrans ? ' transform translate-y-[142%] delay-8' : ''
           }`} ref={TransRef}
       >
         <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
           <Link
             onClick={() => setOpenModalTrans(false)}
+            to="/"
+            className="flex items-center justify-start w-full gap-4 px-4"
+          >
+            <Inventory2OutlinedIcon />
+            <span>Proposer un trajet</span>
+          </Link>
+          <Link
+            onClick={() => setOpenModalTrans2(false)}
             to="/"
             className="flex items-center justify-start w-full gap-4 px-4"
           >
@@ -182,6 +195,42 @@ function App() {
             <LocalShippingOutlinedIcon />
             <span>Comment ça marche</span>
           </Link>
+        </div>
+      </div>
+
+      <div
+        className={`bg-white border absolute shadow-md w-60  h-30 fixed z-60 top-[-150px] left-[22%] rounded-lg transition-transform ${openModalTrans2 ? ' transform translate-y-[125%] delay-8' : ''
+          }`} ref={TransRef2}
+      >
+        <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
+          <Link
+            onClick={() => setOpenModalTrans2(false)}
+            to="/"
+            className="flex items-center justify-start w-full gap-4 px-4"
+          >
+            <Inventory2OutlinedIcon />
+            <span>Proposer un trajet</span>
+          </Link>
+          
+          <Link
+            onClick={() => setOpenModalTrans2(false)}
+            to=""
+            className="flex items-center justify-start w-full gap-4 px-4"
+          >
+            <LocalShippingOutlinedIcon />
+            <span>Comment ça marche</span>
+          </Link>
+
+          <Link
+            onClick={() => setOpenModalTrans2(false)}
+            to=""
+            className="flex items-center justify-start w-full gap-4 px-4"
+          >
+            <LocalShippingOutlinedIcon />
+            <span>Comment ça marche</span>
+          </Link>
+          
+          
         </div>
       </div>
     </div>
