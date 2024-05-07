@@ -1,6 +1,7 @@
 import React from "react";
 import UnderlinedButtons from "./UnderlinedButtons";
 import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Link } from "react-router-dom";
 const DashboardCard = (props) => {
   return (
     <>
@@ -9,19 +10,20 @@ const DashboardCard = (props) => {
         <div className="w-full h-full ">
           <div className=" flex justify-between  mt-3  items-center  w-full  ">
             <h1 className="text-lg ml-4 font-semibold text-yellow-400 ">
-              Mes annonces en cours:
+              {props.header}
             </h1>
             <MoreVertIcon style={{ fontSize: "25px", color: "gray" }} />
           </div>
           <div className="w-full h-full flex justify-center items-center flex-col">
             <div className=" mt-3  rounded-lg items-center flex flex-col gap-7 justify-center   ">
-              <h1 className="">Aucune annonce n'a ete crée</h1>
-              <button className=" whitespace-nowrap shadow-custom hover:bg-yellow-500 w-auto h-auto px-[10%] py-[5%] rounded-lg bg-yellow-400 text-white">
-                Ajouter une annonce
-              </button>
+              <h1 className="">{props.text}</h1>
+              <Link className="whitespace-nowrap shadow-custom hover:bg-yellow-500 min-w-[200px] max-w-[250px] h-auto py-[5%] rounded-lg bg-yellow-400 text-white" to={`${props.path}`}>
+                {props.buttonText}
+              </Link>
+
             </div>
-            <div className="w-full h-[10%] flex justify-end items-end ">
-              <p className="ml-auto text-sm text-yellow-400 mr-10 mb-3 underline">
+            <div className=" w-full h-[10%] flex justify-end items-end ">
+              <p className="cursor-pointer ml-auto text-sm text-yellow-400 mr-10 mb-3 underline">
                 Voir plus
               </p>
             </div>

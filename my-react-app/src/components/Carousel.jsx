@@ -18,7 +18,7 @@ function Carousel() {
   return (
     <div
       id="default-carousel"
-      className="relative w-full h-full min-h-[200px] max-h-[350px] flex justify-center "
+      className="relative min-h-[100%] max-h-[350px] w-100% flex justify-center "
       data-carousel="slide"
     >
       <div className="relative w-full  overflow-hidden rounded-lg ">
@@ -30,7 +30,7 @@ function Carousel() {
             }`}
             data-carousel-item
           >
-            <div className="absolute flex flex-col justify-center items-center w-full h-full">
+            <div className="absolute flex flex-col justify-center  items-center w-full h-full">
               <div className="bg-yellow-400 rounded-lg w-full h-full flex flex-col justify-center items-center">
                 <p className="text-white font-medium text-xl ">
                   Contenu {index + 1}

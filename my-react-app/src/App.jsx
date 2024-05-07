@@ -34,10 +34,11 @@ function App() {
   const [isMobileView, setIsMobileView] = useState(false);
   const [open, setOpen] = useState(true);
   const [openModal, setOpenModal] = useState(false);
+  const [openModalTrans, setOpenModalTrans] = useState(false);
   const contentRef = useRef(null);
   const [isLogedIn, setIsLogedIn] = useState(true);
-  const colisRef = useRef();
-
+  const colisRef = useRef(null);
+  const TransRef = useRef(null);
   useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 1024); // Adjust this threshold as needed
@@ -56,18 +57,7 @@ function App() {
     };
   }, []);
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (colisRef.current && !colisRef.current.contains(event.target)) {
-      }
-    };
 
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   return (
     <div className="w-full h-screen overflow-y-auto">
@@ -75,8 +65,11 @@ function App() {
         {isLogedIn && (
           <div className="w-full ">
             <NavBar
+              TransRef={TransRef}
               openModal={openModal}
               setOpenModal={setOpenModal}
+              openModalTrans={openModalTrans}
+              setOpenModalTrans={setOpenModalTrans}
               isLogedIn={isLogedIn}
               setIsLogedIn={setIsLogedIn}
               colisRef={colisRef}
@@ -94,7 +87,7 @@ function App() {
               />
 
               <div
-                className="w-full mt-16 ml-0 lg:ml-[16rem] xl:ml-[16rem]   "
+                className="w-full  ml-0 lg:ml-[16rem] xl:ml-[16rem]   "
                 ref={contentRef}
               >
                 <div className="lg:flex lg:justify-center lg:items-center lg:w-full lg:h-full">
@@ -144,31 +137,53 @@ function App() {
           <BottomNavBar />
         </div>
       )}
-      {openModal && (
-        <div
-          className="bg-white border shadow-md w-50 h-28 fixed z-60 top-16 right-80 rounded-lg"
-          ref={colisRef}
-        >
-          <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
-            <Link
-              onClick={() => setOpenModal(false)}
-              to=""
-              className="flex items-center justify-start w-full gap-4 px-4"
-            >
-              <Inventory2OutlinedIcon />
-              <span>Colis</span>
-            </Link>
-            <Link
-              onClick={() => setOpenModal(false)}
-              to=""
-              className="flex items-center justify-start w-full gap-4 px-4"
-            >
-              <LocalShippingOutlinedIcon />
-              <span>Transporteur</span>
-            </Link>
-          </div>
+      <div
+        className={`bg-white border shadow-md w-60 h-28 fixed z-60 top-[-150px] right-[28%] rounded-lg transition-transform ${openModal ? ' transform translate-y-[200%] delay-8' : ''
+          }`} ref={colisRef}
+      >
+        <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
+          <Link
+            onClick={() => setOpenModal(false)}
+            to="/"
+            className="flex items-center justify-start w-full gap-4 px-4"
+          >
+            <Inventory2OutlinedIcon />
+            <span>Colis</span>
+          </Link>
+          <Link
+            onClick={() => setOpenModal(false)}
+            to=""
+            className="flex items-center justify-start w-full gap-4 px-4"
+          >
+            <LocalShippingOutlinedIcon />
+            <span>Transporteur</span>
+          </Link>
         </div>
-      )}
+      </div>
+      
+      <div
+        className={`bg-white border shadow-md w-60 h-28 fixed z-60 top-[-150px] right-[47%] rounded-lg transition-transform ${openModalTrans ? ' transform translate-y-[200%] delay-8' : ''
+          }`} ref={TransRef}
+      >
+        <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
+          <Link
+            onClick={() => setOpenModalTrans(false)}
+            to="/"
+            className="flex items-center justify-start w-full gap-4 px-4"
+          >
+            <Inventory2OutlinedIcon />
+            <span>Proposer un trajet</span>
+          </Link>
+          <Link
+            onClick={() => setOpenModalTrans(false)}
+            to=""
+            className="flex items-center justify-start w-full gap-4 px-4"
+          >
+            <LocalShippingOutlinedIcon />
+            <span>Comment ça marche</span>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }

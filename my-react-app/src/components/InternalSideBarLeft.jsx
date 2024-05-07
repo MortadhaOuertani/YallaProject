@@ -15,6 +15,12 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
     }
   };
 
+  const logedOut = () => {
+    localStorage.clear();    
+    navgate("/");
+  };
+
+
   useEffect(() => {
     const sidebar = document.getElementById("sidebar");
     if (sidebar && contentRef.current) {
@@ -37,9 +43,8 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
 
   return (
     <div
-      className={`min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white-500 text-gray-800 ${
-        open ? "w-64" : "w-0"
-      }`}
+      className={`min-h-screen flex flex-col flex-auto flex-shrink-0 antialiased bg-white-500 text-gray-800 ${open ? "w-64" : "w-0"
+        }`}
     >
       <div
         className="fixed flex flex-col top-0 left-0 w-64 bg-gray-50 h-full border-r"
@@ -63,11 +68,10 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
                     onClick={() =>
                       menu.menu ? toggleSubMenu(idx) : setOpen(false)
                     }
-                    className={`relative flex flex-row items-center h-11 focus:outline-none text-gray-600 border-r-4 border-transparent pr-6 ${
-                      location.pathname === menu.link
+                    className={`relative flex flex-row items-center h-11 focus:outline-none text-gray-600 border-r-4 border-transparent pr-6 ${location.pathname === menu.link
                         ? "bg-gray-100 text-gray-800 border-yellow-400"
                         : "hover:bg-gray-50 hover:text-gray-800 hover:border-yellow-400"
-                    }`}
+                      }`}
                   >
                     <span className="inline-flex justify-center items-center ml-4">
                       {React.createElement(menu.icon, {
@@ -88,6 +92,27 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
               </li>
             ))}
           </ul>
+          <div className=" w-full h-30 absolute bottom-0 flex flex-col px-[40px] pb-10  ">
+            
+              <div className="flex flex-col gap-4  h-full ">
+                <Link
+                  to="/setting"
+                  className="flex items-center justify-start gap-2 white-space-nowrap "
+                >
+                  <RiSettings4Line size={20} color="050816" />
+
+                  <span>Paramétres</span>
+                </Link>
+                <div
+                  onClick={logedOut}
+                  className="flex cursor-pointer items-center justify-start gap-2 whitespace-nowrap "
+                >
+                  <FiLogOut size={20} color="050816" />
+
+                  <span className=""> Se Déconnecter </span>
+                </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

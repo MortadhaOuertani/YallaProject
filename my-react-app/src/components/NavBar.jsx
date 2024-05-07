@@ -9,6 +9,9 @@ import { FiLogOut } from "react-icons/fi";
 import logo from "../assets/logo1.png";
 
 export default function NavBar({
+  openModalTrans,
+  TransRef,
+  setOpenModalTrans,
   openModal,
   setOpenModal,
   isLogedIn,
@@ -22,6 +25,56 @@ export default function NavBar({
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
+  const handleButtonClick = (event) => {
+    console.log("test")
+    console.log(openModal)
+    setOpenModal(!openModal);
+    console.log(openModal)
+
+  };
+ 
+  useEffect(() => {
+    const handleClickOutsidetrans = (event) => {
+      if (colisRef.current && !colisRef.current.contains(event.target)) {
+        setOpenModal(false);
+      }
+    };
+
+    // Add event listener to the document body
+    document.body.addEventListener('click', handleClickOutsidetrans);
+
+    // Clean up the event listener
+    return () => {
+      document.body.removeEventListener('click', handleClickOutsidetrans);
+    };
+  }, [openModal]);
+
+
+
+  const handleTransbuttonClick = (event) => {
+    setOpenModalTrans(!openModalTrans);
+  };
+
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (TransRef.current && !TransRef.current.contains(event.target)) {
+        setOpenModalTrans(false);
+      }
+    };
+
+    // Add event listener to the document body
+    document.body.addEventListener('click', handleClickOutside);
+
+    // Clean up the event listener
+    return () => {
+      document.body.removeEventListener('click', handleClickOutside);
+    };
+  }, [openModalTrans]);
+
+
+
+
 
   const logedOut = () => {
     setIsDropdownOpen(false);
@@ -30,38 +83,42 @@ export default function NavBar({
     navgate("/");
   };
 
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (
-        (profileRef.current && !profileRef.current.contains(event.target)) ||
-        (colisRef.current && !colisRef.current.contains(event.target))
-      ) {
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
 
   return (
     <div>
       <div className="pt-0 pr-0 pb-0 pl-0 mt-0 mr-0 mb-0 ml-0"></div>
+
+
       <div className="bg-white fixed top-0 z-40 w-full">
+
+
         <div className="flex-col flex">
+
           <div className="w-full border-b-2 border-gray-200">
+
             <div className="bg-white h-16 justify-between items-center mx-auto px-4 flex">
-              <div className="ml-5">
-                <img src={logo} className="block btn- h-9 w-auto" alt="" />
+
+              <div className="ml-5 min-w-[100px]">
+                <img src={logo} className="block btn- w-[100px] h-auto" alt="" />
               </div>
+
               <div className="justify-end items-center flex">
                 {isLogedIn ? (
                   <>
-                    <div className="">
+                    <div className=" flex ">
+                      <div z-90 ref={TransRef}
+                        onClick={() => handleTransbuttonClick()}>
+                        <p
+
+                          className=" flex lg:block 
+                       hidden  absolute top-[21px]  cursor-pointer text-black-500">
+                          Transporteur
+                          <KeyboardArrowDownRoundedIcon className="ml-[-2px]" />
+
+                        </p>
+                      </div>
                       <p
-                        className="w-full pt-1 mr-5 pb-1 pl-1 bg-white text-gray-700 rounded-full transition-all duration-200
+                        className="w-full pt-1 mr-5 pb- ml-20 pl-1 bg-white text-gray-700 rounded-full transition-all duration-200
                 hover:text-gray-900 focus:outline-none"
                       >
                         <div className="lg:block  ml-40 hidden relative max-w-xs mr-20">
@@ -87,16 +144,16 @@ export default function NavBar({
                               </span>
                             </span>
                           </p>
-                          <span>
+
+                          <span className=""
+                          >
                             <input
-                              placeholder="Chercher Un "
-                              type="search"
-                              className="border border-gray-300 sm:text-sm w-[300px] rounded-full pt-2 pb-2 pl-10 px-3 py-2"
+                              placeholder="Chercher un colis "
+                              type="search" disabled
+                              className="border cursor-pointer border-gray-300 sm:text-sm lg:w-[300px] md:w-[200px] rounded-full pt-2 pb-2 pl-10 px-3 py-2"
                             />
                             <span
-                              onClick={() => (prev) => !prev}
-                              ref={colisRef}
-                              className="cursor-pointer  absolute right-0 h-full rounded-lg w-20"
+                              className="cursor-pointer absolute right-0 h-full rounded-lg w-20"
                             >
                               <div className="h-full flex w-[30px] flex-col items-center justify-center">
                                 <div className="flex items-center justify-between border-l-2 px-2 ml-4 h-full border-gray-300">
@@ -106,6 +163,11 @@ export default function NavBar({
                               </div>
                             </span>
                           </span>
+                          <div
+                            ref={colisRef}
+                            onClick={() => handleButtonClick()}
+                            className="  cursor-pointer w-[295px] py-5 rounded-full left-[2px] bottom-[0px] absolute"></div>
+
                         </div>
                       </p>
                     </div>
@@ -162,8 +224,7 @@ export default function NavBar({
                         {isDropdownOpen && (
                           <div
                             className="bg-white border w-56 h-28 fixed z-100 top-16  "
-                            ref={profileRef}
-                          >
+                            ref={profileRef}>
                             <div className="flex flex-col justify-center items-center gap-4 p-3 h-full ">
                               <Link
                                 onClick={() => setIsDropdownOpen(false)}
@@ -197,3 +258,8 @@ export default function NavBar({
     </div>
   );
 }
+
+
+
+
+
