@@ -6,34 +6,43 @@ import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalance
 
 const currentDate = new Date();
 const monthNames = [
-  'JANVIER', 'FÉVRIER', 'MARS', 'AVRIL', 'MAI', 'JUIN',
-  'JUILLET', 'AOÛT', 'SEPTEMBRE', 'OCTOBRE', 'NOVEMBRE', 'DÉCEMBRE'
+  "JANVIER",
+  "FÉVRIER",
+  "MARS",
+  "AVRIL",
+  "MAI",
+  "JUIN",
+  "JUILLET",
+  "AOÛT",
+  "SEPTEMBRE",
+  "OCTOBRE",
+  "NOVEMBRE",
+  "DÉCEMBRE",
 ];
 const currentMonth = monthNames[currentDate.getMonth()];
 const currentYear = currentDate.getFullYear();
 export const data1 = [
   {
-    text: "MON PORTEFEUILLE",
+    text: "MON <br> PORTEFEUILLE",
     title: "0",
-    sign:"€",
+    sign: "€",
     icon: AccountBalanceWalletOutlinedIcon,
   },
   {
     title: "0",
-    text: "MES ENVOIES EN COURS",
+    text: "MES ENVOIES<br>EN COURS",
     icon: Inventory2OutlinedIcon,
   },
   {
     title: "0",
-    text: "LIVRAISONS EN COURS",
+    text: "MES LIVRAISONS <br> EN COURS",
     icon: LocalShippingOutlinedIcon,
   },
   {
     title: "0",
-    text: `GAGNÉ EN ${currentMonth} ${currentYear}`,
+    text: `GAGNÉ EN <br> ${currentMonth} ${currentYear}`,
     icon: EuroSymbolTwoToneIcon,
-    sign:"€",
-
+    sign: "€",
   },
 ];
 

@@ -45,9 +45,7 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
         className="fixed flex flex-col top-0 left-0 w-64 bg-gray-50 h-full border-r"
         id="sidebar"
       >
-        <div className="flex items-center justify-center h-14 border-b">
-          <div>Sidebar Navigation By iAmine</div>
-        </div>
+        <div className="flex items-center justify-center h-14 border-b"></div>
         <div className="overflow-y-auto overflow-x-hidden flex-grow">
           <ul className="flex flex-col py-4 space-y-1">
             {menus.map((menu, idx) => (

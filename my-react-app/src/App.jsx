@@ -25,7 +25,6 @@ import {
   Login,
   SignUp,
   RouteListe,
-  
 } from "./pages";
 import { useEffect, useRef, useState } from "react";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
@@ -71,7 +70,7 @@ function App() {
   }, []);
 
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-screen overflow-y-auto">
       <div className="flex flex-col">
         {isLogedIn && (
           <div className="w-full ">
@@ -95,7 +94,7 @@ function App() {
               />
 
               <div
-                className="w-full overflow-y-auto mt-16 ml-0 lg:ml-[16rem] xl:ml-[16rem]   "
+                className="w-full mt-16 ml-0 lg:ml-[16rem] xl:ml-[16rem]   "
                 ref={contentRef}
               >
                 <div className="lg:flex lg:justify-center lg:items-center lg:w-full lg:h-full">
