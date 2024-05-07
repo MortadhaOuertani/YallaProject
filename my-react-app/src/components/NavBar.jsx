@@ -94,14 +94,14 @@ export default function NavBar({
                               className="border border-gray-300 sm:text-sm w-[300px] rounded-full pt-2 pb-2 pl-10 px-3 py-2"
                             />
                             <span
-                              onClick={() =>  ((prev) => !prev)}
+                              onClick={() => (prev) => !prev}
                               ref={colisRef}
                               className="cursor-pointer  absolute right-0 h-full rounded-lg w-20"
                             >
                               <div className="h-full flex w-[30px] flex-col items-center justify-center">
                                 <div className="flex items-center justify-between border-l-2 px-2 ml-4 h-full border-gray-300">
                                   <span className="">Colis</span>
-                                  <KeyboardArrowDownRoundedIcon  className="ml-[-2px]"/>
+                                  <KeyboardArrowDownRoundedIcon className="ml-[-2px]" />
                                 </div>
                               </div>
                             </span>
