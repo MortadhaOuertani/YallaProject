@@ -39,7 +39,6 @@ export default function NavBar({
   useEffect(() => {
     const handleClickOutsidetrans = (event) => {
       if (colisRef.current && !colisRef.current.contains(event.target)) {
-        setOpenModal(false)
 
       }
     };
@@ -51,7 +50,7 @@ export default function NavBar({
     return () => {
       document.body.removeEventListener('click', handleClickOutsidetrans);
     };
-  }, [openModal]);
+  }, []);
 
 
 
@@ -193,17 +192,14 @@ export default function NavBar({
                               className="cursor-pointer absolute right-0 h-full rounded-lg w-20"
                             >
                               <div className="h-full flex w-[30px] flex-col items-center justify-center">
-                                <div className="flex items-center justify-between border-l-2 px-2 ml-4 h-full border-gray-300">
-                                  <span className="">Colis</span>
+                                <div ref={colisRef}
+                                  onClick={() => handleButtonClick()} className="flex items-center justify-between border-l-2 px-2 ml-4 h-full border-gray-300">
+                                  <span className="" >Colis</span>
                                   <KeyboardArrowDownRoundedIcon className="ml-[-2px]" />
                                 </div>
                               </div>
                             </span>
                           </span>
-                          <div
-                            ref={colisRef}
-                            onClick={() => handleButtonClick()}
-                            className="  cursor-pointer w-[295px] py-5 z-90 rounded-full left-[2px] bottom-[0px] absolute"></div>
 
                         </div>
                       </p>
