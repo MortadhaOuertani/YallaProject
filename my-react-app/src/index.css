@@ -11,7 +11,10 @@
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
 }
-
+.focus\:shadow-outline-yellow:focus {
+  box-shadow: 0 0 0 3px rgba(251, 191, 36, 0.5);
+  border-radius: 3px;
+}
 .boor {
   @apply border border-black;
 }

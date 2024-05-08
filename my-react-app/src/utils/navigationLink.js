@@ -20,7 +20,7 @@ import StickyNote2OutlinedIcon from "@mui/icons-material/StickyNote2Outlined";
 import MarkunreadMailboxOutlinedIcon from "@mui/icons-material/MarkunreadMailboxOutlined";
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
-import ForkRightIcon from '@mui/icons-material/ForkRight';
+import ForkRightIcon from "@mui/icons-material/ForkRight";
 export const menus = [
   {
     title: "Generale",
@@ -50,11 +50,7 @@ export const menus = [
     link: "/ajouter-un-trajet",
     icon: AddRoadIcon,
   },
-  {
-    name: "Chercher un colis",
-    link: "/chercher-un-colis",
-    icon: ManageSearchIcon,
-  },
+
   {
     name: "Carnet d'adresse",
     link: "/carnet-d-adresse",

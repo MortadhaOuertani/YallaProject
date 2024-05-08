@@ -16,9 +16,9 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
       sidebar.scrollTop = contentRef.current.scrollTop;
     }
   };
-  const movesidebar = ()=>{
-    setOpenSideBar(!opensidebar)
-  }
+  const movesidebar = () => {
+    setOpenSideBar(!opensidebar);
+  };
   const logedOut = () => {
     setIsDropdownOpen(false);
     setIsLogedIn(false);
@@ -48,15 +48,24 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
 
   return (
     <div
-      className={` min-h-screen flex flex-col flex-auto absolute  flex-shrink-0 antialiased bg-gray-100 text-gray-800 ${
+      className={` min-h-screen flex flex-col flex-auto absolute  flex-shrink-0 antialiased bg-gray-100 text-gray-800 z-30 ${
         open ? "w-64" : "w-0"
       }`}
     >
-<div onClick={movesidebar} className={`absolute z-299 w-10 h-10 bg-red-500 top-20 ${opensidebar ? "left-[250px] md:left-[250px]" : "left-[-20px] md:left-[-20px]"} transition-all duration-300 ease-in-out`}>
-
-      </div>
       <div
-        className={`fixed flex flex-col transition-all duration-300 ease-in-out  top-0 left-0 ${opensidebar?"":"md:left-0 sm:left-[-260px] transform xs:left-[-260px]"} w-64 bg-gray-50 h-full border-r`}
+        onClick={movesidebar}
+        className={`absolute w-10 h-10 bg-red-500 top-20 ${
+          opensidebar
+            ? "left-[250px] md:left-[250px]"
+            : "left-[-20px] md:left-[-20px]"
+        } transition-all duration-300 ease-in-out`}
+      ></div>
+      <div
+        className={`fixed flex flex-col transition-all duration-300 ease-in-out  top-0 left-0 ${
+          opensidebar
+            ? ""
+            : "md:left-0 sm:left-[-260px] transform xs:left-[-260px]"
+        } w-64 bg-gray-50 h-full border-r`}
         id="sidebar"
       >
         <div className="flex items-center justify-center h-14 border-b">
@@ -104,26 +113,7 @@ const InternalSideBarLeft = ({ open, setOpen, isMobileView, contentRef }) => {
               </li>
             ))}
           </ul>
-          </div>
-          <div className="bg-customGrayDarker flex flex-col items-center justify-center pl-[20%]">
-  <Link onClick={() => setIsDropdownOpen(false)} to="/setting" className="w-full">
-    <div className="flex items-center justify-between pt-3">
-      <div className="flex items-center gap-2">
-        <RiSettings4Line size={20} color="#050816" />
-        <span className="sm:inline">Paramètres</span>
-      </div>
-    </div>
-  </Link>
-  <div onClick={logedOut} className="w-full">
-    <div className="flex items-center justify-start pb-3 pt-1">
-      <div className="flex items-center gap-2">
-        <FiLogOut size={20} color="#050816" />
-        <span className="sm:inline">Se Déconnecter</span>
-      </div>
-    </div>
-  </div>
-</div>
-
+        </div>
       </div>
     </div>
   );

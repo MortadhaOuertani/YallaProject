@@ -59,8 +59,6 @@ function App() {
     };
   }, []);
 
-
-
   return (
     <div className="w-full h-screen overflow-y-auto">
       <div className="flex flex-col">
@@ -92,10 +90,10 @@ function App() {
               />
 
               <div
-                className="w-full  ml-0 lg:ml-[16rem] xl:ml-[16rem]   "
+                className="w-full h-full mt-16  lg:ml-[16rem] xl:ml-[16rem] mb-10  "
                 ref={contentRef}
               >
-                <div className="lg:flex lg:justify-center lg:items-center lg:w-full lg:h-full">
+                <div className=" flex justify-center items-center w-full h-full ">
                   <Routes>
                     <Route path="/Dashboard" element={<Dashboard />} />
                     <Route path="/monprofile" element={<Dashboard />} />
@@ -138,13 +136,15 @@ function App() {
         </div>
       </div>
       {isLogedIn && isMobileView && !open && (
-        <div className="">
+        <div className="mt-10">
           <BottomNavBar />
         </div>
       )}
       <div
-        className={`bg-white border shadow-md w-60 h-28 fixed z-60 top-[-150px] right-[28%] rounded-lg transition-transform ${openModal ? ' transform translate-y-[200%] delay-8' : ''
-          }`} ref={colisRef}
+        className={`bg-white border shadow-md w-60 h-28 fixed z-60 top-[-150px] right-[28%] rounded-lg transition-transform ${
+          openModal ? " transform translate-y-[200%] delay-8" : ""
+        }`}
+        ref={colisRef}
       >
         <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
           <Link
@@ -165,10 +165,12 @@ function App() {
           </Link>
         </div>
       </div>
-      
+
       <div
-        className={`bg-white border shadow-md w-60 h-30 fixed z-60 top-[-150px] left-[13%] rounded-lg transition-transform ${openModalTrans ? ' transform translate-y-[142%] delay-8' : ''
-          }`} ref={TransRef}
+        className={`bg-white border shadow-md w-60 h-30 fixed z-60 top-[-150px] left-[13%] rounded-lg transition-transform ${
+          openModalTrans ? " transform translate-y-[142%] delay-8" : ""
+        }`}
+        ref={TransRef}
       >
         <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
           <Link
@@ -199,8 +201,10 @@ function App() {
       </div>
 
       <div
-        className={`bg-white border absolute shadow-md w-60  h-30 fixed z-60 top-[-150px] left-[22%] rounded-lg transition-transform ${openModalTrans2 ? ' transform translate-y-[125%] delay-8' : ''
-          }`} ref={TransRef2}
+        className={`bg-white border absolute shadow-md w-60  h-30 fixed z-60 top-[-150px] left-[22%] rounded-lg transition-transform ${
+          openModalTrans2 ? " transform translate-y-[125%] delay-8" : ""
+        }`}
+        ref={TransRef2}
       >
         <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
           <Link
@@ -211,7 +215,7 @@ function App() {
             <Inventory2OutlinedIcon />
             <span>Proposer un trajet</span>
           </Link>
-          
+
           <Link
             onClick={() => setOpenModalTrans2(false)}
             to=""
@@ -229,8 +233,6 @@ function App() {
             <LocalShippingOutlinedIcon />
             <span>Comment ça marche</span>
           </Link>
-          
-          
         </div>
       </div>
     </div>

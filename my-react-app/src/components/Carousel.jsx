@@ -18,7 +18,7 @@ function Carousel() {
   return (
     <div
       id="default-carousel"
-      className="relative min-h-[100%] max-h-[350px] w-100% flex justify-center "
+      className="relative h-[300px] lg:h-[530px] w-full  flex justify-center z-300"
       data-carousel="slide"
     >
       <div className="relative w-full  overflow-hidden rounded-lg ">
@@ -40,7 +40,7 @@ function Carousel() {
           </div>
         ))}
       </div>
-      <div className="absolute z-30 flex -translate-x-1/2 bottom-[15%] left-1/2 space-x-3">
+      <div className="absolute z-25 flex -translate-x-1/2 bottom-[15%] left-1/2 space-x-3">
         {[...Array(totalSlides)].map((_, index) => (
           <button
             key={index}
