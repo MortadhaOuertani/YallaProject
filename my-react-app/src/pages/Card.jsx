@@ -12,6 +12,8 @@ const Card = (props) => {
  
 
   const customStyles = {
+    backgroundColor: searchQuery ? "#f7f6f6" : "", 
+    fontSize : "15px",
     option: (provided, state) => ({
       ...provided,
       backgroundColor: state.isFocused ? "#fbbf24" : "",
@@ -22,7 +24,8 @@ const Card = (props) => {
       ...provided,
       boxShadow: state.isFocused ? "0 0 0 3px rgba(251, 191, 36, 0.5)" : "none",
       backgroundColor:  state.selectProps.value ? '#f7f6f6' : '', 
-
+      padding :"5px 5px",
+      fontSize : "15px",
       borderColor: "transparent",
       outline: "none",
       "&:hover": {
@@ -32,9 +35,6 @@ const Card = (props) => {
         outline: "none !important",
       },
     }),
-  };
-  const inputStyles = {
-    backgroundColor: searchQuery ? "#f7f6f6" : "", 
   };
 
   return (
@@ -53,12 +53,12 @@ const Card = (props) => {
       <div className="relative mt-4 mb-4">
         {/* search */}
         <input
-          className="w-full p-2 pl-16 pr-4  border  rounded text-sm focus:outline-none  focus:shadow-outline-yellow"
+          className="w-full p-3 pl-16 pr-4  border  rounded text-sm focus:outline-none  focus:shadow-outline-yellow"
           type="text"
           placeholder="Recherche par titre, ref annonces"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          style={inputStyles}          
+          style={customStyles}          
         />
         <div className="absolute inset-y-0 left-0 p-3 flex items-center pointer-events-none bg-yellow-500  rounded-l">
           <SearchIcon className="text-white" />
@@ -68,7 +68,7 @@ const Card = (props) => {
       <div className="flex mb-4">
         <div className="flex-grow mr-2 w-70">
           <Select
-            className="flex-grow w-full mr-2  text-sm  border border-gray-200  rounded bg-color  "
+            className="flex-grow w-full mr-2  text-sm  border border-gray-200 py  rounded bg-color  "
             options={props.firstSelectOptions}
             styles={customStyles}
 
