@@ -29,6 +29,7 @@ import {
 import { useEffect, useRef, useState } from "react";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
+import Nnavbar from "./components/Nnavbar";
 
 function App() {
   const [isMobileView, setIsMobileView] = useState(false);
@@ -38,9 +39,14 @@ function App() {
   const [openModalTrans2, setOpenModalTrans2] = useState(false);
   const contentRef = useRef(null);
   const TransRef2 = useRef(null);
+  const [movesidebar, setMovesidebar] = useState(false);
   const [isLogedIn, setIsLogedIn] = useState(true);
   const colisRef = useRef(null);
   const TransRef = useRef(null);
+
+  const toggleSidebar = () => {
+    setMovesidebar(!movesidebar);
+  };
   useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 1024); // Adjust this threshold as needed
@@ -61,8 +67,14 @@ function App() {
 
   return (
     <div className="w-full h-screen overflow-y-auto">
+      <div className={`absolute transform w-full h-full bg-black ${movesidebar ? 'opacity-50 ' : 'opacity-0 pointer-events-none'
+        } transition-opacity duration-700`}>
+      </div>
+
       <div className="flex flex-col">
-        {isLogedIn && (
+        <Nnavbar toggleSidebar={toggleSidebar} />
+
+        { /* isLogedIn && (
           <div className="w-full ">
             <NavBar
               TransRef={TransRef}
@@ -78,7 +90,7 @@ function App() {
               colisRef={colisRef}
             />
           </div>
-        )}
+        )*/}
         <div className="flex flex-1 h-full">
           {isLogedIn ? (
             <>
@@ -87,6 +99,7 @@ function App() {
                 setOpen={setOpen}
                 isMobileView={isMobileView}
                 contentRef={contentRef}
+                movesidebar={movesidebar}
               />
 
               <div
@@ -141,9 +154,8 @@ function App() {
         </div>
       )}
       <div
-        className={`bg-white border shadow-md w-60 h-28 fixed z-60 top-[-150px] right-[28%] rounded-lg transition-transform ${
-          openModal ? " transform translate-y-[200%] delay-8" : ""
-        }`}
+        className={`bg-white border shadow-md w-60 h-28 fixed z-60 top-[-150px] right-[28%] rounded-lg transition-transform ${openModal ? " transform translate-y-[200%] delay-8" : ""
+          }`}
         ref={colisRef}
       >
         <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
@@ -167,9 +179,8 @@ function App() {
       </div>
 
       <div
-        className={`bg-white border shadow-md w-60 h-30 fixed z-60 top-[-150px] left-[13%] rounded-lg transition-transform ${
-          openModalTrans ? " transform translate-y-[142%] delay-8" : ""
-        }`}
+        className={`bg-white border shadow-md w-60 h-30 fixed z-60 top-[-150px] left-[13%] rounded-lg transition-transform ${openModalTrans ? " transform translate-y-[142%] delay-8" : ""
+          }`}
         ref={TransRef}
       >
         <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
@@ -201,9 +212,8 @@ function App() {
       </div>
 
       <div
-        className={`bg-white border absolute shadow-md w-60  h-30 fixed z-60 top-[-150px] left-[22%] rounded-lg transition-transform ${
-          openModalTrans2 ? " transform translate-y-[125%] delay-8" : ""
-        }`}
+        className={`bg-white border absolute shadow-md w-60  h-30 fixed z-60 top-[-150px] left-[22%] rounded-lg transition-transform ${openModalTrans2 ? " transform translate-y-[125%] delay-8" : ""
+          }`}
         ref={TransRef2}
       >
         <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">

@@ -182,6 +182,11 @@ const BottomNavBar = () => {
           </SwipeableDrawer>
         </Root>
       )}
+   
+   {
+    ////////////////////////////// ahaaaaya el active setactiveindex(idx) adhika awini hasb lindex yetbadel win tenzel bel map wkenha true temchi tbaddel fel style else false
+   }
+   
       <div className=" bg-yellow-500 fixed bottom-0 w-full">
         <div className="grid h-full max-w-lg grid-cols-5 mx-auto">
           {bottomMenu.map((btn, idx) => (
