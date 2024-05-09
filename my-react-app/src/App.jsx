@@ -126,6 +126,7 @@ function App() {
                       path="/chercher-un-colis"
                       element={<SearchPackage />}
                     />
+                    
                     <Route path="/messages" element={<Message />} />
                     <Route path="/setting" element={<Setting />} />
                     <Route path="/payments" element={<Payments />} />
