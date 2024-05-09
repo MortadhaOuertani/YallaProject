@@ -53,7 +53,7 @@ const InternalSideBarLeft = ({ open, movesidebar, setOpen, isMobileView, content
       <div
         className={`fixed flex flex-col transition-all duration-300 ease-in-out  top-0 left-0 ${movesidebar
             ? ""
-            : "md:left-0 sm:left-[-260px] transform xs:left-[-260px]"
+            : " lg:left-0 sm:left-[-260px] transform xs:left-[-260px] left-[-260px]"
           } w-64 bg-gray-50 h-full border-r`}
         id="sidebar"
       >

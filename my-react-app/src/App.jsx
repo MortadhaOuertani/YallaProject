@@ -67,7 +67,7 @@ function App() {
 
   return (
     <div className="w-full h-screen overflow-y-auto">
-      <div className={`absolute transform w-full h-full bg-black ${movesidebar ? 'opacity-50 ' : 'opacity-0 pointer-events-none'
+      <div className={`absolute transform z-999 w-full h-screen bg-black ${movesidebar ? 'opacity-50 ' : 'opacity-0 pointer-events-none'
         } transition-opacity duration-700`}>
       </div>
 
