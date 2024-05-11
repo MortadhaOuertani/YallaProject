@@ -11,7 +11,7 @@ import {
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import DashboardCard from "../components/DashboardCard";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -24,7 +24,7 @@ const Dashboard = () => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-
+    console.log(props.openPorfileDropdown)
     window.addEventListener("resize", handleResize);
 
     return () => {
@@ -43,8 +43,8 @@ const Dashboard = () => {
       </style>
 
       <div className="  w-full h-full flex  overflow-hidden xl:p-16 lg:p-12 p-5    ">
-        <div className="grid grid-cols-1 lg:grid  lg:grid-cols-3  lg:gap-7 w-full  ">
-          <div className="col-span-2  flex flex-col  ">
+        <div className={`grid grid-cols-1 lg:grid lg:grid-cols-${props.openPorfileDropdown || props.translateDropdownOpen ? "1" : "3"} lg:gap-7 w-full`}>
+          <div className={`col-span-${props.openPorfileDropdown || props.translateDropdownOpen  ? 1 : 2}  flex flex-col`}>
             <div className="flex flex-col items-center justify-between">
               <div className="w-full  h-fit rounded-lg  mb-4 p-5 flex items-center">
                 <div className="flex items-center justify-start flex-grow">

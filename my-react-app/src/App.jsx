@@ -1,5 +1,5 @@
 import "./App.css";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
 import {
   InternalSideBarLeft,
   NavBar,
@@ -30,6 +30,7 @@ import { useEffect, useRef, useState } from "react";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import Nnavbar from "./components/Nnavbar";
+import ProfileMobileView from "./components/ProfileMobileView";
 
 function App() {
   const [isMobileView, setIsMobileView] = useState(false);
@@ -40,17 +41,32 @@ function App() {
   const contentRef = useRef(null);
   const TransRef2 = useRef(null);
   const [movesidebar, setMovesidebar] = useState(false);
+  const [translateDropdownOpen, setTranslateDropdownOpen] = useState(false);
+  const TranslateRef = useRef(null);
+
   const [isLogedIn, setIsLogedIn] = useState(true);
   const colisRef = useRef(null);
   const TransRef = useRef(null);
+  const location = useLocation();
+  const [openPorfileDropdown, setOpenPorfileDropdown] = useState(false);
+  const openPorfileDropdownRef = useRef(null);
 
   const toggleSidebar = () => {
     setMovesidebar(!movesidebar);
   };
   useEffect(() => {
+    setMovesidebar(false);
+
+  }, [location]);
+
+
+
+
+  useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 1024); // Adjust this threshold as needed
       setOpen(false);
+      setMovesidebar(false)
     };
 
     // Initial check
@@ -67,30 +83,13 @@ function App() {
 
   return (
     <div className="w-full h-screen overflow-y-auto">
-      <div className={`absolute transform z-999 w-full h-screen bg-black ${movesidebar ? 'opacity-50 ' : 'opacity-0 pointer-events-none'
+      <div className={`absolute transform z-[29] w-full block lg:hidden h-screen bg-black  ${movesidebar || openPorfileDropdown ? 'opacity-50 ' : 'opacity-0 pointer-events-none'
         } transition-opacity duration-700`}>
       </div>
 
       <div className="flex flex-col">
-        <Nnavbar toggleSidebar={toggleSidebar} />
+        <Nnavbar setTranslateDropdownOpen={setTranslateDropdownOpen} translateDropdownOpen={translateDropdownOpen} openPorfileDropdownRef={openPorfileDropdownRef} setOpenPorfileDropdown={setOpenPorfileDropdown} toggleSidebar={toggleSidebar} />
 
-        { /* isLogedIn && (
-          <div className="w-full ">
-            <NavBar
-              TransRef={TransRef}
-              TransReftwo={TransRef2}
-              openModal={openModal}
-              setOpenModal={setOpenModal}
-              openModalTrans={openModalTrans}
-              setOpenModalTrans={setOpenModalTrans}
-              openModalTrans2={openModalTrans2}
-              setOpenModalTrans2={setOpenModalTrans2}
-              isLogedIn={isLogedIn}
-              setIsLogedIn={setIsLogedIn}
-              colisRef={colisRef}
-            />
-          </div>
-        )*/}
         <div className="flex flex-1 h-full">
           {isLogedIn ? (
             <>
@@ -106,9 +105,10 @@ function App() {
                 className="w-full h-full mt-16  lg:ml-[16rem] xl:ml-[16rem] mb-10  "
                 ref={contentRef}
               >
-                <div className=" flex justify-center items-center w-full h-full ">
+                <div className={`flex ${openPorfileDropdown ? "flex-row" : " justify-center items-center"} w-full h-full`}>
+
                   <Routes>
-                    <Route path="/Dashboard" element={<Dashboard />} />
+                    <Route path="/Dashboard" element={<Dashboard translateDropdownOpen={translateDropdownOpen} openPorfileDropdown={openPorfileDropdown} />} />
                     <Route path="/monprofile" element={<Dashboard />} />
                     <Route path="/faq" element={<FAQ />} />
                     <Route path="/plaques-nfc" element={<NFCTags />} />
@@ -126,7 +126,7 @@ function App() {
                       path="/chercher-un-colis"
                       element={<SearchPackage />}
                     />
-                    
+
                     <Route path="/messages" element={<Message />} />
                     <Route path="/setting" element={<Setting />} />
                     <Route path="/payments" element={<Payments />} />
@@ -147,6 +147,8 @@ function App() {
               </Routes>
             </div>
           )}
+          {openPorfileDropdown || translateDropdownOpen ? <ProfileMobileView TranslateRef={TranslateRef} setTranslateDropdownOpen={setTranslateDropdownOpen} openPorfileDropdown={openPorfileDropdown} translateDropdownOpen={translateDropdownOpen} openPorfileDropdownRef={openPorfileDropdownRef} setOpenPorfileDropdown={setOpenPorfileDropdown} /> : null}
+
         </div>
       </div>
       {isLogedIn && isMobileView && !open && (
@@ -176,6 +178,7 @@ function App() {
             <LocalShippingOutlinedIcon />
             <span>Transporteur</span>
           </Link>
+
         </div>
       </div>
 

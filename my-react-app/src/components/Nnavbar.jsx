@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import MenuIcon from '@mui/icons-material/Menu';
 import logo from "../assets/logo1.png";
 import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
@@ -7,45 +7,38 @@ import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import SupportAgentOutlinedIcon from '@mui/icons-material/SupportAgentOutlined';
 import TranslateOutlinedIcon from '@mui/icons-material/TranslateOutlined';
 import { VscAccount } from "react-icons/vsc";
+import KeyboardArrowDownRoundedIcon from "@mui/icons-material/KeyboardArrowDownRounded";
+import { Link } from 'react-router-dom';
+import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
+import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
+import { AiOutlineMessage } from "react-icons/ai";
 
-function Nnavbar({ toggleSidebar }) {
-    const [translateDropdownOpen, setTranslateDropdownOpen] = useState(false);
+
+function Nnavbar({ setTranslateDropdownOpen, setOpenPorfileDropdown, toggleSidebar, openPorfileDropdownRef }) {
     const [supportDropdownOpen, setSupportDropdownOpen] = useState(false);
     const [searchDropdownOpen, setSearchDropdownOpen] = useState(false);
     const [helpDropdownOpen, setHelpDropdownOpen] = useState(false);
     const [accountDropdownOpen, setAccountDropdownOpen] = useState(false);
-
-
-    function handleDropdownMouseEnter() {
-        clearTimeout(timeoutRef.current);
-    }
-
-    function handleDropdownMouseLeave() {
-        timeoutRef.current = setTimeout(() => {
-            setTranslateDropdownOpen(false);
-        }, 200); // adjust the delay as needed
-    }
-    function createHandleMouseLeave(state, setState) {
-        return () => {
-            setTimeout(() => {
-                console.log(state)
-                setTranslateDropdownOpen(false);
-            }, 200); // adjust the delay as needed
-        };
-    }
+    const [colisDropDownOpen, setColisDropDownOpen] = useState(false);
     const timeoutRef = useRef(null);
-    function handleMouseEnter() {
-        clearTimeout(timeoutRef.current);
-        setTranslateDropdownOpen(true);
+    const profileRef = useRef(null);
+    const accountRef = useRef(null);
+
+    const colisRef = useRef(null)
+    function handleDropdownMouseLeave(setState, useRef) {
+        useRef.current = setTimeout(() => {
+            setState(false);
+        }, 100);
     }
-    function handleMouseLeave() {
-        timeoutRef.current = setTimeout(() => {
-            setTranslateDropdownOpen(false);
-        }, 300); // adjust the delay as needed
+    function handleMouseEnter(setState, useRef) {
+        clearTimeout(useRef.current);
+        setState(true);
+console.log( "teste")
     }
+
     return (
-        <div className="w-full h-[70px] z-[99] top-0 left-0 fixed flex justify-between bg-white border border-gray-500">
-            <div className='w-auto pl-10 gap-10 flex justify-center items-center h-full'>
+        <div className="w-full h-16 z-[99] top-0 left-0 fixed flex justify-between items-center bg-white border ">
+            <div className='w-auto pl-10 gap-10 flex justify-center items-center h-full '>
                 <div onClick={toggleSidebar} className='block  lg:hidden'>
                     <MenuIcon style={{ fontSize: 30 }} />
                 </div>
@@ -55,96 +48,115 @@ function Nnavbar({ toggleSidebar }) {
                     alt=""
                 />
             </div>
-            <div className='w-auto h-full gap-7 pr-10 flex justify-center items-center'>
+            <div className='w-auto  flex justify-center items-center h-full lg:block hidden'>
+                <p
+                    className="w-full pt-1 mr-5 pb-1 pl-1 bg-white text-gray-700 rounded-full transition-all duration-200
+                hover:text-gray-900 focus:outline-none"
+                >
+                    <div className=" ml-40  relative max-w-xs mr-20">
+                        <p className="pl-3 items-center flex absolute inset-y-0 left-0 pointer-events-none">
+                            <span className="justify-center items-center flex">
+                                <span className="justify-center items-center flex">
+                                    <span className="items-center justify-center flex">
+                                        <svg
+                                            className="w-5 h-5 text-gray-400"
+                                            fill="none"
+                                            viewbox="0 0 24 24"
+                                            stroke="currentColor"
+                                            stroke-width="2"
+                                        >
+                                            <path
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                                d="M21 21l-6-6m2-5a7 7 0
+                      11-14 0 7 7 0 0114 0z"
+                                            />
+                                        </svg>
+                                    </span>
+                                </span>
+                            </span>
+                        </p>
+                        <span>
+                            <input
+                                placeholder="Chercher Un "
+                                type="search"
+                                className="border border-gray-300 sm:text-sm w-full rounded-lg pt-2 pb-2 pl-10 px-3 py-2"
+                            />
+                            <span
+                                onMouseEnter={() => handleMouseEnter(setColisDropDownOpen, colisRef)} onMouseLeave={() => handleDropdownMouseLeave(setColisDropDownOpen, colisRef)}
+                                className="cursor-pointer absolute right-0 h-full rounded-lg w-20"
+                            >
+                                <div className="h-full flex flex-col items-center justify-center">
+                                    <div className="flex items-center justify-between border-l-2 px-2 h-full border-gray-300">
+                                        <span className="px-1">Colis</span>
+                                        <KeyboardArrowDownRoundedIcon />
+                                    </div>
+                                </div>
+                            </span>
+                        </span>
+                    </div>
+                </p>
+                {colisDropDownOpen && (
+                    <div
+                        onMouseEnter={() => handleMouseEnter(setColisDropDownOpen, colisRef)} onMouseLeave={() => handleDropdownMouseLeave(setColisDropDownOpen, colisRef)}
+                        className="absolute h-auto right-0 bg-white  w-[300px] top-[70px] flex flex-col bg-white border border-gray-200  shadow"
+                    >
+                        <div
+                            className="bg-white border shadow-md w-50 h-28 fixed z-60 top-16 right-[45%] rounded-lg"
+                        >
+                            <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
+                                <Link
+                                    to=""
+                                    className="flex items-center justify-start w-full gap-4 px-4"
+                                >
+                                    <Inventory2OutlinedIcon />
+                                    <span>Colis</span>
+                                </Link>
+                                <Link
+                                    to=""
+                                    className="flex items-center justify-start w-full gap-4 px-4"
+                                >
+                                    <LocalShippingOutlinedIcon />
+                                    <span>Transporteur</span>
+                                </Link>
+                            </div>
+                        </div>
+                    </div>
+                )}
+            </div>
+
+            <div className='lg:gap-4 sm:p-5  gap-2 h-12 flex justify-center items-center'>
+
                 <div className="relative">
-                    <button onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
-                        className="flex items-center space-x-1">
+                    <button onMouseEnter={() => handleMouseEnter(setTranslateDropdownOpen, timeoutRef)} onMouseLeave={() => handleDropdownMouseLeave(setTranslateDropdownOpen, timeoutRef)} className="flex items-center space-x-1">
                         <TranslateOutlinedIcon style={{ fontSize: 35 }} />
                     </button>
-                    {translateDropdownOpen && (
-                        <ul
-                            onMouseEnter={handleDropdownMouseEnter}
-                            onMouseLeave={handleDropdownMouseLeave} className="absolute h-[450px] right-0 bg-white  w-[300px] top-[70px] flex flex-col bg-white border border-gray-200  shadow">
-                            <li className='w-full flex   pl-5 items-center h-auto  '>
-                            </li>
-
-                            <div className=' flex flex-col pl-7 pt-7 gap-10 w-full h-auto'>
-                                <li className='gap-3 flex'> <HelpOutlineOutlinedIcon /> Account Option 2</li>
-                                <li className='gap-3 flex'>  <HelpOutlineOutlinedIcon />Account Option 3</li>
-                            </div>
-                        </ul>
-                    )}
                 </div>
                 <div className="relative" >
-                    <button onMouseEnter={() => setSupportDropdownOpen(true)} className="flex items-center space-x-1">
+                    <button className="flex items-center space-x-1">
                         <SupportAgentOutlinedIcon style={{ fontSize: 35 }} />
                     </button>
-                    {supportDropdownOpen && (
-                        <ul onMouseEnter={() => setSupportDropdownOpen(true)} onMouseLeave={() => setSupportDropdownOpen(false)} className="absolute right-0 bg-white h-[450px] w-[300px] top-[70px] flex flex-col bg-white border border-gray-200  shadow">
-                            <li className='w-full flex   pl-5 items-center h-auto  border-gray-600 '>
-                            </li>
-                            <div className=' flex flex-col pl-7 pt-7 gap-10 w-full h-auto'>
-                                <li className='gap-3 flex'> <HelpOutlineOutlinedIcon /> Account Option 2</li>
-                                <li className='gap-3 flex'>  <HelpOutlineOutlinedIcon />Account Option 3</li>
-                            </div>
-                        </ul>
-                    )}
+
                 </div>
-                <div className="relative">
+                <div className="relative lg:block hidden">
                     <button onMouseEnter={() => setSearchDropdownOpen(true)} onMouseLeave={() => setTimeout(() => !searchDropdownOpen ? setSearchDropdownOpen(false) : null, 200)} className="flex items-center space-x-1">
-                        <SearchOutlinedIcon style={{ fontSize: 35 }} />
+                        <AiOutlineMessage style={{ fontSize: 35 }} />
                     </button>
-                    {searchDropdownOpen && (
-                        <ul onMouseLeave={() => setSearchDropdownOpen(false)} onMouseEnter={() => setSearchDropdownOpen(true)} className="absolute h-[450px] right-0 bg-white  w-[300px] top-[70px] flex flex-col bg-white border border-gray-200  shadow">
-                            <li className='w-full flex   pl-5 items-center h-auto  '>
-                            </li>
-                            <div className=' flex flex-col pl-7 pt-7 gap-10 w-full h-auto'>
-                                <li className='gap-3 flex'> <HelpOutlineOutlinedIcon /> Account Option 2</li>
-                                <li className='gap-3 flex'>  <HelpOutlineOutlinedIcon />Account Option 3</li>
-                            </div>
-                        </ul>
-                    )}
+
                 </div>
                 <div className="relative">
-                    <button onMouseEnter={() => setHelpDropdownOpen(true)} onMouseLeave={() => setTimeout(() => helpDropdownOpen == false ? setHelpDropdownOpen(false) : null, 200)} className="flex items-center space-x-1">
+                    <button className="flex items-center space-x-1">
                         <HelpOutlineOutlinedIcon style={{ fontSize: 35 }} />
                     </button>
-                    {helpDropdownOpen && (
-                        <ul onMouseEnter={() => setHelpDropdownOpen(true)} onMouseLeave={() => setAccountDropdownOpen(false)} className="ml-auto absolute h-[450px] right-0 bg-white  w-[300px] top-[70px] flex flex-col bg-white border border-gray-200  shadow">
-                            <li className=' w-full flex   pl-5 items-center h-auto  '>
-                            </li>
-                            <div className=' flex flex-col pl-7 pt-7 gap-10 w-full h-auto'>
-                                <li className='gap-3 flex'> <HelpOutlineOutlinedIcon /> Account Option 2</li>
-                                <li className='gap-3 flex'>  <HelpOutlineOutlinedIcon />Account Option 3</li>
-                            </div>
-                        </ul>
-                    )}
                 </div>
                 <div className="relative">
-                    <button onMouseEnter={() => setAccountDropdownOpen(true)} onMouseLeave={() => setTimeout(() => !accountDropdownOpen ? setAccountDropdownOpen(false) : null, 200)} className="flex relative  items-center space-x-1">
+                    <button
+                        onMouseEnter={() => handleMouseEnter(setOpenPorfileDropdown, openPorfileDropdownRef)}
+                        onMouseLeave={() => handleDropdownMouseLeave(setOpenPorfileDropdown, openPorfileDropdownRef)}
+                        className="flex relative  items-center space-x-1">
                         <VscAccount style={{ fontSize: 35 }} />
                     </button>
-                    {accountDropdownOpen && (
-                        <ul onMouseEnter={() => setAccountDropdownOpen(true)} onMouseLeave={() => setAccountDropdownOpen(false)} className="ml-auto absolute h-[450px] right-0 bg-white  w-[300px] top-[70px] flex flex-col bg-white border border-gray-200  shadow">
-                            <li className='w-full border-b flex border-gray-500  py-5 pl-5 items-center h-auto  '>
-                                <div className='  flex justify-center  flex-col gap-3'>
-                                    <p className='font-medium'>
-                                        Mortadha Wartani
-                                    </p>
-                                    <p className='font-light'>
-                                        mortadha500@gmail.com
-                                    </p>
-                                </div>
-                            </li>
-                            <div className=' flex flex-col pl-7 pt-7 gap-10 w-full h-auto'>
-                                <li className='gap-3 flex'> <HelpOutlineOutlinedIcon /> Account Option 2</li>
-                                <li className='gap-3 flex'>  <HelpOutlineOutlinedIcon />Account Option 3</li>
-                            </div>
-                            <div className='h-auto px-5 py-5  border-t border-gray-200 items-center flex justify-center mt-auto'>
-                                <button className='py-[4%] bg-yellow-400 text-white px-[40%]  rounded'>Logout</button>
-                            </div>
-                        </ul>
-                    )}
+
                 </div>
                 {/* Add similar code for the other icons */}
             </div>
