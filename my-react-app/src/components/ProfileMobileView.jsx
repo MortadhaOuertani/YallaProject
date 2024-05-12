@@ -7,23 +7,36 @@ const ProfileMobileView = (props) => {
             setState(false);
         }, 100);
     }
-    function handleMouseEnter(setState, useRef) {
-        clearTimeout(useRef.current);
-        setState(true);
 
+    function handleTranslateMouseLeave() {
+        props.TranslateRef.current = setTimeout(() => {
+            props.setTranslateDropdownOpen(false);
+        }, 200);
     }
-    useEffect(() => {
-        console.log(props.translateDropdownOpen)
-    }, [])
+    function handleTranslateMouseEnter() {
+        console.log(props.TranslateRef.current)
+        clearTimeout(props.TranslateRef.current);
+        console.log(props.TranslateRef.current)
+        props.setTranslateDropdownOpen(true);
+    }
+
+    function handleMouseEnter(setState, useRef) {
+        console.log(useRef.current)
+        clearTimeout(useRef.current);
+
+        setState(true);
+    }
+
+
     return (
         <>
 
 
             {props.openPorfileDropdown && (
                 <div
-                    onMouseEnter={() => handleMouseEnter(props.setOpenPorfileDropdown, props.openPorfileDropdownRef) }
-                    onMouseLeave={ () => handleDropdownMouseLeave(props.setOpenPorfileDropdown, props.openPorfileDropdownRef) }
-                    className={`h-screen w-[19rem] absolute    lg:relative z-[29]  pt-[64px]  right-0`}>
+                    onMouseEnter={() => handleMouseEnter(props.setOpenPorfileDropdown, props.openPorfileDropdownRef)}
+                    onMouseLeave={() => handleDropdownMouseLeave(props.setOpenPorfileDropdown, props.openPorfileDropdownRef)}
+                    className={`h-screen lg:w-[28rem] w-[19rem] absolute  lg:relative z-[29]  pt-[64px]  right-0`}>
 
                     <ul
                         className="ml-auto  h-full right-0 bg-white w-full top-[70px] flex flex-col bg-white border border-gray-200  shadow">
@@ -48,12 +61,13 @@ const ProfileMobileView = (props) => {
 
             {props.translateDropdownOpen && (
                 <div
-                    onMouseEnter={ () => handleMouseEnter(props.setTranslateDropdownOpen, props.TranslateRef) }
-                    onMouseLeave={ () => handleDropdownMouseLeave(props.setTranslateDropdownOpen, props.TranslateRef) }
-                    className={`h-screen w-[19rem] absolute    lg:relative z-[29]  pt-[64px]  right-0`}>
+                    onMouseEnter={handleTranslateMouseEnter}
+                    onMouseLeave={handleTranslateMouseLeave}
+                    className={`h-screen lg:w-[28rem] w-[19rem] absolute  lg:relative z-[29]  pt-[64px]  right-0`}>
 
 
-                    <ul className="ml-auto h-full right-0 bg-white w-full top-[70px] flex flex-col bg-white border border-gray-200 shadow">
+                    <ul
+                        className="ml-auto  h-full right-0 bg-white w-full top-[70px] flex flex-col bg-white border border-gray-200  shadow">
                         <li className='w-full flex pl-5 items-center h-auto'></li>
                         <div className='flex flex-col pl-7 rounded py-7 gap-10 w-full h-auto'>
                             <li className='gap-3 flex'>Account Option 2</li>

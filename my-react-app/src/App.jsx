@@ -43,7 +43,6 @@ function App() {
   const [movesidebar, setMovesidebar] = useState(false);
   const [translateDropdownOpen, setTranslateDropdownOpen] = useState(false);
   const TranslateRef = useRef(null);
-
   const [isLogedIn, setIsLogedIn] = useState(true);
   const colisRef = useRef(null);
   const TransRef = useRef(null);
@@ -88,7 +87,7 @@ function App() {
       </div>
 
       <div className="flex flex-col">
-        <Nnavbar setTranslateDropdownOpen={setTranslateDropdownOpen} translateDropdownOpen={translateDropdownOpen} openPorfileDropdownRef={openPorfileDropdownRef} setOpenPorfileDropdown={setOpenPorfileDropdown} toggleSidebar={toggleSidebar} />
+        <Nnavbar TranslateRef={TranslateRef} setTranslateDropdownOpen={setTranslateDropdownOpen} translateDropdownOpen={translateDropdownOpen} openPorfileDropdownRef={openPorfileDropdownRef} setOpenPorfileDropdown={setOpenPorfileDropdown} toggleSidebar={toggleSidebar} />
 
         <div className="flex flex-1 h-full">
           {isLogedIn ? (
@@ -147,7 +146,7 @@ function App() {
               </Routes>
             </div>
           )}
-          {openPorfileDropdown || translateDropdownOpen ? <ProfileMobileView TranslateRef={TranslateRef} setTranslateDropdownOpen={setTranslateDropdownOpen} openPorfileDropdown={openPorfileDropdown} translateDropdownOpen={translateDropdownOpen} openPorfileDropdownRef={openPorfileDropdownRef} setOpenPorfileDropdown={setOpenPorfileDropdown} /> : null}
+          <ProfileMobileView TranslateRef={TranslateRef} setTranslateDropdownOpen={setTranslateDropdownOpen} openPorfileDropdown={openPorfileDropdown} translateDropdownOpen={translateDropdownOpen} openPorfileDropdownRef={openPorfileDropdownRef} setOpenPorfileDropdown={setOpenPorfileDropdown} /> 
 
         </div>
       </div>

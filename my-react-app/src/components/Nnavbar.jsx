@@ -14,7 +14,7 @@ import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import { AiOutlineMessage } from "react-icons/ai";
 
 
-function Nnavbar({ setTranslateDropdownOpen, setOpenPorfileDropdown, toggleSidebar, openPorfileDropdownRef }) {
+function Nnavbar({ TranslateRef, setTranslateDropdownOpen, setOpenPorfileDropdown, toggleSidebar, openPorfileDropdownRef }) {
     const [supportDropdownOpen, setSupportDropdownOpen] = useState(false);
     const [searchDropdownOpen, setSearchDropdownOpen] = useState(false);
     const [helpDropdownOpen, setHelpDropdownOpen] = useState(false);
@@ -33,7 +33,7 @@ function Nnavbar({ setTranslateDropdownOpen, setOpenPorfileDropdown, toggleSideb
     function handleMouseEnter(setState, useRef) {
         clearTimeout(useRef.current);
         setState(true);
-console.log( "teste")
+        console.log("teste")
     }
 
     return (
@@ -48,7 +48,7 @@ console.log( "teste")
                     alt=""
                 />
             </div>
-            <div className='w-auto  flex justify-center items-center h-full lg:block hidden'>
+            <div className='w-auto flex justify-center hidden  h-full lg:flex lg:items-center'>
                 <p
                     className="w-full pt-1 mr-5 pb-1 pl-1 bg-white text-gray-700 rounded-full transition-all duration-200
                 hover:text-gray-900 focus:outline-none"
@@ -99,7 +99,7 @@ console.log( "teste")
                 {colisDropDownOpen && (
                     <div
                         onMouseEnter={() => handleMouseEnter(setColisDropDownOpen, colisRef)} onMouseLeave={() => handleDropdownMouseLeave(setColisDropDownOpen, colisRef)}
-                        className="absolute h-auto right-0 bg-white  w-[300px] top-[70px] flex flex-col bg-white border border-gray-200  shadow"
+                        className="absolute h-auto right-0 bg-white  w-[300px] top-[70px] flex flex-col bg-white   shadow"
                     >
                         <div
                             className="bg-white border shadow-md w-50 h-28 fixed z-60 top-16 right-[45%] rounded-lg"
@@ -128,7 +128,7 @@ console.log( "teste")
             <div className='lg:gap-4 sm:p-5  gap-2 h-12 flex justify-center items-center'>
 
                 <div className="relative">
-                    <button onMouseEnter={() => handleMouseEnter(setTranslateDropdownOpen, timeoutRef)} onMouseLeave={() => handleDropdownMouseLeave(setTranslateDropdownOpen, timeoutRef)} className="flex items-center space-x-1">
+                    <button onMouseEnter={() => handleMouseEnter(setTranslateDropdownOpen, timeoutRef)} onMouseLeave={() => handleDropdownMouseLeave(setTranslateDropdownOpen, TranslateRef)} className="flex items-center space-x-1">
                         <TranslateOutlinedIcon style={{ fontSize: 35 }} />
                     </button>
                 </div>
