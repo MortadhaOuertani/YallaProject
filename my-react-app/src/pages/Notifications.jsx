@@ -16,7 +16,7 @@ const Notifications = () => {
           { value: "5", label: "En cours de livraison" },
           { value: "6", label: "Livrées" },
           { value: "7", label: "Expirées" },
-          { value: "7", label: "Refusées" },
+          { value: "8", label: "Refusées" },
         ]}
         Options2 = {[
           { value: "option1", label: "Les plus anciens" },
