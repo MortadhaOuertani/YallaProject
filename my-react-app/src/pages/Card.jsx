@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 
-import Select from "react-select";
+import Select from 'react-select';
 
 const Card = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -11,15 +11,10 @@ const Card = (props) => {
 
  
 
-  const customStyles = {
+
+  const colourStyles = {
     backgroundColor: searchQuery ? "#f7f6f6" : "", 
     fontSize : "15px",
-    option: (provided, state) => ({
-      ...provided,
-      backgroundColor: state.isFocused ? "#fbbf24" : "",
-      color: state.isFocused ? "#fff" : "none",
-      cursor: "pointer",
-    }),
     control: (provided, state) => ({
       ...provided,
       boxShadow: state.isFocused ? "0 0 0 3px rgba(251, 191, 36, 0.5)" : "none",
@@ -35,8 +30,35 @@ const Card = (props) => {
         outline: "none !important",
       },
     }),
+    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
+      return {
+        ...styles,
+        backgroundColor: isDisabled
+          ? undefined
+          : isSelected
+          ? "#fbbf24"
+          : isFocused
+          ? "#f2e3be"
+          : undefined,
+        color: isDisabled
+          ? '#ccc'
+          : isSelected
+          ? "#fff"
+          : "#000000",
+        cursor: isDisabled ? 'not-allowed' : 'default',
+  
+        ':active': {
+          ...styles[':active'],
+          backgroundColor: !isDisabled
+            ? isSelected
+              ? ""
+              : ""
+            : undefined,
+        },
+      };
+    },
   };
-
+  
   return (
     <div className="container w-full xl:w-[50%] md:w-[70%] p-5 mt-10  ">
       <div className="flex items-center justify-between">
@@ -58,7 +80,7 @@ const Card = (props) => {
           placeholder="Recherche par titre, ref annonces"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          style={customStyles}          
+          style={colourStyles}          
         />
         <div className="absolute inset-y-0 left-0 p-3 flex items-center pointer-events-none bg-yellow-500  rounded-l">
           <SearchIcon className="text-white" />
@@ -70,7 +92,7 @@ const Card = (props) => {
           <Select
             className="flex-grow w-full mr-2  text-sm  border border-gray-200 py  rounded bg-color  "
             options={props.firstSelectOptions}
-            styles={customStyles}
+            styles={colourStyles}
 
           />
         </div>
@@ -79,7 +101,7 @@ const Card = (props) => {
           <Select
             className="flex-grow w-full  text-sm  border border-gray-200  rounded"
             options={props.Options2}
-            styles={customStyles}
+            styles={colourStyles}
   
            
           />
