@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { carouselTitle, data1, tabs } from "../utils/DashboardData";
+import { LuPackagePlus } from "react-icons/lu";
 import {
   AccordionSection,
   Carousel,
@@ -24,13 +25,13 @@ const Dashboard = (props) => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
     };
-    console.log(props.openPorfileDropdown)
+    console.log(props.openPorfileDropdown);
     window.addEventListener("resize", handleResize);
 
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, []);
+  }, [null]);
 
   return (
     <>
@@ -43,14 +44,24 @@ const Dashboard = (props) => {
       </style>
 
       <div className="  w-full h-full flex  overflow-hidden xl:p-16 lg:p-12 p-5    ">
-        <div className={`grid grid-cols-1 lg:grid lg:grid-cols-${props.openPorfileDropdown || props.translateDropdownOpen ? "1" : "3"} lg:gap-7 w-full`}>
-          <div className={`col-span-${props.openPorfileDropdown || props.translateDropdownOpen  ? 1 : 2}  flex flex-col`}>
+        <div
+          className={`lg:grid ${
+            props.openPorfileDropdown || props.translateDropdownOpen
+              ? "lg:grid-cols-1"
+              : "lg:grid-cols-3"
+          } lg:gap-7 w-full grid grid-cols-1`}
+        >
+          <div
+            className={`col-span-${
+              props.openPorfileDropdown || props.translateDropdownOpen ? 1 : 2
+            }  flex flex-col`}
+          >
             <div className="flex flex-col items-center justify-between">
               <div className="w-full  h-fit rounded-lg  mb-4 p-5 flex items-center">
                 <div className="flex items-center justify-start flex-grow">
                   <div className="ml-4">
                     <h1 className="text-[20px]">Mardi, 07 Mai</h1>
-                    <h1 className="text-[36px] font-merriweather">
+                    <h1 className="text-[36px]  font-merriweather">
                       Salut! Yialla T.
                     </h1>
                   </div>
@@ -89,12 +100,13 @@ const Dashboard = (props) => {
                   path={"/messages"}
                   text={"Aucune livraisons n'a ete crée"}
                   buttonText={"Ajouter une livraison"}
+                  icon={LuPackagePlus}
                 />
               </div>
             </div>
           </div>
-          <div className=" col-span-1  w-full h-full  lg:max-w-sm lg:min-w-sm   ">
-            <div className="flex flex-col w-full h-full   lg:max-w-sm lg:min-w-sm  ">
+          <div className=" col-span-1  w-full h-full     ">
+            <div className="flex flex-col w-full h-full    ">
               <div className="w-full h-auto   ">
                 <div className="flex ">
                   <div className="w-1/2 h-auto mr-2 mb-2  ">

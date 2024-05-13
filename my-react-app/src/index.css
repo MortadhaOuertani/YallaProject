@@ -37,3 +37,12 @@
   position: sticky;
   top: 0; /* ou toute autre valeur selon votre conception */
 }
+
+.hover-bg {
+  transition: background-color 0.3s; /* Transition pour une animation fluide */
+}
+
+/* Définition de la couleur de fond lorsque survolé */
+.hover-bg:hover {
+  background-color: #f3f4f6; /* Couleur gray-100 de Tailwind CSS */
+}
