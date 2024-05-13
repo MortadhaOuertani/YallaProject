@@ -34,10 +34,10 @@ export const menus = [
     title: "Generale",
   },
   { name: "Dashboard", link: "/dashboard", icon: DashboardOutlinedIcon },
-  { name: "Mes Livraisons", link: "/messages", icon: IosShareOutlinedIcon },
+  { name: "Mes Livraisons", link: "/mes-livraisons", icon: IosShareOutlinedIcon },
   {
     name: "Mes Annonces",
-    link: "/notifications",
+    link: "/mes-annonces",
     icon: MarkunreadMailboxOutlinedIcon,
   },
   {

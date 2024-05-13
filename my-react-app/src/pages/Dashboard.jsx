@@ -84,6 +84,7 @@ const Dashboard = (props) => {
                   path={"/notifications"}
                   text={"Aucune annonces n'a ete crée"}
                   buttonText={"Ajouter une annonce"}
+                  link={"/mes-annonces"}
                 />
               </div>
               <div className=" h-1/2">
@@ -92,6 +93,7 @@ const Dashboard = (props) => {
                   path={"/trajets"}
                   text={"Aucune trajets n'a ete crée"}
                   buttonText={"Ajouter une trajet"}
+                  link={"/trajets"}
                 />
               </div>
               <div className=" h-1/2">
@@ -101,6 +103,7 @@ const Dashboard = (props) => {
                   text={"Aucune livraisons n'a ete crée"}
                   buttonText={"Ajouter une livraison"}
                   icon={LuPackagePlus}
+                  link={"/mes-livraisons"}
                 />
               </div>
             </div>

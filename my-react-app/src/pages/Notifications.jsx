@@ -2,7 +2,7 @@ import React from "react";
 import Card from "./Card";
 import {tabs } from "../utils/DashboardData";
 
-const Notifications = () => {
+const Annonces = () => {
   return (
     <>
       <Card 
@@ -29,4 +29,4 @@ const Notifications = () => {
   );
 };
 
-export default Notifications;
+export default Annonces;

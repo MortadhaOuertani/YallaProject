@@ -25,9 +25,11 @@ const DashboardCard = (props) => {
               </Link>
             </div>
             <div className="   w-full  flex justify-end items-end mt-4 ">
+              <Link to={props.link}>
               <p className="cursor-pointer text-sm text-yellow-400 mr-10 mb-3 underline">
                 Voir plus
               </p>
+              </Link>
             </div>
           </div>
         </div>

@@ -7,7 +7,7 @@ export { default as Dashboard } from "./Dashboard";
 export { default as AddAnnouncement } from "./AddAnnouncement";
 export { default as AddRoute } from "./AddRoute";
 export { default as SearchPackage } from "./SearchPackage";
-export { default as Message } from "./Message";
+export { default as MesLivraisons } from "./MesLivraisons";
 export { default as Setting } from "./Setting";
 export { default as AddressBook } from "./AddressBook";
 export { default as Payments } from "./Payments";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Card from "./Card";
-const Message = () => {
+const MesLivraisons = () => {
 
 
   return (
@@ -29,4 +29,4 @@ const Message = () => {
   );
 };
 
-export default Message;
+export default MesLivraisons;

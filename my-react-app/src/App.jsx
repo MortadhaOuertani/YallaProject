@@ -17,7 +17,6 @@ import {
   AddAnnouncement,
   AddRoute,
   SearchPackage,
-  Message,
   Setting,
   AddressBook,
   Payments,
@@ -31,11 +30,16 @@ import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import Nnavbar from "./components/Nnavbar";
 import ProfileMobileView from "./components/ProfileMobileView";
+import MesLivraisons from "./pages/MesLivraisons";
+import Messages from "./pages/messages";
+import Annonces from "./pages/Notifications";
 
 function App() {
   const [isMobileView, setIsMobileView] = useState(false);
   const [open, setOpen] = useState(true);
   const [openModal, setOpenModal] = useState(false);
+  const [messagenoti, setMessagenoti] = useState(true);
+
   const [openModalTrans, setOpenModalTrans] = useState(false);
   const [openModalTrans2, setOpenModalTrans2] = useState(false);
   const contentRef = useRef(null);
@@ -59,25 +63,22 @@ function App() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobileView(window.innerWidth <= 1024); // Adjust this threshold as needed
+      setIsMobileView(window.innerWidth <= 1024); 
       setOpen(false);
       setMovesidebar(false);
     };
 
-    // Initial check
     handleResize();
 
-    // Event listener for window resize
     window.addEventListener("resize", handleResize);
 
-    // Clean up event listener
     return () => {
       window.removeEventListener("resize", handleResize);
     };
   }, []);
 
   return (
-    <div className="w-full h-screen overflow-y-auto  ">
+    <div className="w-full h-screen overflow-y-auto   ">
       <div
         className={`absolute transform z-[29] w-full block lg:hidden bg-black h-screen   ${
           movesidebar || openPorfileDropdown || translateDropdownOpen
@@ -88,6 +89,7 @@ function App() {
 
       <div className="flex flex-col">
         <Nnavbar
+        messagenoti={messagenoti}
           TranslateRef={TranslateRef}
           setTranslateDropdownOpen={setTranslateDropdownOpen}
           translateDropdownOpen={translateDropdownOpen}
@@ -129,6 +131,7 @@ function App() {
                       }
                     />
                     <Route path="/monprofile" element={<Dashboard />} />
+                    <Route path="/messages" element={<Messages />} />
                     <Route path="/faq" element={<FAQ />} />
                     <Route path="/plaques-nfc" element={<NFCTags />} />
                     <Route path="/comment-ca-marche" element={<HowItWorks />} />
@@ -146,10 +149,10 @@ function App() {
                       element={<SearchPackage />}
                     />
 
-                    <Route path="/messages" element={<Message />} />
+                    <Route path="/mes-livraisons" element={<MesLivraisons />} />
                     <Route path="/setting" element={<Setting />} />
                     <Route path="/payments" element={<Payments />} />
-                    <Route path="/notifications" element={<Notifications />} />
+                    <Route path="/mes-annonces" element={<Annonces/>} />
                     <Route path="/trajets" element={<RouteListe />} />
                     <Route path="/carnet-d-adresse" element={<AddressBook />} />
                     <Route path="/" element={<Home />} />
