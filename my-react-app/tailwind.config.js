@@ -33,15 +33,10 @@ export default {
         },
       },
       width: {
-<<<<<<< HEAD
         '70': '70%',
         '30': '30%',
         '80': '80%',
-        '20': '20%',
-=======
-        70: "70%",
-        30: "30%",
->>>>>>> 030a6df333eea68ef5fcd9a051dc64dcd6eae348
+        '20': '20%',        
       },
       animation: {
         typing: "typing 2s steps(20) infinite alternate, blink .7s infinite",
