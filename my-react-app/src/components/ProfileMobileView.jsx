@@ -37,6 +37,7 @@ const ProfileMobileView = (props) => {
 
   return (
     <>
+    {props.openPorfileDropdown&&(
       <div
         onMouseEnter={() =>
           handleMouseEnter(
@@ -50,8 +51,7 @@ const ProfileMobileView = (props) => {
             props.openPorfileDropdownRef
           )
         }
-        className={`h-screen lg:w-[19rem] w-[19rem] absolute z-[29] pt-16 lg:transition-all lg:duration-500 lg:ease-in-out ${props.openPorfileDropdown ? 'lg:right-0 transform  ' : ' lg:right-[-100%] '
-          }`}
+        className={`h-screen lg:w-[28rem] w-[19rem] right-0 absolute z-[29] pt-16 lg:relative lg:transition-all lg:duration-500 lg:ease-in-out`}
       >
         <ul className="ml-auto  h-full right-0 bg-white w-full top-[70px] flex flex-col border-l ">
           <li className="w-full bg-gray-50 flex border-b  py-5 pl-5 items-center h-auto  ">
@@ -93,7 +93,7 @@ const ProfileMobileView = (props) => {
             </button>
           </div>
         </ul>
-      </div>
+      </div>)}
 
       {props.translateDropdownOpen && (
         <div
