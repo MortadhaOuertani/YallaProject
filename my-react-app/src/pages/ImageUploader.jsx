@@ -16,7 +16,7 @@ const ImageUploader = () => {
 
   return (
     <div >
-      <label className="font-semibold text-[15px]   text-gray-600">
+      <label className="font-semibold text-[13px]    text-gray-600">
       Télécharger des photos
       </label>
       <div className="relative mt-3 pt-10 pb-10 bg-gray-100 border-dashed border-2 border-gray-400 rounded-lg p-4">

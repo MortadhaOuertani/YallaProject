@@ -3,61 +3,14 @@ import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 
 import Select from 'react-select';
-
+import InputeStyles from "../utils/InputeStyles";
 const Card = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
-  const [selectedFilter1, setSelectedFilter1] = useState("");
-  const [selectedFilter2, setSelectedFilter2] = useState("");
 
  
 
 
-  const colourStyles = {
-    backgroundColor: searchQuery ? "#f7f6f6" : "", 
-    fontSize : "15px",
-    control: (provided, state) => ({
-      ...provided,
-      boxShadow: state.isFocused ? "0 0 0 3px rgba(251, 191, 36, 0.5)" : "none",
-      backgroundColor:  state.selectProps.value ? '#f7f6f6' : '', 
-      padding :"5px 5px",
-      fontSize : "15px",
-      borderColor: "transparent",
-      outline: "none",
-      "&:hover": {
-        outline: "none !important",
-      },
-      "&:focus": {
-        outline: "none !important",
-      },
-    }),
-    option: (styles, { data, isDisabled, isFocused, isSelected }) => {
-      return {
-        ...styles,
-        backgroundColor: isDisabled
-          ? undefined
-          : isSelected
-          ? "#fbbf24"
-          : isFocused
-          ? "#f2e3be"
-          : undefined,
-        color: isDisabled
-          ? '#ccc'
-          : isSelected
-          ? "#fff"
-          : "#000000",
-        cursor: isDisabled ? 'not-allowed' : 'default',
-  
-        ':active': {
-          ...styles[':active'],
-          backgroundColor: !isDisabled
-            ? isSelected
-              ? ""
-              : ""
-            : undefined,
-        },
-      };
-    },
-  };
+
   
   return (
     <div className="container w-full xl:w-[50%] md:w-[70%] p-5 mt-10  ">
@@ -80,7 +33,7 @@ const Card = (props) => {
           placeholder="Recherche par titre, ref annonces"
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          style={colourStyles}          
+          style={InputeStyles}          
         />
         <div className="absolute inset-y-0 left-0 p-3 flex items-center pointer-events-none bg-yellow-500  rounded-l">
           <SearchIcon className="text-white" />
@@ -92,7 +45,7 @@ const Card = (props) => {
           <Select
             className="flex-grow w-full mr-2  text-sm  border border-gray-200 py  rounded bg-color  "
             options={props.firstSelectOptions}
-            styles={colourStyles}
+            styles={InputeStyles}
 
           />
         </div>
@@ -101,7 +54,7 @@ const Card = (props) => {
           <Select
             className="flex-grow w-full  text-sm  border border-gray-200  rounded"
             options={props.Options2}
-            styles={colourStyles}
+            styles={InputeStyles}
   
            
           />
