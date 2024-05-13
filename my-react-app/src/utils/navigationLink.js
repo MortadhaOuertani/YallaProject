@@ -21,6 +21,14 @@ import MarkunreadMailboxOutlinedIcon from "@mui/icons-material/MarkunreadMailbox
 import IosShareOutlinedIcon from "@mui/icons-material/IosShareOutlined";
 import DashboardOutlinedIcon from "@mui/icons-material/DashboardOutlined";
 import ForkRightIcon from "@mui/icons-material/ForkRight";
+import { MdOutlineShare } from "react-icons/md";
+import { BiShow } from "react-icons/bi";
+import { FaRegCreditCard } from "react-icons/fa";
+import { MdOutlineVerified } from "react-icons/md";
+import { IoPersonAddOutline } from "react-icons/io5";
+import { MdOutlineMode } from "react-icons/md";
+import ShareOutlinedIcon from "@mui/icons-material/ShareOutlined";
+
 export const menus = [
   {
     title: "Generale",
@@ -123,5 +131,31 @@ export const bottomMenu = [
       h: 32,
     },
     icon: MoreHorizIcon,
+  },
+];
+export const ProfileMobile = [
+  {
+    title: "Ajouter un moyen de paiements ",
+    icon: FaRegCreditCard,
+  },
+  {
+    title: "verifier mon compte",
+    icon: MdOutlineVerified,
+  },
+  {
+    title: "Modifier mes informations",
+    icon: MdOutlineMode,
+  },
+  {
+    title: "Voir mon profil public ",
+    icon: BiShow,
+  },
+  {
+    title: "parrainer un ami ",
+    icon: IoPersonAddOutline,
+  },
+  {
+    title: "partager mon profil",
+    icon: MdOutlineShare,
   },
 ];

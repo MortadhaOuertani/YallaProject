@@ -55,17 +55,13 @@ function App() {
   };
   useEffect(() => {
     setMovesidebar(false);
-
   }, [location]);
-
-
-
 
   useEffect(() => {
     const handleResize = () => {
       setIsMobileView(window.innerWidth <= 1024); // Adjust this threshold as needed
       setOpen(false);
-      setMovesidebar(false)
+      setMovesidebar(false);
     };
 
     // Initial check
@@ -81,13 +77,24 @@ function App() {
   }, []);
 
   return (
-    <div className="w-full h-screen overflow-y-auto">
-      <div className={`absolute transform z-[29] w-full block lg:hidden h-screen bg-black  ${movesidebar || openPorfileDropdown ? 'opacity-50 ' : 'opacity-0 pointer-events-none'
-        } transition-opacity duration-700`}>
-      </div>
+    <div className="w-full h-screen overflow-y-auto  ">
+      <div
+        className={`absolute transform z-[29] w-full block lg:hidden bg-black h-screen   ${
+          movesidebar || openPorfileDropdown || translateDropdownOpen
+            ? "opacity-80 "
+            : "opacity-0 pointer-events-none"
+        } transition-opacity duration-700`}
+      ></div>
 
       <div className="flex flex-col">
-        <Nnavbar TranslateRef={TranslateRef} setTranslateDropdownOpen={setTranslateDropdownOpen} translateDropdownOpen={translateDropdownOpen} openPorfileDropdownRef={openPorfileDropdownRef} setOpenPorfileDropdown={setOpenPorfileDropdown} toggleSidebar={toggleSidebar} />
+        <Nnavbar
+          TranslateRef={TranslateRef}
+          setTranslateDropdownOpen={setTranslateDropdownOpen}
+          translateDropdownOpen={translateDropdownOpen}
+          openPorfileDropdownRef={openPorfileDropdownRef}
+          setOpenPorfileDropdown={setOpenPorfileDropdown}
+          toggleSidebar={toggleSidebar}
+        />
 
         <div className="flex flex-1 h-full">
           {isLogedIn ? (
@@ -104,10 +111,23 @@ function App() {
                 className="w-full h-full mt-16  lg:ml-[16rem] xl:ml-[16rem] mb-10  "
                 ref={contentRef}
               >
-                <div className={`flex ${openPorfileDropdown ? "flex-row" : " justify-center items-center"} w-full h-full`}>
-
+                <div
+                  className={`flex ${
+                    openPorfileDropdown
+                      ? "flex-row"
+                      : " justify-center items-center"
+                  } w-full h-full`}
+                >
                   <Routes>
-                    <Route path="/Dashboard" element={<Dashboard translateDropdownOpen={translateDropdownOpen} openPorfileDropdown={openPorfileDropdown} />} />
+                    <Route
+                      path="/Dashboard"
+                      element={
+                        <Dashboard
+                          translateDropdownOpen={translateDropdownOpen}
+                          openPorfileDropdown={openPorfileDropdown}
+                        />
+                      }
+                    />
                     <Route path="/monprofile" element={<Dashboard />} />
                     <Route path="/faq" element={<FAQ />} />
                     <Route path="/plaques-nfc" element={<NFCTags />} />
@@ -146,8 +166,14 @@ function App() {
               </Routes>
             </div>
           )}
-          <ProfileMobileView TranslateRef={TranslateRef} setTranslateDropdownOpen={setTranslateDropdownOpen} openPorfileDropdown={openPorfileDropdown} translateDropdownOpen={translateDropdownOpen} openPorfileDropdownRef={openPorfileDropdownRef} setOpenPorfileDropdown={setOpenPorfileDropdown} /> 
-
+          <ProfileMobileView
+            TranslateRef={TranslateRef}
+            setTranslateDropdownOpen={setTranslateDropdownOpen}
+            openPorfileDropdown={openPorfileDropdown}
+            translateDropdownOpen={translateDropdownOpen}
+            openPorfileDropdownRef={openPorfileDropdownRef}
+            setOpenPorfileDropdown={setOpenPorfileDropdown}
+          />
         </div>
       </div>
       {isLogedIn && isMobileView && !open && (
@@ -156,8 +182,9 @@ function App() {
         </div>
       )}
       <div
-        className={`bg-white border shadow-md w-60 h-28 fixed z-60 top-[-150px] right-[28%] rounded-lg transition-transform ${openModal ? " transform translate-y-[200%] delay-8" : ""
-          }`}
+        className={`bg-white border shadow-md w-60 h-28 fixed z-60 top-[-150px] right-[28%] rounded-lg transition-transform ${
+          openModal ? " transform translate-y-[200%] delay-8" : ""
+        }`}
         ref={colisRef}
       >
         <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
@@ -177,13 +204,13 @@ function App() {
             <LocalShippingOutlinedIcon />
             <span>Transporteur</span>
           </Link>
-
         </div>
       </div>
 
       <div
-        className={`bg-white border shadow-md w-60 h-30 fixed z-60 top-[-150px] left-[13%] rounded-lg transition-transform ${openModalTrans ? " transform translate-y-[142%] delay-8" : ""
-          }`}
+        className={`bg-white border shadow-md w-60 h-30 fixed z-60 top-[-150px] left-[13%] rounded-lg transition-transform ${
+          openModalTrans ? " transform translate-y-[142%] delay-8" : ""
+        }`}
         ref={TransRef}
       >
         <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
@@ -215,8 +242,9 @@ function App() {
       </div>
 
       <div
-        className={`bg-white border absolute shadow-md w-60  h-30 fixed z-60 top-[-150px] left-[22%] rounded-lg transition-transform ${openModalTrans2 ? " transform translate-y-[125%] delay-8" : ""
-          }`}
+        className={`bg-white border absolute shadow-md w-60  h-30 fixed z-60 top-[-150px] left-[22%] rounded-lg transition-transform ${
+          openModalTrans2 ? " transform translate-y-[125%] delay-8" : ""
+        }`}
         ref={TransRef2}
       >
         <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
