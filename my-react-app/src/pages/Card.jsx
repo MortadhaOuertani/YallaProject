@@ -13,7 +13,7 @@ const Card = (props) => {
 
   
   return (
-    <div className="container w-full xl:w-[50%] md:w-[70%] p-5 mt-10  ">
+    <div className="container w-full   p-5 lg:px-[20%]  mt-10  ">
       <div className="flex items-center justify-between">
         <h1 className="font-semibold text-[20px]  text-gray-800">
           {props.name}

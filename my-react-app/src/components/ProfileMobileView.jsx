@@ -51,7 +51,7 @@ const ProfileMobileView = (props) => {
             props.openPorfileDropdownRef
           )
         }
-        className={`h-screen lg:w-[28rem] w-[19rem] right-0 absolute z-[29] pt-16 lg:relative lg:transition-all lg:duration-500 lg:ease-in-out`}
+        className={`h-screen lg:w-[17rem] w-[19rem] right-0 absolute z-[29] pt-16 lg:relative lg:transition-all lg:duration-500 lg:ease-in-out`}
       >
         <ul className="ml-auto  h-full right-0 bg-white w-full top-[70px] flex flex-col border-l ">
           <li className="w-full bg-gray-50 flex border-b  py-5 pl-5 items-center h-auto  ">

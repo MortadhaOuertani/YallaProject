@@ -103,10 +103,13 @@ function App() {
             <>
               <InternalSideBarLeft
                 open={open}
+                openPorfileDropdown={openPorfileDropdown}
                 setOpen={setOpen}
                 isMobileView={isMobileView}
                 contentRef={contentRef}
                 movesidebar={movesidebar}
+                setMovesidebar={setMovesidebar}
+                translateDropdownOpen={translateDropdownOpen}
               />
 
               <div

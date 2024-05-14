@@ -70,7 +70,7 @@ function CardAdd(props) {
 
   return (
     
-    <div className="container w-full xl:w-[70%] md:w-[70%] p-5 mt-10  ">
+    <div className="container w-full lg:w-full lg:px-[20%] md:w-[70%] p-5 mt-10  ">
         <h1 className="font-semibold text-[30px]  text-gray-800">
           {props.name}
         </h1>
