@@ -20,6 +20,8 @@ function Nnavbar({
   toggleSidebar,
   openPorfileDropdownRef,
   messagenoti,
+  verifynoti,
+  setMovesidebar
 }) {
   const [supportDropdownOpen, setSupportDropdownOpen] = useState(false);
   const [searchDropdownOpen, setSearchDropdownOpen] = useState(false);
@@ -38,6 +40,7 @@ function Nnavbar({
   }
   function handleMouseEnter(setState, useRef) {
     clearTimeout(useRef.current);
+    setMovesidebar(false)
     setState(true);
     console.log("teste");
   }
@@ -45,7 +48,7 @@ function Nnavbar({
   return (
     <div className="w-full h-16 z-[99] top-0 left-0 fixed flex justify-between items-center bg-white border ">
       <div className="flex justify-center items-center h-full ">
-        <div onClick={toggleSidebar} className="block  lg:hidden ml-5">
+        <div onClick={() => { toggleSidebar() }} className="block  lg:hidden ml-5">
           <MenuIcon style={{ fontSize: 24 }} />
         </div>
         <img src={logo} className="w-[100px] py-20 lg:ml-5 ml-3" alt="" />
@@ -86,12 +89,16 @@ function Nnavbar({
                 readOnly
               />
               <span
-                onMouseEnter={() =>
+                onMouseEnter={() => {
                   handleMouseEnter(setColisDropDownOpen, colisRef)
+                  setMovesidebar(false)
                 }
-                onMouseLeave={() =>
+                }
+                onMouseLeave={() =>{
                   handleDropdownMouseLeave(setColisDropDownOpen, colisRef)
-                }
+                  setMovesidebar(false)
+
+                }}
                 className="cursor-pointer absolute right-0 h-full rounded-lg w-22  "
               >
                 <div className="h-full flex flex-col items-center justify-center">
@@ -190,6 +197,9 @@ function Nnavbar({
           </Link>
         </div>
         <div className="relative">
+        {verifynoti && (
+              <div className="w-3 top-1 left-6 h-3 rounded-full bg-red-500 absolute "></div>
+            )}
           <button
             onMouseEnter={() =>
               handleMouseEnter(setOpenPorfileDropdown, openPorfileDropdownRef)

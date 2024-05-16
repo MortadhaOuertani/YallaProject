@@ -58,7 +58,7 @@ function CardAdd(props) {
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
         backgroundImage: `url(${<CheckIcon/>})`,
-        color: '#fff', // Set icon color to white
+        color: '#fff', 
       },
     },
     '& .MuiSwitch-track': {

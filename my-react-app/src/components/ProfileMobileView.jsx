@@ -8,6 +8,7 @@ import DEU from "../assets/DEU.png";
 import ENG from "../assets/ENG.png";
 import ESP from "../assets/ESP.png";
 import FR from "../assets/FR.png";
+import { Link } from "react-router-dom";
 
 const ProfileMobileView = (props) => {
   function handleDropdownMouseLeave(setState, useRef) {
@@ -39,11 +40,12 @@ const ProfileMobileView = (props) => {
     <>
       {props.openPorfileDropdown && (
         <div
-          onMouseEnter={() =>
+          onMouseEnter={() => {
             handleMouseEnter(
               props.setOpenPorfileDropdown,
               props.openPorfileDropdownRef
             )
+          }
           }
           onMouseLeave={() =>
             handleDropdownMouseLeave(
@@ -51,7 +53,7 @@ const ProfileMobileView = (props) => {
               props.openPorfileDropdownRef
             )
           }
-          className={`h-screen lg:w-[17rem] w-full right-0 absolute z-[29] pt-16 lg:relative lg:transition-all lg:duration-500 lg:ease-in-out`}
+          className={`h-screen lg:w-[16.5rem] w-full right-0 absolute z-[29] pt-16 lg:relative lg:transition-all lg:duration-500 lg:ease-in-out`}
         >
           <ul className="ml-auto  h-full right-0 bg-white w-full top-[70px] flex flex-col border-l ">
             <li className="w-full bg-gray-50 flex border-b  py-5 pl-5 items-center h-auto  ">
@@ -73,14 +75,19 @@ const ProfileMobileView = (props) => {
               {ProfileMobile.map((menu, index) => (
                 <div
                   key={index}
-                  className="flex items-center hover-bg p-3 rounded-lg"
                 >
-                  <div className="w-5 h-5 ">
-                    <menu.icon />
-                  </div>{" "}
-                  <li className="ml-2 text-sm tracking-wide truncate">
-                    {menu.title}
-                  </li>
+                    {props.verifynoti && index==1 && (
+              <div className="w-2 top-[23px] h-2 rounded-full bg-red-500 relative "></div>
+            )}
+                  <Link className="flex items-center hover-bg p-3 rounded-lg"
+                    to={menu.link}>
+                    <div className="w-5 h-5 ">
+                      <menu.icon />
+                    </div>{" "}
+                    <li className="ml-2 text-sm tracking-wide truncate">
+                      {menu.title}
+                    </li>
+                  </Link>
                 </div>
               ))}
             </div>

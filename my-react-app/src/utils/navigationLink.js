@@ -137,25 +137,36 @@ export const ProfileMobile = [
   {
     title: "Ajouter un moyen de paiements ",
     icon: FaRegCreditCard,
+    link:"/payments"
   },
   {
     title: "verifier mon compte",
     icon: MdOutlineVerified,
+    link:"/verifier"
+
   },
   {
     title: "Modifier mes informations",
     icon: MdOutlineMode,
+    link:"/account"
+
   },
   {
     title: "Voir mon profil public ",
     icon: BiShow,
+    link:"/account"
+
   },
   {
     title: "parrainer un ami ",
     icon: IoPersonAddOutline,
+    link:"/payment"
+
   },
   {
     title: "partager mon profil",
     icon: MdOutlineShare,
+    link:"/payment"
+
   },
 ];
