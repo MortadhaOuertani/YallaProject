@@ -15,3 +15,4 @@ export { default as Notifications } from "./Notifications";
 export { default as Login } from "./Login";
 export { default as SignUp } from "./SignUp";
 export { default as RouteListe } from "./RouteListe";
+export { default as Support } from "./Support";

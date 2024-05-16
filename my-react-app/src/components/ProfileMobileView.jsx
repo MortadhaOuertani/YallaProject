@@ -37,63 +37,64 @@ const ProfileMobileView = (props) => {
 
   return (
     <>
-    {props.openPorfileDropdown&&(
-      <div
-        onMouseEnter={() =>
-          handleMouseEnter(
-            props.setOpenPorfileDropdown,
-            props.openPorfileDropdownRef
-          )
-        }
-        onMouseLeave={() =>
-          handleDropdownMouseLeave(
-            props.setOpenPorfileDropdown,
-            props.openPorfileDropdownRef
-          )
-        }
-        className={`h-screen lg:w-[17rem] w-[19rem] right-0 absolute z-[29] pt-16 lg:relative lg:transition-all lg:duration-500 lg:ease-in-out`}
-      >
-        <ul className="ml-auto  h-full right-0 bg-white w-full top-[70px] flex flex-col border-l ">
-          <li className="w-full bg-gray-50 flex border-b  py-5 pl-5 items-center h-auto  ">
-            <div className="flex flex-row gap-5 items">
-              <div className="text-3xl">
-                <VscAccount />
+      {props.openPorfileDropdown && (
+        <div
+          onMouseEnter={() =>
+            handleMouseEnter(
+              props.setOpenPorfileDropdown,
+              props.openPorfileDropdownRef
+            )
+          }
+          onMouseLeave={() =>
+            handleDropdownMouseLeave(
+              props.setOpenPorfileDropdown,
+              props.openPorfileDropdownRef
+            )
+          }
+          className={`h-screen lg:w-[17rem] w-full right-0 absolute z-[29] pt-16 lg:relative lg:transition-all lg:duration-500 lg:ease-in-out`}
+        >
+          <ul className="ml-auto  h-full right-0 bg-white w-full top-[70px] flex flex-col border-l ">
+            <li className="w-full bg-gray-50 flex border-b  py-5 pl-5 items-center h-auto  ">
+              <div className="flex flex-row gap-5 items">
+                <div className="text-3xl">
+                  <VscAccount />
+                </div>
+                <div className="  flex justify-center  flex-col gap-1">
+                  <p className="font-semibold text-sm mb-2">Mon compte : </p>
+                  <p className="font-medium">Mortadha Wartani</p>
+                  <p className="font-light text-sm ">mortadha500@gmail.com</p>
+                  <p className="font-bold text-xs text-yellow-500 ">
+                    Transporteur
+                  </p>
+                </div>
               </div>
-              <div className="  flex justify-center  flex-col gap-1">
-                <p className="font-semibold text-sm mb-2">Mon compte : </p>
-                <p className="font-medium">Mortadha Wartani</p>
-                <p className="font-light text-sm ">mortadha500@gmail.com</p>
-                <p className="font-bold text-xs text-yellow-500 ">
-                  Transporteur
-                </p>
-              </div>
+            </li>
+            <div className="flex flex-col p-5 gap-3 w-full ">
+              {ProfileMobile.map((menu, index) => (
+                <div
+                  key={index}
+                  className="flex items-center hover-bg p-3 rounded-lg"
+                >
+                  <div className="w-5 h-5 ">
+                    <menu.icon />
+                  </div>{" "}
+                  <li className="ml-2 text-sm tracking-wide truncate">
+                    {menu.title}
+                  </li>
+                </div>
+              ))}
             </div>
-          </li>
-          <div className="flex flex-col p-5 gap-3 w-full ">
-            {ProfileMobile.map((menu, index) => (
-              <div
-                key={index}
-                className="flex items-center hover-bg p-3 rounded-lg"
-              >
-                <div className="w-5 h-5 ">
-                  <menu.icon />
-                </div>{" "}
-                <li className="ml-2 text-sm tracking-wide truncate">
-                  {menu.title}
-                </li>
-              </div>
-            ))}
-          </div>
-          <div className="h-auto px-5 py-5  border-t  items-center flex justify-center mt-auto ">
-            <button className=" flex items-center justify-center  whitespace-nowrap  min-w-[200px] max-w-[250px] h-auto p-3 rounded-lg bg-yellow-400 text-white">
-              <div className="mr-3">
-                <MdLogout />
-              </div>
-              Se deconnecter
-            </button>
-          </div>
-        </ul>
-      </div>)}
+            <div className="h-auto px-5 py-5  border-t  items-center flex justify-center mt-auto ">
+              <button className=" flex items-center justify-center  whitespace-nowrap  min-w-[200px] max-w-[250px] h-auto p-3 rounded-lg bg-yellow-400 text-white">
+                <div className="mr-3">
+                  <MdLogout />
+                </div>
+                Se deconnecter
+              </button>
+            </div>
+          </ul>
+        </div>
+      )}
 
       {props.translateDropdownOpen && (
         <div

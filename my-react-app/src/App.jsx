@@ -21,6 +21,7 @@ import {
   AddressBook,
   Payments,
   Notifications,
+  Support,
   Login,
   SignUp,
   RouteListe,
@@ -63,7 +64,7 @@ function App() {
 
   useEffect(() => {
     const handleResize = () => {
-      setIsMobileView(window.innerWidth <= 1024); 
+      setIsMobileView(window.innerWidth <= 1024);
       setOpen(false);
       setMovesidebar(false);
     };
@@ -89,7 +90,7 @@ function App() {
 
       <div className="flex flex-col">
         <Nnavbar
-        messagenoti={messagenoti}
+          messagenoti={messagenoti}
           TranslateRef={TranslateRef}
           setTranslateDropdownOpen={setTranslateDropdownOpen}
           translateDropdownOpen={translateDropdownOpen}
@@ -134,7 +135,9 @@ function App() {
                       }
                     />
                     <Route path="/monprofile" element={<Dashboard />} />
+
                     <Route path="/messages" element={<Messages />} />
+                    <Route path="/Support" element={<Support />} />
                     <Route path="/faq" element={<FAQ />} />
                     <Route path="/plaques-nfc" element={<NFCTags />} />
                     <Route path="/comment-ca-marche" element={<HowItWorks />} />
@@ -155,7 +158,7 @@ function App() {
                     <Route path="/mes-livraisons" element={<MesLivraisons />} />
                     <Route path="/setting" element={<Setting />} />
                     <Route path="/payments" element={<Payments />} />
-                    <Route path="/mes-annonces" element={<Annonces/>} />
+                    <Route path="/mes-annonces" element={<Annonces />} />
                     <Route path="/trajets" element={<RouteListe />} />
                     <Route path="/carnet-d-adresse" element={<AddressBook />} />
                     <Route path="/" element={<Home />} />
