@@ -9,6 +9,7 @@ import ENG from "../assets/ENG.png";
 import ESP from "../assets/ESP.png";
 import FR from "../assets/FR.png";
 import { Link } from "react-router-dom";
+import Profile from "./profile";
 
 const ProfileMobileView = (props) => {
   function handleDropdownMouseLeave(setState, useRef) {
@@ -44,9 +45,8 @@ const ProfileMobileView = (props) => {
             handleMouseEnter(
               props.setOpenPorfileDropdown,
               props.openPorfileDropdownRef
-            )
-          }
-          }
+            );
+          }}
           onMouseLeave={() =>
             handleDropdownMouseLeave(
               props.setOpenPorfileDropdown,
@@ -56,31 +56,17 @@ const ProfileMobileView = (props) => {
           className={`h-screen lg:w-[16.5rem] w-full right-0 absolute z-[29] pt-16 lg:relative lg:transition-all lg:duration-500 lg:ease-in-out`}
         >
           <ul className="ml-auto  h-full right-0 bg-white w-full top-[70px] flex flex-col border-l ">
-            <li className="w-full bg-gray-50 flex border-b  py-5 pl-5 items-center h-auto  ">
-              <div className="flex flex-row gap-5 items">
-                <div className="text-3xl">
-                  <VscAccount />
-                </div>
-                <div className="  flex justify-center  flex-col gap-1">
-                  <p className="font-semibold text-sm mb-2">Mon compte : </p>
-                  <p className="font-medium">Mortadha Wartani</p>
-                  <p className="font-light text-sm ">mortadha500@gmail.com</p>
-                  <p className="font-bold text-xs text-yellow-500 ">
-                    Transporteur
-                  </p>
-                </div>
-              </div>
-            </li>
+            <Profile />
             <div className="flex flex-col p-5 gap-3 w-full ">
               {ProfileMobile.map((menu, index) => (
-                <div
-                  key={index}
-                >
-                    {props.verifynoti && index==1 && (
-              <div className="w-2 top-[23px] h-2 rounded-full bg-red-500 relative "></div>
-            )}
-                  <Link className="flex items-center hover-bg p-3 rounded-lg"
-                    to={menu.link}>
+                <div key={index}>
+                  {props.verifynoti && index == 1 && (
+                    <div className="w-2 top-[23px] h-2 rounded-full bg-red-500 relative  "></div>
+                  )}
+                  <Link
+                    className="flex items-center hover-bg p-3 rounded-lg"
+                    to={menu.link}
+                  >
                     <div className="w-5 h-5 ">
                       <menu.icon />
                     </div>{" "}

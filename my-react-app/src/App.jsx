@@ -64,8 +64,8 @@ function App() {
     setMovesidebar(false);
   }, [location]);
   useEffect(() => {
-    console.log(movesidebar)
-  },[movesidebar]);
+    console.log(movesidebar);
+  }, [movesidebar]);
 
   useEffect(() => {
     const handleResize = () => {
@@ -86,10 +86,11 @@ function App() {
   return (
     <div className="w-full h-screen overflow-y-auto   ">
       <div
-        className={`absolute transform z-[29] w-full block lg:hidden bg-black h-screen   ${movesidebar || openPorfileDropdown || translateDropdownOpen
+        className={`absolute transform z-[29] w-full block lg:hidden bg-black h-screen   ${
+          movesidebar || openPorfileDropdown || translateDropdownOpen
             ? "opacity-80 "
             : "opacity-0 pointer-events-none"
-          } transition-opacity duration-700`}
+        } transition-opacity duration-700`}
       ></div>
 
       <div className="flex flex-col">
@@ -124,10 +125,11 @@ function App() {
                 ref={contentRef}
               >
                 <div
-                  className={`flex ${openPorfileDropdown
+                  className={`flex ${
+                    openPorfileDropdown
                       ? "flex-row"
                       : " justify-center items-center"
-                    } w-full h-full`}
+                  } w-full h-full`}
                 >
                   <Routes>
                     <Route
@@ -159,7 +161,7 @@ function App() {
                       path="/chercher-un-colis"
                       element={<SearchPackage />}
                     />
-
+                    <Route path="/messagesChat" element={<messagesChat />} />
                     <Route path="/mes-livraisons" element={<MesLivraisons />} />
                     <Route path="/setting" element={<Setting />} />
                     <Route path="/payments" element={<Payments />} />
@@ -167,7 +169,8 @@ function App() {
                     <Route path="/trajets" element={<RouteListe />} />
                     <Route path="/carnet-d-adresse" element={<AddressBook />} />
                     <Route path="/verifier" element={<Verify />} />
-                    <Route path="/account" element={<Account/>} />
+
+                    <Route path="/account" element={<Account />} />
                     <Route path="/" element={<Home />} />
                   </Routes>
                 </div>
@@ -183,7 +186,7 @@ function App() {
             </div>
           )}
           <ProfileMobileView
-          verifynoti={verifynoti}
+            verifynoti={verifynoti}
             setMovesidebar={setMovesidebar}
             TranslateRef={TranslateRef}
             setTranslateDropdownOpen={setTranslateDropdownOpen}
@@ -200,8 +203,9 @@ function App() {
         </div>
       )}
       <div
-        className={`bg-white border shadow-md w-60 h-28 fixed z-60 top-[-150px] right-[28%] rounded-lg transition-transform ${openModal ? " transform translate-y-[200%] delay-8" : ""
-          }`}
+        className={`bg-white border shadow-md w-60 h-28 fixed z-60 top-[-150px] right-[28%] rounded-lg transition-transform ${
+          openModal ? " transform translate-y-[200%] delay-8" : ""
+        }`}
         ref={colisRef}
       >
         <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
@@ -225,8 +229,9 @@ function App() {
       </div>
 
       <div
-        className={`bg-white border shadow-md w-60 h-30 fixed z-60 top-[-150px] left-[13%] rounded-lg transition-transform ${openModalTrans ? " transform translate-y-[142%] delay-8" : ""
-          }`}
+        className={`bg-white border shadow-md w-60 h-30 fixed z-60 top-[-150px] left-[13%] rounded-lg transition-transform ${
+          openModalTrans ? " transform translate-y-[142%] delay-8" : ""
+        }`}
         ref={TransRef}
       >
         <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
@@ -258,8 +263,9 @@ function App() {
       </div>
 
       <div
-        className={`bg-white border absolute shadow-md w-60  h-30 fixed z-60 top-[-150px] left-[22%] rounded-lg transition-transform ${openModalTrans2 ? " transform translate-y-[125%] delay-8" : ""
-          }`}
+        className={`bg-white border absolute shadow-md w-60  h-30 fixed z-60 top-[-150px] left-[22%] rounded-lg transition-transform ${
+          openModalTrans2 ? " transform translate-y-[125%] delay-8" : ""
+        }`}
         ref={TransRef2}
       >
         <div className="flex flex-col justify-center items-center gap-4 p-3 h-full">
