@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
-
+import Button from "./Button";
 import Select from 'react-select';
 import InputeStyles from "../utils/InputeStyles";
 const Card = (props) => {
@@ -66,9 +66,8 @@ const Card = (props) => {
         <h1 className="mt-5 text-md font-normal text-center max-w-300px mx-auto">
           {props.text}
         </h1>
-        <button className=" mt-8 rounded-lg min-w-[200px] max-w-[250px] bg-yellow-500 py-3 text-base font-medium text-white transition duration-200 hover:bg-yellow-600 active:bg-yellow-700 dark:bg-yellow-400 dark:text-white dark:hover:bg-yellow-300 dark:active:bg-yellow-200">
-          {props.buttonName}
-        </button>
+        <Button buttonName={props.buttonName}/>
+
       </div>
     </div>
   );

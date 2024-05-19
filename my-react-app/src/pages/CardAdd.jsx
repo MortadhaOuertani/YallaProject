@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import InputeStyles from '../utils/InputeStyles';
 import AddCardItem from './AddCardItem';
 import KeyboardTabIcon from '@mui/icons-material/KeyboardTab';
+import Button from './Button';
 function CardAdd(props) {
   
   const [objects, setObjects] = useState([{ id: 1 }]); 
@@ -37,10 +38,10 @@ function CardAdd(props) {
       ))}
 
       <div className="flex items-center justify-center">
-        <button onClick={toggleSecondForm} className="mt-6 rounded-lg min-w-[200px] max-w-[250px] py-3 text-base font-medium text-white transition duration-200  dark:bg-yellow-400 dark:text-white dark:hover:bg-yellow-300 dark:active:bg-yellow-200">
-          Ajouter un Objet
-        </button>
+        <Button buttonName="Ajouter un Objet" handleClick={toggleSecondForm}/>
       </div>
+
+
       <hr className="mb-4 h-1.5 my-8 bg-gray-200 border-0 rounded dark:bg-gray-200"/>
       <label className="font-semibold text-[13px] text-gray-600">Informations complémentaires</label>
       <textarea
@@ -49,14 +50,13 @@ function CardAdd(props) {
         style={InputeStyles}
         placeholder="Ex : Le carton le plus long fait 2m15, Le plus lourd est un canapé"
       />
-<div className="fixed bottom-4 right-1/2 transform translate-x-1/2">
-<div className="flex justify-center w-70vw">
-  <button className="min-w-[200px] max-w-[3000px] py-3 pr-20 pl-20 rounded-lg text-base font-medium transition duration-200 dark:bg-yellow-400 dark:text-white dark:hover:bg-yellow-500">
-    Suivant
-    <KeyboardTabIcon className='ml-4'/>
-  </button>
-</div>
-</div>
+
+
+      <div className="fixed bottom-4 right-1/2 transform translate-x-1/2">
+      <div className="flex justify-center w-70vw">
+        <Button buttonName="Suivant" icons={ <KeyboardTabIcon className='ml-4'/>}handleClick={toggleSecondForm}/>
+      </div>
+      </div>
 
 
 

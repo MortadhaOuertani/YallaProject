@@ -2,8 +2,6 @@ import React from "react";
 import "tailwindcss/tailwind.css";
 import Inpute from "./Inpute";
 import Button from "./Button";
-
-
 export default function Component() {
   return (
     <div className="flex w-full p-2 min-h-screen flex-col items-center h-screen  bg-white dark:bg-gray-950">

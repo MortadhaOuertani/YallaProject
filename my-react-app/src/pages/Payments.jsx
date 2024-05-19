@@ -3,7 +3,8 @@ import "tailwindcss/tailwind.css";
 import CreditCardIcon from "../components/CreditCardIcon";
 import WalletCardsIcon from "../components/WalletCardsIcon";
 import RadioButton from "../components/RadioButton";
-
+import Inpute from "./Inpute";
+import Button from "./Button";
 const Payments = () => {
   const [selectedValue, setSelectedValue] = useState('card');
 
@@ -37,66 +38,28 @@ const Payments = () => {
           <div className="col-span-2">
             {selectedValue === "card" && (
               <form className="grid gap-4">
-                <input
-                  type="text"
-                  id="name"
-                  placeholder="Titulaire du compte"
-                  className="input focus:outline-none focus:border-yellow-500 focus:ring-0"
-                />
-                <input
-                  type="text"
-                  id="iban"
-                  placeholder="IBAN"
-                  className="input focus:outline-none focus:border-yellow-500 focus:ring-0"
-                />
-                <input
-                  type="text"
-                  id="address"
-                  placeholder="Adresse"
-                  className="input focus:outline-none focus:border-yellow-500 focus:ring-0"
-                />
-                <input
-                  type="text"
-                  id="address-complement"
-                  placeholder="Complément d'adresse"
-                  className="input focus:outline-none focus:border-yellow-500 focus:ring-0"
-                />
-                <div className="grid grid-cols-2 gap-4">
-                  <input
-                    type="text"
-                    id="postal-code"
-                    placeholder="Code postal"
-                    className="input focus:outline-none focus:border-yellow-500 focus:ring-0"
-                  />
-                  <input
-                    type="text"
-                    id="city"
-                    placeholder="Ville"
-                    className="input focus:outline-none focus:border-yellow-500 focus:ring-0"
-                  />
-                </div>
-                <button className="btn btn-warning text-white w-full" type="submit">
-                  Ajouter
-                </button>
+                <Inpute placeholder="Titulaire du compte" type="text"/>
+              <Inpute placeholder="IBAN" type="text"/>
+              <Inpute placeholder="Adresse" type="text"/>
+              <Inpute placeholder="Complément d'adresse" type="text"/>
+
+              <div className="grid grid-cols-2 gap-4">
+                <Inpute placeholder="Code postal" type="text"/>
+                <Inpute placeholder="Ville" type="text"/>
+              </div>
+              <div className="text-center ">
+                 <Button buttonName="Ajoute"/>
+              </div>
               </form>
             )}
             {selectedValue === "wallet" && (
               <form className="grid gap-4">
-                <input
-                  type="text"
-                  id="wallet-name"
-                  placeholder="Nom du portefeuille"
-                  className="input focus:outline-none focus:border-yellow-500 focus:ring-0"
-                />
-                <input
-                  type="text"
-                  id="wallet-id"
-                  placeholder="ID du portefeuille"
-                  className="input focus:outline-none focus:border-yellow-500 focus:ring-0"
-                />
-                <button className="btn btn-warning text-white w-full" type="submit">
-                  Ajouter
-                </button>
+               
+                <Inpute placeholder="Nom du portefeuille" type="text"/>
+                <Inpute placeholder="ID du portefeuille" type="text"/>
+                <div className="text-center ">
+                 <Button buttonName="Ajoute"/>
+                </div>
               </form>
             )}
           </div>

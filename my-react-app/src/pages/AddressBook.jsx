@@ -1,24 +1,74 @@
 import { CardContent } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import "tailwindcss/tailwind.css";
 import CardCarnetAdress from "../components/CardCarnetAdress";
+import Inpute from "./Inpute";
+import Button from "./Button";
+import Select from 'react-select';
+import SearchIcon from "@mui/icons-material/Search";
+import InputeStyles from "../utils/InputeStyles";
 
+const firstSelectOptions=[
+  { value: "1", label: "Toutes mes annonces" },
+  { value: "2", label: "En attente de paiement" },
+  { value: "3", label: "En attente de disponibilités " },
+  { value: "4", label: "En ligne" },
+  { value: "5", label: "En cours de livraison" },
+  { value: "6", label: "Livrées" },
+  { value: "7", label: "Expirées" },
+  { value: "8", label: "Refusées" },
+]
+
+const Options2 = [
+  { value: "option1", label: "Les plus anciens" },
+  { value: "option2", label: "Les plus récents" },
+]
 const AddressesBook = () => {
+  const [searchQuery, setSearchQuery] = useState("");
+
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container w-full   p-5 lg:px-[10%]  mt-10  ">
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-3xl font-bold">Carnet d'adresses</h1>
-        <button className="btn btn-warning btn-sm">Ajouter une adresse</button>
+        <Button buttonName="Ajouter une adresse"/>
       </div>
-      <div className=" dark:bg-gray-950  p-6">
-        <div className="mb-6 w-full ">
-          <input
-            className="input w-full"
-            type="search"
-            placeholder="Rechercher une adresse..."
+      <div className=" dark:bg-gray-950  ">
+      <div className="relative mb-4">
+        {/* search */}
+        <input
+          className="w-full p-3 pl-16 pr-4  border  rounded text-sm focus:outline-none  focus:shadow-outline-yellow"
+          type="text"
+          placeholder="Recherche par adresse"
+          value={searchQuery}
+          onChange={(e) => setSearchQuery(e.target.value)}
+          style={InputeStyles}          
+        />
+        <div className="absolute inset-y-0 left-0 p-3 flex items-center pointer-events-none bg-yellow-500  rounded-l">
+          <SearchIcon className="text-white" />
+        </div>
+      </div>
+      {/* Filter Options */}
+      <div className="flex mb-4">
+        <div className="flex-grow mr-2 w-70">
+          <Select
+            className="flex-grow w-full mr-2  text-sm  border border-gray-200 py  rounded bg-color  "
+            options={firstSelectOptions}
+            styles={InputeStyles}
+
           />
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Filter Options 2 */}
+        <div className="flex-grow  w-30">
+          <Select
+            className="flex-grow w-full  text-sm  border border-gray-200  rounded"
+            options={Options2}
+            styles={InputeStyles}
+  
+           
+          />
+        </div>
+      </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
           <div>
             <CardCarnetAdress
               name="Adresse 1"

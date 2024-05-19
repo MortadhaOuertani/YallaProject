@@ -5,10 +5,12 @@ import { IoTimeOutline } from "react-icons/io5";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { IoLogoTiktok } from "react-icons/io5";
+import Button from "./Button";
+import Inpute from "./Inpute";
 
 const Support = () => {
   return (
-    <section className="bg-white flex  justify-center lg:p-20  overflow-hidden w-full  h-full  mt-10 mb-5">
+    <section className="bg-white flex  justify-center lg:p-20  overflow-hidden w-full  h-full mb-5">
       <div className="container  ">
         <div className="flex flex-wrap lg:justify-between mx-4   ">
           <div className="w-full h-full lg:w-1/2 xl:w-6/12 px-5 ">
@@ -69,40 +71,25 @@ const Support = () => {
             <div className="bg-gray-50  rounded-lg p-8 sm:p-12 border lg:m-0 m-0 ">
               <form>
                 <div className="mb-6">
-                  <input
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full rounded py-3 px-[14px] text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none focus:border-primary"
-                  />
+                  <Inpute placeholder="Your Name" type="text"/>
                 </div>
                 <div className="mb-6">
-                  <input
-                    type="email"
-                    placeholder="Your Email"
-                    className="w-full rounded py-3 px-[14px] text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none focus:border-primary"
-                  />
+                    <Inpute placeholder="Your Email" type="email"/>
                 </div>
                 <div className="mb-6">
-                  <input
-                    type="text"
-                    placeholder="Your Phone"
-                    className="w-full rounded py-3 px-[14px] text-body-color text-base border border-[f0f0f0] outline-none focus-visible:shadow-none focus:border-primary"
-                  />
+                    <Inpute placeholder="Your Phone" type="email"/>
                 </div>
                 <div className="mb-6">
                   <textarea
                     rows="6"
                     placeholder="Your Message"
-                    className="w-full rounded py-3 px-[14px] text-body-color text-base border border-[f0f0f0] resize-none outline-none focus-visible:shadow-none focus:border-primary"
-                  ></textarea>
+                    className="w-full p-3  pr-4  border  rounded text-sm focus:outline-none  focus:shadow-outline-yellow"
+                    ></textarea>
                 </div>
                 <div>
-                  <button
-                    type="submit"
-                    className="w-full text-white bg-yellow-500 rounded-lg  p-3 transition hover:bg-opacity-90"
-                  >
-                    Send Message
-                  </button>
+      
+                  <Button buttonName="Send Message"/>
+
                 </div>
               </form>
             </div>
