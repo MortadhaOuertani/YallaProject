@@ -36,6 +36,7 @@ import Messages from "./pages/messages";
 import Annonces from "./pages/Notifications";
 import Verify from "./pages/Verify";
 import Account from "./pages/Account";
+import PersonInfoPage from "./pages/PersoneInfoPage";
 
 function App() {
   const [isMobileView, setIsMobileView] = useState(false);
@@ -169,7 +170,7 @@ function App() {
                     <Route path="/trajets" element={<RouteListe />} />
                     <Route path="/carnet-d-adresse" element={<AddressBook />} />
                     <Route path="/verifier" element={<Verify />} />
-
+                    <Route path="/person/:name" component={<PersonInfoPage/>} />
                     <Route path="/account" element={<Account />} />
                     <Route path="/" element={<Home />} />
                   </Routes>

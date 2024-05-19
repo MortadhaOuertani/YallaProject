@@ -61,7 +61,7 @@ const ProfileMobileView = (props) => {
               {ProfileMobile.map((menu, index) => (
                 <div key={index}>
                   {props.verifynoti && index == 1 && (
-                    <div className="w-2 top-[23px] h-2 rounded-full bg-red-500 relative  "></div>
+                    <div className="w-2 top-[25px] h-2 rounded-full bg-red-500 left-[98%]  relative  "></div>
                   )}
                   <Link
                     className="flex items-center hover-bg p-3 rounded-lg"

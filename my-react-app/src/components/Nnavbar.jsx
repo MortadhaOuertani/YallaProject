@@ -198,7 +198,7 @@ function Nnavbar({
         </div>
         <div className="relative">
         {verifynoti && (
-              <div className="w-3 top-1 left-6 h-3 rounded-full bg-red-500 absolute "></div>
+              <div className="w-2 top-2 left-6 h-2 rounded-full bg-red-500 absolute "></div>
             )}
           <button
             onMouseEnter={() =>
