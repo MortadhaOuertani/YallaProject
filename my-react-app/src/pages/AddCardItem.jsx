@@ -140,6 +140,7 @@ function AddCardItem() {
                       className="flex-grow w-full mr-2 mt-3 text-sm  border border-gray-200 py  rounded bg-color  "
                       options={firstSelectOptions}
                       styles={InputeStyles}
+                       isSearchable={false}
 
                     />
                 </div>
@@ -151,6 +152,7 @@ function AddCardItem() {
                 className="flex-grow w-full mr-2 mt-3 text-sm  border border-gray-200 py  rounded bg-color  "
                 options={firstSelectOptions}
                 styles={InputeStyles}
+                 isSearchable={false}
 
               />
           </div> 

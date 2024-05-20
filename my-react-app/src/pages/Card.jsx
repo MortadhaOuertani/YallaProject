@@ -46,7 +46,7 @@ const Card = (props) => {
             className="flex-grow w-full mr-2  text-sm  border border-gray-200 py  rounded bg-color  "
             options={props.firstSelectOptions}
             styles={InputeStyles}
-
+            isSearchable={false}
           />
         </div>
         {/* Filter Options 2 */}
@@ -55,7 +55,7 @@ const Card = (props) => {
             className="flex-grow w-full  text-sm  border border-gray-200  rounded"
             options={props.Options2}
             styles={InputeStyles}
-  
+            isSearchable={false}
            
           />
         </div>
@@ -66,7 +66,10 @@ const Card = (props) => {
         <h1 className="mt-5 text-md font-normal text-center max-w-300px mx-auto">
           {props.text}
         </h1>
+        <div className ='mt-5'>
         <Button buttonName={props.buttonName}/>
+
+        </div>
 
       </div>
     </div>

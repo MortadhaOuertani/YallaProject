@@ -49,6 +49,7 @@ const AddressesBook = () => {
               className="flex-grow w-full mr-2  text-sm  border border-gray-200 py  rounded bg-color  "
               options={firstSelectOptions}
               styles={InputeStyles}
+              isSearchable={false}
             />
           </div>
           {/* Filter Options 2 */}
@@ -57,6 +58,7 @@ const AddressesBook = () => {
               className="flex-grow w-full  text-sm  border border-gray-200  rounded"
               options={Options2}
               styles={InputeStyles}
+              isSearchable={false}
             />
           </div>
         </div>

@@ -1,6 +1,59 @@
-import React from "react";
-
+import React, { useState } from 'react';
+import Button from "./Button";
+import Inpute from "./Inpute";
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import { styled } from '@mui/material/styles';
+import MuiSwitch from '@mui/material/Switch';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
+import Profile from"../assets/Profile.png";
 const Account = () => {
+  const [selectedImages, setSelectedImages] = useState("");
+
+  const handleImageUpload = (e) => {
+    const files = Array.from(e.target.files);
+    const imageUrls = files.map((file) => URL.createObjectURL(file));
+    setSelectedImages((prevImages) => [...prevImages, ...imageUrls]);
+  };
+ 
+  const SwitchOnOf = styled((props) => (
+    <MuiSwitch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
+  ))(({ theme }) => ({
+    width: 42,
+    height: 26,
+    padding: 0,
+    '& .MuiSwitch-switchBase': {
+      padding: 0,
+      margin: 2,
+      transitionDuration: '300ms',
+      '&.Mui-checked': {
+        transform: 'translateX(16px)',
+        color: '#fff',
+        '& + .MuiSwitch-track': {
+          backgroundColor: theme.palette.mode === 'dark' ? '#fbbf24' :'#fbbf24',
+          opacity: 1,
+          border: 0,
+        },
+        '&.Mui-disabled + .MuiSwitch-track': {
+          opacity: 0.5,
+        },
+      },
+    },
+    '& .MuiSwitch-thumb': {
+      boxSizing: 'border-box',
+      width: 22,
+      height: 22,
+    },
+    '& .MuiSwitch-track': {
+      borderRadius: 26 / 2,
+      backgroundColor: theme.palette.mode === 'light' ? '#E9E9EA' : '#39393D',
+      opacity: 1,
+      transition: theme.transitions.create(['background-color'], {
+        duration: 500,
+      }),
+    },
+  }));
   return (
     <div className="flex min-h-screen w-full bg-white dark:bg-gray-900">
       <main className="flex-1 p-2 md:p-10">
@@ -20,13 +73,59 @@ const Account = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
+               
               <div className="flex items-center gap-4">
-                <Avatar src="/placeholder-avatar.jpg" fallback="CN" />
+                <div className="flex flex-col gap-2" >
+                {selectedImages ? (
+                  <div>
+                    <img
+                      src={selectedImages}
+                      style={{
+                        width: '110px',
+                        height: '110px',
+                        backgroundColor: '#f7f7f7',
+                        borderRadius: '50%', 
+                        objectFit: 'cover', 
+                      }}                    
+                    />
+                  </div>
+                ) : (
+                    <img
+                      src={Profile}
+                      style={{
+                        width: '110px',
+                        height: '110px',
+                        backgroundColor: '#f7f7f7',
+                        borderRadius: '50%', 
+                        objectFit: 'cover', 
+                      }}                    
+                      alt="Selected Image"
+                    />                
+                )}
+
+            
+                    
+                </div>
                 <div className="flex flex-col gap-2">
-                  <Button variant="outline">Changer la photo</Button>
-                  <Button size="sm" variant="ghost">
-                    Supprimer la photo
-                  </Button>
+                      <div className="relative mt-3 pt-10 pb-10 bg-gray-100 border-dashed border-2 border-gray-400 rounded-lg p-4">
+                      <input
+                        type="file"
+                        multiple
+                        accept=".jpg, .png, .gif"
+                        onChange={handleImageUpload}
+                        className="absolute inset-0 w-full h-full opacity-0 cursor-pointer"
+                      />
+                      <div className="flex  items-center justify-center">
+                        <AddAPhotoIcon className='text-yellow-500'/>
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth="2"
+                            d="M12 6v6m0 0v6m0-6h6m-6 0H6"
+                          />
+                        <span className="ml-2 text-gray-600">Changer la photo</span>
+                      </div>   
+                      </div>                   
                 </div>
               </div>
             </CardContent>
@@ -39,24 +138,21 @@ const Account = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <InputField
-                label="Mot de passe actuel"
-                type="password"
-                id="current-password"
-              />
-              <InputField
-                label="Nouveau mot de passe"
-                type="password"
-                id="new-password"
-              />
-              <InputField
-                label="Confirmer le mot de passe"
-                type="password"
-                id="confirm-password"
-              />
+              <div className="mb-5">
+                <Inpute placeholder="Mot de passe actuel" type="password" />
+              </div>
+
+              <div className="mb-5">
+                 <Inpute placeholder="Mot de passe actuel" type="password" />
+              </div>
+
+              <div className="mb-5">
+                 <Inpute placeholder="Confirmer le mot de passe" type="password" />
+              </div>
+
             </CardContent>
             <CardFooter>
-              <Button>Changer le mot de passe</Button>
+              <Button buttonName="Changer le mot de passe" />
             </CardFooter>
           </Card>
           <Card>
@@ -67,16 +163,26 @@ const Account = () => {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <SwitchField
-                label="Nouvelles mentions"
-                description="Recevez une notification lorsque quelqu'un vous mentionne."
-                id="email-mentions"
+            <div className="flex items-center justify-between">
+              <div>
+              <h1>Nouvelles mentions</h1>
+                <CardDescription >Recevez une notification lorsque quelqu'un vous mentionne.</CardDescription>
+              </div>
+              <FormControlLabel
+                control={<SwitchOnOf sx={{ m: 1 }} defaultChecked />} 
               />
-              <SwitchField
-                label="Nouveaux commentaires"
-                description="Recevez une notification lorsque quelqu'un commente vos publications."
-                id="email-comments"
+            </div>
+
+            <div className="flex items-center mt-5 justify-between">
+              <div>
+                <h1>Nouveaux commentaires</h1>
+                <CardDescription>Recevez une notification lorsque quelqu'un commente vos publications.</CardDescription>
+              </div>
+              <FormControlLabel
+                control={<SwitchOnOf sx={{ m: 1 }} defaultChecked />} 
               />
+            </div>
+  
             </CardContent>
           </Card>
           <Card>
@@ -88,12 +194,10 @@ const Account = () => {
             </CardHeader>
             <CardContent>
               <div className="flex items-center gap-2">
-                <Input
-                  readOnly
-                  type="text"
-                  value="https://example.com/profile/johndoe"
-                />
-                <Button variant="outline">Copier</Button>
+                <div className="">
+                  <Inpute  readOnly placeholder="https://example.com/profile/johndoe" type="text" />
+                </div>
+                <ContentCopyIcon className="transition duration-200 hover:text-yellow-600 text-yellow-500"style={{fontSize:30 }}/>
               </div>
             </CardContent>
           </Card>
@@ -158,19 +262,7 @@ const Avatar = ({ src, fallback }) => (
   </div>
 );
 
-const Button = ({ children, variant = "default", size }) => (
-  <button
-    className={`btn ${
-      variant === "outline"
-        ? "btn-outline"
-        : variant === "ghost"
-        ? "btn-ghost"
-        : ""
-    } ${size === "sm" ? "btn-sm" : ""}`}
-  >
-    {children}
-  </button>
-);
+
 
 const Label = ({ children, htmlFor }) => (
   <label className="label" htmlFor={htmlFor}>

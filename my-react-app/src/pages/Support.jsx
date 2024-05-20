@@ -11,7 +11,7 @@ import Inpute from "./Inpute";
 
 const Support = () => {
   return (
-    <section className="bg-white flex justify-center lg:p-20 overflow-hidden w-full h-full mb-5">
+    <section className="bg-white flex justify-center lg:p-10 overflow-hidden w-full h-full">
       <div className="container ">
         <div className="flex flex-wrap lg:justify-between mx-4 ">
           <div className="w-full h-full lg:w-1/2 xl:w-6/12 px-5 ">
@@ -100,23 +100,24 @@ const Support = () => {
           <div className="w-full lg:w-1/2 xl:w-5/12 mt-4">
             <div className="bg-gray-50  rounded-lg p-8 sm:p-12 border lg:m-0 m-0 ">
               <form>
-                <div className="mb-6">
+                <div className="mb-3">
                   <Inpute placeholder="Your Name" type="text" />
                 </div>
-                <div className="mb-6">
+                <div className="mb-3">
                   <Inpute placeholder="Your Email" type="email" />
                 </div>
-                <div className="mb-6">
+                <div className="mb-3">
                   <Inpute placeholder="Your Phone" type="email" />
                 </div>
-                <div className="mb-6">
+                <div className="mb-3">
                   <textarea
                     rows="6"
                     placeholder="Your Message"
                     className="w-full p-3 pr-4 border rounded text-sm focus:outline-none focus:shadow-outline-yellow"
                   ></textarea>
                 </div>
-                <div>
+                <div  className="flex mt-3 items-center justify-center">
+
                   <Button buttonName="Envoyer" />
                 </div>
               </form>

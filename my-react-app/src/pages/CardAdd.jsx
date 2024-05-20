@@ -15,7 +15,8 @@ function CardAdd(props) {
     setObjects(objects.filter((object) => object.id !== id));
   };
   return (
-    <div className="container w-full lg:w-full lg:px-[20%] md:w-[70%] p-5 mt-10">
+    <>
+     <div className="container w-full lg:w-full lg:px-[20%] md:w-[70%] p-5 mt-10">
       <h1 className="font-semibold text-[30px] text-gray-800">{props.name}</h1>
       {objects.map((object, index) => (
         <div key={object.id}>
@@ -25,7 +26,7 @@ function CardAdd(props) {
               <div className="flex items-center justify-center">
                 <button
                   onClick={() => deleteForm(object.id)}
-                  className="mt-8 rounded-lg min-w-[200px] max-w-[250px] py-3 text-base font-medium transition duration-200 dark:text-red-400 dark:hover:text-red-600 dark:active:bg-gray-200"
+                  className="mt-8 text-red-600 rounded-lg min-w-[200px] max-w-[250px] py-3 text-base font-medium transition duration-200 dark:text-red-400 dark:hover:text-red-600 dark:active:bg-gray-200"
                 >
                   Supprimer un Objet
                 </button>
@@ -36,7 +37,7 @@ function CardAdd(props) {
         </div>
       ))}
 
-      <div className="flex items-center justify-center">
+      <div className="flex mt-3 items-center justify-center">
         <Button buttonName="Ajouter un Objet" handleClick={toggleSecondForm} />
       </div>
 
@@ -51,16 +52,19 @@ function CardAdd(props) {
         placeholder="Ex : Le carton le plus long fait 2m15, Le plus lourd est un canapé"
       />
 
-      <div className="fixed bottom-4 right-1/2 transform translate-x-1/2">
-        <div className="flex justify-center w-70vw">
-          <Button
-            buttonName="Suivant"
-            icons={<KeyboardTabIcon className="ml-4" />}
-            handleClick={toggleSecondForm}
-          />
-        </div>
-      </div>
+      
     </div>
+    <div className="fixed bottom-4 ">
+    <div className="flex  justify-center w-70vw">
+      <Button
+        buttonName="Suivant"
+        icons={<KeyboardTabIcon className="ml-4" />}
+        handleClick={toggleSecondForm}
+      />
+    </div>
+  </div>
+    </>
+   
   );
 }
 
