@@ -5,7 +5,7 @@ import Button from "./Button";
 export default function Component() {
   return (
     <div className="flex w-full p-2 min-h-screen flex-col items-center h-screen  bg-white dark:bg-gray-950">
-      <h1 className="mb-8 text-3xl font-bold">Verification</h1>
+      <h1 className="mb-0 text-3xl font-bold">Verification</h1>
       <div className="w-full max-w-6xl space-y-6 px-4 sm:px-0 lg:grid lg:grid-cols-2 lg:gap-8">
         <div className="space-y-6">
           <div className="rounded-lg border border-gray-200 bg-white dark:border-gray-800 dark:bg-gray-950">
@@ -28,10 +28,10 @@ export default function Component() {
                 <div className="flex items-center space-x-3">
                   <span className="text-sm font-medium">+1</span>
                 </div>
-                <Inpute placeholder="Enter your mobile number" type="tel"/>
+                <Inpute placeholder="Enter your mobile number" type="tel" />
               </div>
               <div className="flex justify-end">
-                <Button buttonName="Verification Code"/>
+                <Button buttonName="Verification Code" />
               </div>
             </form>
           </div>
@@ -55,12 +55,10 @@ export default function Component() {
                 <div className="flex items-center space-x-3">
                   <span className="text-sm font-medium">Code</span>
                 </div>
-                <Inpute placeholder="Enter verification code" type="text"/>
-
+                <Inpute placeholder="Enter verification code" type="text" />
               </div>
               <div className="flex justify-end">
-                <Button buttonName="Verify Email"/>
-
+                <Button buttonName="Verify Email" />
               </div>
             </form>
           </div>
@@ -93,8 +91,7 @@ export default function Component() {
               </div>
             </div>
             <div className="flex justify-end ">
-              <Button buttonName=" Verify Identity"/>
-
+              <Button buttonName=" Verify Identity" />
             </div>
           </form>
         </div>

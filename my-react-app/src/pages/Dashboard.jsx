@@ -43,7 +43,7 @@ const Dashboard = (props) => {
         url('https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
       </style>
 
-      <div className="  w-full h-full flex  overflow-hidden xl:p-16 lg:p-12 p-5    ">
+      <div className="  w-full min-h-screen flex  overflow-hidden xl:p-16 lg:p-12 p-2     ">
         <div
           className={`lg:grid ${
             props.openPorfileDropdown || props.translateDropdownOpen
