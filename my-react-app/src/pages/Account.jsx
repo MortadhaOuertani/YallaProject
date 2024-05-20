@@ -93,8 +93,8 @@ const Account = () => {
                     <img
                       src={Profile}
                       style={{
-                        width: '110px',
-                        height: '110px',
+                        width: '30px',
+                        height: '30px',
                         backgroundColor: '#f7f7f7',
                         borderRadius: '50%', 
                         objectFit: 'cover', 

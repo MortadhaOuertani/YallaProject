@@ -1,6 +1,6 @@
 import React from 'react'
 import ArrowRightIcon from './ArrowRightIcon'
-import { Link } from '@mui/material'
+import { Link } from 'react-router-dom'
 
 const MessageItem = ({
     name,
@@ -11,8 +11,11 @@ const MessageItem = ({
     avatarInitials }) => {
     return (
         <>
-            <Link to={`/person/${name}`} className="text-current no-underline">
-                <div className="group flex cursor-pointer items-start gap-4 rounded-lg border border-gray-200 p-4 transition-colors hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-800">
+            <Link to={`/messageschat/${name}`}  style={{ 
+        color: 'inherit', 
+        textDecoration: 'none' 
+    }} className="text-current no-underline">
+                <div className="group flex text-current no-underline cursor-pointer items-start gap-4 rounded-lg border border-gray-200 p-4 transition-colors hover:bg-gray-100 dark:border-gray-800 dark:hover:bg-gray-800">
                     <div className="avatar">
                         <div className="w-12 rounded-full bg-neutral-focus text-neutral-content">
                             <span className="text-xl">{avatarInitials}</span>

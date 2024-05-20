@@ -66,7 +66,7 @@ export const menus = [
   },
   {
     name: "Mes paiements ",
-    link: "/payments",
+    link: "/mespayments",
     icon: AttachMoneyOutlinedIcon,
   },
 ];
@@ -137,36 +137,37 @@ export const ProfileMobile = [
   {
     title: "Ajouter un moyen de paiements ",
     icon: FaRegCreditCard,
-    link:"/payments"
+    link: "/payments"
   },
   {
     title: "verifier mon compte",
     icon: MdOutlineVerified,
-    link:"/verifier"
+    link: "/verifier"
 
   },
   {
     title: "Modifier mes informations",
     icon: MdOutlineMode,
-    link:"/account"
+    link: "/account"
 
   },
   {
     title: "Voir mon profil public ",
     icon: BiShow,
-    link:"/account"
+    link: "/modifyaccount"
+
 
   },
   {
     title: "parrainer un ami ",
     icon: IoPersonAddOutline,
-    link:"/payment"
+    link: "/payment"
 
   },
   {
     title: "partager mon profil",
     icon: MdOutlineShare,
-    link:"/payment"
+    link: "/payment"
 
   },
 ];

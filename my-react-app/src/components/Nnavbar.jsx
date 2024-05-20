@@ -38,6 +38,10 @@ function Nnavbar({
       setState(false);
     }, 100);
   }
+  function closeDropdown(setState) {
+      setState(false);
+    }
+
   function handleMouseEnter(setState, useRef) {
     clearTimeout(useRef.current);
     setMovesidebar(false)
@@ -94,7 +98,7 @@ function Nnavbar({
                   setMovesidebar(false)
                 }
                 }
-                onMouseLeave={() =>{
+                onMouseLeave={() => {
                   handleDropdownMouseLeave(setColisDropDownOpen, colisRef)
                   setMovesidebar(false)
 
@@ -197,10 +201,15 @@ function Nnavbar({
           </Link>
         </div>
         <div className="relative">
-        {verifynoti && (
-              <div className="w-2 top-2 left-6 h-2 rounded-full bg-red-500 absolute "></div>
-            )}
+          {verifynoti && (
+            <div className="w-2 top-2 left-6 h-2 rounded-full bg-red-500 absolute "></div>
+          )}
           <button
+
+            onClick={() =>
+              closeDropdown(
+                setOpenPorfileDropdown,
+              )}
             onMouseEnter={() =>
               handleMouseEnter(setOpenPorfileDropdown, openPorfileDropdownRef)
             }

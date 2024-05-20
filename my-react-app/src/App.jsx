@@ -37,6 +37,9 @@ import Annonces from "./pages/Notifications";
 import Verify from "./pages/Verify";
 import Account from "./pages/Account";
 import PersonInfoPage from "./pages/PersoneInfoPage";
+import ModifyAccount from "./pages/ModifyAccount";
+import MesPayments from "./pages/MesPayments";
+import MessagesChat from "./pages/messagesChat";
 
 function App() {
   const [isMobileView, setIsMobileView] = useState(false);
@@ -162,17 +165,18 @@ function App() {
                       path="/chercher-un-colis"
                       element={<SearchPackage />}
                     />
-                    <Route path="/messagesChat" element={<messagesChat />} />
                     <Route path="/mes-livraisons" element={<MesLivraisons />} />
                     <Route path="/setting" element={<Setting />} />
                     <Route path="/payments" element={<Payments />} />
+                    <Route path="/mespayments" element={<MesPayments />} />
                     <Route path="/mes-annonces" element={<Annonces />} />
                     <Route path="/trajets" element={<RouteListe />} />
                     <Route path="/carnet-d-adresse" element={<AddressBook />} />
                     <Route path="/verifier" element={<Verify />} />
-                    <Route path="/person/:name" component={<PersonInfoPage/>} />
+                    <Route path="/messageschat/:name" element={<MessagesChat/>} />
                     <Route path="/account" element={<Account />} />
                     <Route path="/" element={<Home />} />
+                    <Route path="/modifyaccount" element={<ModifyAccount />} />
                   </Routes>
                 </div>
               </div>
@@ -182,6 +186,7 @@ function App() {
               <Routes>
                 <Route path="/seconnecter" element={<Login />} />
                 <Route path="/inscription" element={<SignUp />} />
+
                 <Route />
               </Routes>
             </div>
