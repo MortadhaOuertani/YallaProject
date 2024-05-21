@@ -1,9 +1,7 @@
-import { CardContent } from "@mui/material";
 import React, { useState } from "react";
 import "tailwindcss/tailwind.css";
 import CardCarnetAdress from "../components/CardCarnetAdress";
-import Inpute from "./Inpute";
-import Button from "./Button";
+import Button from "../components/forms/Button";
 import Select from "react-select";
 import SearchIcon from "@mui/icons-material/Search";
 import InputeStyles from "../utils/InputeStyles";

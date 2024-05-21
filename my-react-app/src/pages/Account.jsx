@@ -1,11 +1,10 @@
 import React, { useState } from 'react';
-import Button from "./Button";
-import Inpute from "./Inpute";
+import Button from "../components/forms/Button";
+import Inpute from "../components/forms/Inpute";
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import { styled } from '@mui/material/styles';
 import MuiSwitch from '@mui/material/Switch';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import Profile from"../assets/Profile.png";
 const Account = () => {

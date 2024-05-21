@@ -6,8 +6,8 @@ import { IoTimeOutline } from "react-icons/io5";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
 import { IoLogoTiktok } from "react-icons/io5";
-import Button from "./Button";
-import Inpute from "./Inpute";
+import Button from "../components/forms/Button";
+import Inpute from "../components/forms/Inpute";
 
 const Support = () => {
   return (

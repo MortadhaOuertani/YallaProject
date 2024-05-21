@@ -1,10 +1,10 @@
 import React , {useState} from 'react'
 import ImageUploader from './ImageUploader';
-import InputeStyles from '../utils/InputeStyles';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Select from 'react-select';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
+import InputeStyles from "../utils/InputeStyles";
 
 const firstSelectOptions = [
     { value: "1", label: " -5Kg" },

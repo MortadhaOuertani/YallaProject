@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Checkbox from "../components/checkbox";
 import InputField from "../components/InputField";
 import img from "../assets/1.jpeg";
 import logo from "../assets/logo1.png";

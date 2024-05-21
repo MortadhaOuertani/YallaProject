@@ -3,8 +3,8 @@ import "tailwindcss/tailwind.css";
 import CreditCardIcon from "../components/CreditCardIcon";
 import WalletCardsIcon from "../components/WalletCardsIcon";
 import RadioButton from "../components/RadioButton";
-import Inpute from "./Inpute";
-import Button from "./Button";
+import Button from "../components/forms/Button";
+import Inpute from "../components/forms/Inpute";
 const Payments = () => {
   const [selectedValue, setSelectedValue] = useState('card');
 

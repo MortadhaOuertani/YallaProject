@@ -1,7 +1,7 @@
 import React from "react";
 import "tailwindcss/tailwind.css";
-import Inpute from "./Inpute";
-import Button from "./Button";
+import Button from "../components/forms/Button";
+import Inpute from "../components/forms/Inpute";
 
 export default function Component() {
   return (
