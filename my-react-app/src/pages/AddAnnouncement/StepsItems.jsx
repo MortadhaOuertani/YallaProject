@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Inpute from "../components/forms/Inpute";
+import Inpute from "../../components/forms/Inpute";
 import Select from 'react-select';
 import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
-import InputeStyles from "../utils/InputeStyles";
+import InputeStyles from "../../utils/InputeStyles";
 
 const Options1 = [
     { value: "1", label: " Au pied du véhicule  " },

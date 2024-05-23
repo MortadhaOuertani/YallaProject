@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "./Card";
-import {tabs } from "../utils/DashboardData";
+import {tabs } from "../../utils/DashboardData";
 
 const Annonces = () => {
   return (

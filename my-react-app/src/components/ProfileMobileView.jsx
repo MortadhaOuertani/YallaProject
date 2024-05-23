@@ -1,7 +1,4 @@
-import { responsiveFontSizes } from "@mui/material";
 import React, { useEffect } from "react";
-import { IoMdClose } from "react-icons/io";
-import { VscAccount } from "react-icons/vsc";
 import { ProfileMobile } from "../utils/navigationLink";
 import { MdLogout } from "react-icons/md";
 import DEU from "../assets/DEU.png";

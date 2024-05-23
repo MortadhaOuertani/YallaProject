@@ -1,18 +1,14 @@
 import React, { useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
-import Button from "../components/forms/Button";
+import Button from "../../components/forms/Button";
 import Select from 'react-select';
-import InputeStyles from "../utils/InputeStyles";
+import InputeStyles from "../../utils/InputeStyles";
 
 const Card = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
 
- 
 
-
-
-  
   return (
     <div className="container w-full   p-5 lg:px-[20%]  mt-10  ">
       <div className="flex items-center justify-between">

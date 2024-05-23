@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import Checkbox from "../components/checkbox";
 import InputField from "../components/InputField";
 import IndexPage from "../components/LoginWith/index";
 import Separator from "../components/Separator";

@@ -2,7 +2,7 @@ import React from "react";
 import "tailwindcss/tailwind.css";
 import Button from "../components/forms/Button";
 import Inpute from "../components/forms/Inpute";
-
+import Icons from "../components/Icons/Icons";
 export default function Component() {
   return (
     <div className="flex w-full p-0 min-h-screen flex-col items-center   bg-white dark:bg-gray-950">
@@ -13,7 +13,7 @@ export default function Component() {
             <div className="flex items-center justify-between p-6">
               <div className="flex items-center space-x-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-md bg-gray-200 dark:bg-gray-800">
-                  <SmartphoneIcon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                  <Icons.SmartphoneIcon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                 </div>
                 <span className="text-sm font-medium">Mobile Verification</span>
               </div>
@@ -40,7 +40,7 @@ export default function Component() {
             <div className="flex items-center justify-between p-6">
               <div className="flex items-center space-x-3">
                 <div className="flex h-10 w-10 items-center justify-center rounded-md bg-gray-200 dark:bg-gray-800">
-                  <MailboxIcon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                  <Icons.MailboxIcon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
                 </div>
                 <span className="text-sm font-medium">Email Verification</span>
               </div>
@@ -68,7 +68,7 @@ export default function Component() {
           <div className="flex items-center justify-between p-6">
             <div className="flex items-center space-x-3">
               <div className="flex h-10 w-10 items-center justify-center rounded-md bg-gray-200 dark:bg-gray-800">
-                <CreditCardIcon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
+                <Icons.CreditCardIcon className="h-5 w-5 text-gray-600 dark:text-gray-400" />
               </div>
               <span className="text-sm font-medium">Identity Verification</span>
             </div>
@@ -84,7 +84,7 @@ export default function Component() {
               </div>
               <div className="flex h-32 w-full items-center justify-center rounded-lg border-2 border-dashed border-gray-300 dark:border-gray-700">
                 <div className="flex flex-col items-center justify-center space-y-2">
-                  <UploadIcon className="h-8 w-8 text-gray-400 dark:text-gray-600" />
+                  <Icons.UploadIcon className="h-8 w-8 text-gray-400 dark:text-gray-600" />
                   <span className="text-sm font-medium text-gray-400 dark:text-gray-600">
                     Upload your ID
                   </span>
@@ -101,85 +101,6 @@ export default function Component() {
   );
 }
 
-function CreditCardIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="20" height="14" x="2" y="5" rx="2" />
-      <line x1="2" x2="22" y1="10" y2="10" />
-    </svg>
-  );
-}
 
-function MailboxIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M22 17a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V9.5C2 7 4 5 6.5 5H18c2.2 0 4 1.8 4 4v8Z" />
-      <polyline points="15,9 18,9 18,11" />
-      <path d="M6.5 5C9 5 11 7 11 9.5V17a2 2 0 0 1-2 2v0" />
-      <line x1="6" x2="7" y1="10" y2="10" />
-    </svg>
-  );
-}
 
-function SmartphoneIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect width="14" height="20" x="5" y="2" rx="2" ry="2" />
-      <path d="M12 18h.01" />
-    </svg>
-  );
-}
 
-function UploadIcon(props) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-      <polyline points="17 8 12 3 7 8" />
-      <line x1="12" x2="12" y1="3" y2="15" />
-    </svg>
-  );
-}

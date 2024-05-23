@@ -1,9 +1,7 @@
 import React from "react";
 import "tailwindcss/tailwind.css";
-import SearchIcon from "../components/SearchIcon";
 import MessageItem from "../components/MessageItem";
-import FilterIcon from "../components/FilterIcon";
-import PlusIcon from "../components/PlusIcon";
+import Icons from "../components/Icons/Icons";
 
 const Messages = () => {
   return (
@@ -12,13 +10,13 @@ const Messages = () => {
         <h2 className="text-xl font-semibold">Inbox</h2>
         <div className="flex items-center gap-2">
           <button className="btn btn-ghost btn-circle">
-            <SearchIcon className="h-5 w-5" />
+            <Icons.SearchIcon className="h-5 w-5" />
           </button>
           <button className="btn btn-ghost btn-circle">
-            <FilterIcon className="h-5 w-5" />
+            <Icons.FilterIcon className="h-5 w-5" />
           </button>
           <button className="btn btn-ghost btn-circle">
-            <PlusIcon className="h-5 w-5" />
+            <Icons.PlusIcon className="h-5 w-5" />
           </button>
         </div>
       </header>

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "tailwindcss/tailwind.css";
-import CreditCardIcon from "../components/CreditCardIcon";
-import WalletCardsIcon from "../components/WalletCardsIcon";
+import Icons from "../components/Icons/Icons";
 import RadioButton from "../components/RadioButton";
 import Button from "../components/forms/Button";
 import Inpute from "../components/forms/Inpute";
@@ -21,14 +20,14 @@ const Payments = () => {
             <div className="grid gap-4">
               <RadioButton
                 label="Carte"
-                icon={<CreditCardIcon />}
+                icon={<Icons.CreditCardIcon />}
                 value="card"
                 selectedValue={selectedValue}
                 onChange={handleRadioChange}
               />
               <RadioButton
                 label="Portefeuille"
-                icon={<WalletCardsIcon />}
+                icon={<Icons.WalletCardsIcon />}
                 value="wallet"
                 selectedValue={selectedValue}
                 onChange={handleRadioChange}

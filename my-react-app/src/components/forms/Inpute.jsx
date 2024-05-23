@@ -17,7 +17,7 @@ function Inpute(props) {
       type={props.type}
       onChange={handleChange}
       value={inputValue}
-      required // Add the required attribute
+      required 
     />
   );
 }

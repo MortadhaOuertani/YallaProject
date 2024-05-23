@@ -14,32 +14,32 @@ import {
   HowItWorks,
   NFCBusinessCards,
   Dashboard,
-  AddAnnouncement,
   AddRoute,
   SearchPackage,
   Setting,
   AddressBook,
   Payments,
-  Notifications,
   Support,
   Login,
   SignUp,
-  RouteListe,
+  
 } from "./pages";
 import { useEffect, useRef, useState } from "react";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
 import Inventory2OutlinedIcon from "@mui/icons-material/Inventory2Outlined";
 import Nnavbar from "./components/Nnavbar";
 import ProfileMobileView from "./components/ProfileMobileView";
-import MesLivraisons from "./pages/MesLivraisons";
 import Messages from "./pages/messages";
-import Annonces from "./pages/Notifications";
 import Verify from "./pages/Verify";
 import Account from "./pages/Account";
 import PersonInfoPage from "./pages/PersoneInfoPage";
 import ModifyAccount from "./pages/ModifyAccount";
 import MesPayments from "./pages/MesPayments";
 import MessagesChat from "./pages/messagesChat";
+import AddAnnouncement  from "./pages/AddAnnouncement/AddAnnouncement";
+import RouteListe from "./pages/MesCard/RouteListe"
+import MesLivraisons from "./pages/MesCard/MesLivraisons";
+import Notifications from"./pages/MesCard/Notifications"
 
 function App() {
   const [isMobileView, setIsMobileView] = useState(false);
@@ -169,7 +169,7 @@ function App() {
                     <Route path="/setting" element={<Setting />} />
                     <Route path="/payments" element={<Payments />} />
                     <Route path="/mespayments" element={<MesPayments />} />
-                    <Route path="/mes-annonces" element={<Annonces />} />
+                    <Route path="/mes-annonces" element={<Notifications />} />
                     <Route path="/trajets" element={<RouteListe />} />
                     <Route path="/carnet-d-adresse" element={<AddressBook />} />
                     <Route path="/verifier" element={<Verify />} />

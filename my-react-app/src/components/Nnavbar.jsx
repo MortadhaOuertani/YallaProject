@@ -1,9 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import logo from "../assets/logo1.png";
-import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import SupportAgentOutlinedIcon from "@mui/icons-material/SupportAgentOutlined";
 import TranslateOutlinedIcon from "@mui/icons-material/TranslateOutlined";
 import { VscAccount } from "react-icons/vsc";

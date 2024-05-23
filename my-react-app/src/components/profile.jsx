@@ -1,11 +1,12 @@
 import React from "react";
 import "tailwindcss/tailwind.css";
+import Icons from"./Icons/Icons";
 
 export default function Profile() {
   return (
     <div className="flex  gap-4 p-4 sm:p-6 bg-gray-50">
       <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 dark:bg-gray-800 border">
-        <UserIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
+        <Icons.UserIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
       </div>
       <div className="flex-1 space-y-1">
         <h4 className="text-sm font-medium">Mon compte :</h4>

@@ -1,5 +1,5 @@
 import React from 'react'
-import TrashIcon from './TrashIcon';
+import Icons from './Icons/Icons';
 
 const CardCarnetAdress = ({ name, address, city }) => {
     return (
@@ -9,7 +9,7 @@ const CardCarnetAdress = ({ name, address, city }) => {
             <p>{city}</p>
             <div className="flex justify-end gap-2">
                 <button className="btn btn-red btn-outline btn-sm">
-                    <TrashIcon className="w-4 h-4 mr-2" />
+                    <Icons.TrashIcon className="w-4 h-4 mr-2" />
                     Supprimer
                 </button>
             </div>

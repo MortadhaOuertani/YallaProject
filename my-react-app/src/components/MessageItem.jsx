@@ -1,5 +1,5 @@
 import React from 'react'
-import ArrowRightIcon from './ArrowRightIcon'
+import Icons from './Icons/Icons'
 import { Link } from 'react-router-dom'
 
 const MessageItem = ({
@@ -33,7 +33,7 @@ const MessageItem = ({
                         <div className="mt-2 flex items-center justify-between">
                             <div className="font-semibold flex items-center">
                                 {amount}
-                                <ArrowRightIcon className="ml-2 h-4 w-4" />
+                                <Icons.ArrowRightIcon className="ml-2 h-4 w-4" />
                             </div>
                         </div>
                     </div>
