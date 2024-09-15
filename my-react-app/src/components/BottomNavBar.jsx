@@ -1,15 +1,13 @@
-import { useEffect, useState } from "react";
+import {  useState } from "react";
 import { bottomMenu } from "../utils/navigationLink";
-import { Grid, Link, Paper } from "@mui/material";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Grid ,Paper } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import PropTypes from "prop-types";
 import { Global } from "@emotion/react";
 import { styled } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
 import { grey } from "@mui/material/colors";
-import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
-import Skeleton from "@mui/material/Skeleton";
 import Typography from "@mui/material/Typography";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import AddRoadIcon from "@mui/icons-material/AddRoad";

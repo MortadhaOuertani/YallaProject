@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import{ useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import AddIcon from "@mui/icons-material/Add";
 import Button from "../../components/forms/Button";
 import Select from 'react-select';
 import InputeStyles from "../../utils/InputeStyles";
+import PropTypes from 'prop-types';
 
 const Card = (props) => {
   const [searchQuery, setSearchQuery] = useState("");
+  Card.propTypes = {
+    name: PropTypes.string.isRequired,
+    firstSelectOptions: PropTypes.array.isRequired,
+    Options2: PropTypes.array.isRequired,
+    text : PropTypes.string.isRequired,
+    buttonName: PropTypes.string.isRequired,
 
+  };
 
   return (
     <div className="container w-full   p-5 lg:px-[20%]  mt-10  ">

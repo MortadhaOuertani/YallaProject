@@ -5,7 +5,7 @@ export { default as HowItWorks } from "./HowItWorks";
 export { default as NFCBusinessCards } from "./NFCBusinessCards";
 export { default as Dashboard } from "./Dashboard";
 export { default as AddAnnouncement } from "./AddAnnouncement/AddAnnouncement";
-export { default as AddRoute } from "./AddRoute";
+export { default as AddRoute } from "./AddRoute/AddRoute";
 export { default as SearchPackage } from "./SearchPackage";
 export { default as MesLivraisons } from "./MesCard/MesLivraisons";
 export { default as Setting } from "./Setting";

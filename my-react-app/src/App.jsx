@@ -14,7 +14,6 @@ import {
   HowItWorks,
   NFCBusinessCards,
   Dashboard,
-  AddRoute,
   SearchPackage,
   Setting,
   AddressBook,
@@ -37,6 +36,8 @@ import ModifyAccount from "./pages/ModifyAccount";
 import MesPayments from "./pages/MesPayments";
 import MessagesChat from "./pages/messagesChat";
 import AddAnnouncement  from "./pages/AddAnnouncement/AddAnnouncement";
+import AddRoute  from "./pages/AddRoute/AddRoute";
+
 import RouteListe from "./pages/MesCard/RouteListe"
 import MesLivraisons from "./pages/MesCard/MesLivraisons";
 import Notifications from"./pages/MesCard/Notifications"
