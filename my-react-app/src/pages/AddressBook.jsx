@@ -1,10 +1,12 @@
-import React, { useState } from "react";
 import "tailwindcss/tailwind.css";
 import CardCarnetAdress from "../components/CardCarnetAdress";
 import Button from "../components/forms/Button";
 import Select from "react-select";
 import SearchIcon from "@mui/icons-material/Search";
 import InputeStyles from "../utils/InputeStyles";
+import { getData } from '../components/apiAndFunction/apiService';
+import { API_ENDPOINTS } from '../components/apiAndFunction/apiEndpoints';
+import { useEffect, useState } from 'react';
 
 const firstSelectOptions = [
   { value: "2", label: "Par pays" },
@@ -18,6 +20,38 @@ const Options2 = [
 ];
 const AddressesBook = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [AddressesBook, setLAddressesBook] = useState([]); // State to store annonces
+  const [error, setError] = useState(null); // Error state to handle issues with data fetching
+  const [loading, setLoading] = useState(true); // Loading state to handle the async nature of the request
+
+  const fetchAddressesBook = async () => {
+    try {
+      const response = await getData(API_ENDPOINTS.GET_AddressesBook); // Fetch the JSON data
+      if (response) {
+        setLAddressesBook(response); // Assuming the API response has "annonces" key
+      } else {
+        setError('Invalid response format'); // Error handling if the structure is not as expected
+      }
+    } catch (err) {
+      setError(err.message); // Catching errors and updating state
+    } finally {
+      setLoading(false); // Setting loading to false after the request completes
+    }
+  };
+
+  useEffect(() => {
+    fetchAddressesBook();
+    console.log(AddressesBook);
+
+  }, [AddressesBook]);
+
+  if (loading) {
+    return <div>Loading...</div>; // Display a loading message while fetching data
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>; // Display error if something goes wrong
+  }
 
   return (
     <div className="container w-full   p-2 md:p-10  mt-10  ">
@@ -61,27 +95,27 @@ const AddressesBook = () => {
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-          <div>
+        {AddressesBook.length > 0 ? (
+          AddressesBook.map((item, index) => (
+
+          <div key={index}> 
             <CardCarnetAdress
-              name="Adresse 1"
-              address="123 Rue de la Paix"
-              city="75001 Paris, France"
+              id={item.id}
+              name="Adresse" // You can adjust this if you want a dynamic name or title
+              address={item.adresse_ligne_1}
+              city={`${item.code_postal} ${item.ville}, ${item.pays}`}
             />
+
           </div>
-          <div>
-            <CardCarnetAdress
-              name="Adresse 2"
-              address="456 Rue du Marché"
-              city="69000 Lyon, France"
-            />
+          
+          ))
+          ) : (
+            <div>
+            <h1 className="mt-5 text-md font-normal text-center max-w-300px mx-auto">
+              Oups, tu n as pas encore de Adresse. allons chercher une ?
+            </h1>
           </div>
-          <div>
-            <CardCarnetAdress
-              name="Adresse 3"
-              address="789 Rue des Fleurs"
-              city="13000 Marseille, France"
-            />
-          </div>
+        )}
         </div>
       </div>
     </div>

@@ -54,6 +54,38 @@
         "driver": "Emma Stone",
         "vehicle": "Van"
       }
+    ],
+    "AddressesBook": [
+        {
+            "adresse_ligne_1": "123 Rue de la Paix",
+            "ville": "Paris",
+            "code_postal": "75001",
+            "pays": "France"
+        },
+        {
+            "adresse_ligne_1": "456 Avenue des Champs-Élysées",
+            "ville": "Paris",
+            "code_postal": "75008",
+            "pays": "France"
+        },
+        {
+            "adresse_ligne_1": "789 Boulevard Saint-Germain",
+            "ville": "Paris",
+            "code_postal": "75006",
+            "pays": "France"
+        },
+        {
+            "adresse_ligne_1": "321 Rue du Faubourg Saint-Honoré",
+            "ville": "Paris",
+            "code_postal": "75008",
+            "pays": "France"
+        },
+        {
+            "adresse_ligne_1": "654 Rue de Rivoli",
+            "ville": "Paris",
+            "code_postal": "75001",
+            "pays": "France"
+        }
     ]
   }
   
