@@ -1,22 +1,16 @@
-import React, { useState } from 'react';
 
 function Inpute(props) {
-  const [inputValue, setInputValue] = useState('');
-  const [inputClass, setInputClass] = useState('');
-
-  const handleChange = (event) => {
-    setInputValue(event.target.value);
-    // Check if the input has a value and set the background color accordingly
-    setInputClass(event.target.value ? '' : 'invalid');
-  };
+  // Instead of using internal state, we rely on the parent to pass the value and onChange handler
+  const { placeholder, type, value, onChange,name } = props;
 
   return (
     <input
-      className={`w-full p-3 pr-4 mt-3 border rounded text-sm focus:outline-none focus:shadow-outline-yellow ${inputClass}`}
-      placeholder={props.placeholder}
-      type={props.type}
-      onChange={handleChange}
-      value={inputValue}
+      className={`w-full p-3 pr-4 mt-3 border rounded text-sm focus:outline-none focus:shadow-outline-yellow ${value ? '' : 'invalid'}`}
+      placeholder={placeholder}
+      type={type}
+      onChange={onChange}
+      name={name}  // Ensure the name prop is passed
+      value={value}  // Now the value comes from the parent component (MyForm)
       required 
     />
   );

@@ -1,91 +1,100 @@
 {
-    "livraisons": [
-      {
-        "id": 1,
-        "receiverName": "John Doe",
-        "deliveryDate": "2024-10-15",
-        "status": "Delivered",
-        "address": "123 Main St, City A",
-        "weight": "2kg"
-      },
-      {
-        "id": 2,
-        "receiverName": "Jane Smith",
-        "deliveryDate": "2024-10-16",
-        "status": "In Transit",
-        "address": "456 Oak St, City B",
-        "weight": "5kg"
-      }
-    ],
-    "annonces": [
-      {
-        "id": 1,
-        "title": "House for Rent",
-        "description": "Spacious 3-bedroom house available for rent in City A.",
-        "price": 1200,
-        "contactEmail": "owner@example.com",
-        "postedDate": "2024-10-10"
-      },
-      {
-        "id": 2,
-        "title": "Car for Sale",
-        "description": "2019 model, in excellent condition. 30,000 miles.",
-        "price": 15000,
-        "contactEmail": "seller@example.com",
-        "postedDate": "2024-09-28"
-      }
-    ],
-    "trajets": [
-      {
-        "id": 1,
-        "startLocation": "City A",
-        "endLocation": "City B",
-        "departureTime": "2024-10-15T08:00:00",
-        "arrivalTime": "2024-10-15T12:00:00",
-        "driver": "Alex Turner",
-        "vehicle": "Truck"
-      },
-      {
-        "id": 2,
-        "startLocation": "City C",
-        "endLocation": "City D",
-        "departureTime": "2024-10-16T09:00:00",
-        "arrivalTime": "2024-10-16T13:30:00",
-        "driver": "Emma Stone",
-        "vehicle": "Van"
-      }
-    ],
-    "AddressesBook": [
-        {
-            "adresse_ligne_1": "123 Rue de la Paix",
-            "ville": "Paris",
-            "code_postal": "75001",
-            "pays": "France"
-        },
-        {
-            "adresse_ligne_1": "456 Avenue des Champs-Élysées",
-            "ville": "Paris",
-            "code_postal": "75008",
-            "pays": "France"
-        },
-        {
-            "adresse_ligne_1": "789 Boulevard Saint-Germain",
-            "ville": "Paris",
-            "code_postal": "75006",
-            "pays": "France"
-        },
-        {
-            "adresse_ligne_1": "321 Rue du Faubourg Saint-Honoré",
-            "ville": "Paris",
-            "code_postal": "75008",
-            "pays": "France"
-        },
-        {
-            "adresse_ligne_1": "654 Rue de Rivoli",
-            "ville": "Paris",
-            "code_postal": "75001",
-            "pays": "France"
-        }
-    ]
-  }
-  
+  "livraisons": [
+    {
+      "id": "1",
+      "receiverName": "John Doe",
+      "deliveryDate": "2024-10-15",
+      "status": "Delivered",
+      "address": "123 Main St, City A",
+      "weight": "2kg"
+    },
+    {
+      "id": "2",
+      "receiverName": "Jane Smith",
+      "deliveryDate": "2024-10-16",
+      "status": "In Transit",
+      "address": "456 Oak St, City B",
+      "weight": "5kg"
+    }
+  ],
+  "annonces": [
+    {
+      "id": "1",
+      "title": "House for Rent",
+      "description": "Spacious 3-bedroom house available for rent in City A.",
+      "price": 1200,
+      "contactEmail": "owner@example.com",
+      "postedDate": "2024-10-10"
+    },
+    {
+      "id": "2",
+      "title": "Car for Sale",
+      "description": "2019 model, in excellent condition. 30,000 miles.",
+      "price": 15000,
+      "contactEmail": "seller@example.com",
+      "postedDate": "2024-09-28"
+    }
+  ],
+  "trajets": [
+    {
+      "id": "1",
+      "startLocation": "City A",
+      "endLocation": "City B",
+      "departureTime": "2024-10-15T08:00:00",
+      "arrivalTime": "2024-10-15T12:00:00",
+      "driver": "Alex Turner",
+      "vehicle": "Truck"
+    },
+    {
+      "id": "2",
+      "startLocation": "City C",
+      "endLocation": "City D",
+      "departureTime": "2024-10-16T09:00:00",
+      "arrivalTime": "2024-10-16T13:30:00",
+      "driver": "Emma Stone",
+      "vehicle": "Van"
+    }
+  ],
+  "AddressesBook": [
+    {
+      "adresse_ligne_1": "123 Rue de la Paix",
+      "ville": "Paris",
+      "code_postal": "75001",
+      "pays": "France",
+      "id": "bfdf"
+    },
+    {
+      "adresse_ligne_1": "456 Avenue des Champs-Élysées",
+      "ville": "Paris",
+      "code_postal": "75008",
+      "pays": "France",
+      "id": "0e8b"
+    },
+    {
+      "adresse_ligne_1": "321 Rue du Faubourg Saint-Honoré",
+      "ville": "Paris",
+      "code_postal": "75008",
+      "pays": "France",
+      "id": "3f2c"
+    }
+  ],
+  "cards": [
+    {
+      "id": "2933",
+      "titulaire": "John Doe",
+      "iban": "FR7630006000011234567890189",
+      "adresse": "123 Rue de Paris",
+      "complementAdresse": "Apartment 4B",
+      "codePostal": "75000",
+      "ville": "Paris",
+      "": "n"
+    }
+  ],
+  "wallet": [
+    {
+      "id": "a4db",
+      "walletName": "My Savings Wallet",
+      "walletId": "WAL123456789"
+    }
+  ]
+}

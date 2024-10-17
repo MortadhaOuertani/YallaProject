@@ -5,8 +5,11 @@ export const API_ENDPOINTS = {
     GET_Routes:`/trajets`,  
     GET_livraisons: '/livraisons',  
     GET_AddressesBook:"/AddressesBook"  ,
-    DELETE_ADDRESS: (id) => `/DELETE_ADDRESS/${id}`,   
-     
+    DELETE_ADDRESS: (id) => `/AddressesBook/${id}`,
+    Add_Card: '/carts', 
+    ADD_WALLET: '/wallet',  
+ 
+    
   
   };
   

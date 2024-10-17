@@ -3,12 +3,10 @@ import { deleteData } from '../components/apiAndFunction/apiService';
 import { API_ENDPOINTS } from '../components/apiAndFunction/apiEndpoints';
 
 const CardCarnetAdress = ({ id, name, address, city }) => {
-    // Handle the delete button click
     const handleDelete = async () => {
         try {
-            // Call the API to delete the data using the ID
-            await deleteData(`${API_ENDPOINTS.DELETE_ADDRESS}/${id}`);
-            con
+            await deleteData(API_ENDPOINTS.DELETE_ADDRESS(id));  
+            
         } catch (error) {
             console.error('Error deleting the address:', error);
         }
@@ -20,9 +18,8 @@ const CardCarnetAdress = ({ id, name, address, city }) => {
             <p>{address}</p>
             <p>{city}</p>
             <div className="flex justify-end gap-2">
-                <button
-                    className="text-black hover:bg-red-500 hover:text-white border border-black btn btn-sm"
-                    onClick={handleDelete} // Attach the delete function
+                <button  className="text-black hover:border-red-500 hover:text-red-500 hover:bg-white border border-black btn btn-sm"
+                 onClick={handleDelete}
                 >
                     <Icons.TrashIcon className="w-4 h-4 mr-2" />
                     Supprimer
