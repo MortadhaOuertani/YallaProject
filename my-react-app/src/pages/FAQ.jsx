@@ -1,8 +1,11 @@
-import React from "react";
+import { useEffect, useState } from "react";
+import { getData } from '../components/apiAndFunction/apiService';
+import { API_ENDPOINTS } from '../components/apiAndFunction/apiEndpoints';
+import Button from "../components/forms/Button";
 
 function Accordion({ title, content, idx, isOpen, handleClick }) {
   return (
-    <li className="bg-white my-2  border rounded-lg">
+    <li className="bg-white my-2 border rounded-lg">
       <h2
         onClick={() => handleClick(idx)}
         className="flex flex-row justify-between items-center font-semibold p-3 cursor-pointer"
@@ -29,21 +32,50 @@ function Accordion({ title, content, idx, isOpen, handleClick }) {
 }
 
 function App() {
-  const [accordion, setAccordion] = React.useState(
-    Array.from({ length: 5 }, () => ({ isOpen: false }))
-  );
+  const [accordion, setAccordion] = useState([]); // State to store isOpen for each FAQ
+  const [FAQ, setFAQ] = useState([]); // State to store FAQ data
+  const [error, setError] = useState(null); // Error state to handle issues with data fetching
+  const [loading, setLoading] = useState(true); // Loading state to handle the async nature of the request
+
+  const fetchLivraisons = async () => {
+    try {
+      const response = await getData(API_ENDPOINTS.GET_FAQ); // Fetch the JSON data
+      if (response && Array.isArray(response)) {
+        setFAQ(response); // Assuming the API response is an array of FAQ items
+        setAccordion(response.map(() => ({ isOpen: false }))); // Set initial accordion state based on FAQ length
+      } else {
+        setError("Invalid response format");
+      }
+    } catch (err) {
+      setError(err.message); // Catching errors and updating state
+    } finally {
+      setLoading(false); // Setting loading to false after the request completes
+    }
+  };
+
+  useEffect(() => {
+    fetchLivraisons(); // Fetch data when component mounts
+  }, []); // Empty dependency array to avoid multiple API calls
+
+  if (loading) {
+    return <div>Loading...</div>; // Display a loading message while fetching data
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>; // Display error if something goes wrong
+  }
 
   const handleClick = (idx) => {
     setAccordion((prevState) =>
       prevState.map((item, index) => ({
         ...item,
-        isOpen: index === idx ? !item.isOpen : false,
+        isOpen: index === idx ? !item.isOpen : false, // Toggle only the clicked accordion item
       }))
     );
   };
 
   return (
-    <body className="h-screen bg-white w-full">
+    <div className="h-screen bg-white w-full">
       <main className="p-5 bg-light-blue">
         <div className="flex justify-center items-start my-2">
           <div className="w-full sm:w-10/12 md:w-1/2 my-1">
@@ -51,46 +83,32 @@ function App() {
               FAQ - Order, Shipping, Etc.
             </h2>
             <ul className="flex flex-col mt-10">
-              <Accordion
-                title="When will my order arrive? 1"
-                content="Shipping time is set by our delivery partners, according to the delivery method chosen by you. Additional details can be found in the order confirmation"
-                idx={0}
-                isOpen={accordion[0].isOpen}
-                handleClick={handleClick}
-              />
-              <Accordion
-                title="When will my order arrive? 2"
-                content="Shipping time is set by our delivery partners, according to the delivery method chosen by you. Additional details can be found in the order confirmation"
-                idx={1}
-                isOpen={accordion[1].isOpen}
-                handleClick={handleClick}
-              />
-              <Accordion
-                title="When will my order arrive? 3"
-                content="Shipping time is set by our delivery partners, according to the delivery method chosen by you. Additional details can be found in the order confirmation"
-                idx={2}
-                isOpen={accordion[2].isOpen}
-                handleClick={handleClick}
-              />
-              <Accordion
-                title="When will my order arrive? 4"
-                content="Shipping time is set by our delivery partners, according to the delivery method chosen by you. Additional details can be found in the order confirmation"
-                idx={3}
-                isOpen={accordion[3].isOpen}
-                handleClick={handleClick}
-              />
-              <Accordion
-                title="When will my order arrive? 5"
-                content="Shipping time is set by our delivery partners, according to the delivery method chosen by you. Additional details can be found in the order confirmation"
-                idx={4}
-                isOpen={accordion[4].isOpen}
-                handleClick={handleClick}
-              />
+              {FAQ.length > 0 ? (
+                FAQ.map((item, idx) => (
+                  <Accordion
+                    key={idx}
+                    title={item.question}
+                    content={item.answer}
+                    idx={idx}
+                    isOpen={accordion[idx]?.isOpen || false} // Handle isOpen based on state
+                    handleClick={handleClick}
+                  />
+                ))
+              ) : (
+                <div>
+                  <h1 className="mt-5 text-md font-normal text-center max-w-300px mx-auto">
+                    Oups, tu n as pas encore de FAQ. Allons chercher une ?
+                  </h1>
+                  <div className="mt-5 text-center">
+                    <Button buttonName="Add FAQ!" />
+                  </div>
+                </div>
+              )}
             </ul>
           </div>
         </div>
       </main>
-    </body>
+    </div>
   );
 }
 

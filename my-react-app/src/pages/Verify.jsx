@@ -1,11 +1,10 @@
-import React from "react";
 import "tailwindcss/tailwind.css";
 import Button from "../components/forms/Button";
 import Inpute from "../components/forms/Inpute";
 import Icons from "../components/Icons/Icons";
 export default function Component() {
   return (
-    <div className="flex w-full p-0 min-h-screen flex-col items-center   bg-white dark:bg-gray-950">
+    <div className="flex w-full p-10 min-h-screen flex-col items-center   bg-white dark:bg-gray-950">
       <h1 className="mb-8 text-3xl font-bold">Verification</h1>
       <div className="w-full max-w-6xl space-y-6 px-4 sm:px-0 lg:grid lg:grid-cols-2 lg:gap-8">
         <div className="space-y-3">

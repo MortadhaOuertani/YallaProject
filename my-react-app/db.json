@@ -86,8 +86,7 @@
       "adresse": "123 Rue de Paris",
       "complementAdresse": "Apartment 4B",
       "codePostal": "75000",
-      "ville": "Paris",
-      "": "n"
+      "ville": "Paris"
     }
   ],
   "wallet": [
@@ -95,6 +94,33 @@
       "id": "a4db",
       "walletName": "My Savings Wallet",
       "walletId": "WAL123456789"
+    }
+  ],
+  "FAQ": [
+    {
+      "id": 1,
+      "question": "When will my order arrive?",
+      "answer": "Shipping time is set by our delivery partners, according to the delivery method chosen by you. Additional details can be found in the order confirmation."
+    },
+    {
+      "id": 2,
+      "question": "How can I track my order?",
+      "answer": "You can track your order using the tracking number provided in the confirmation email or by visiting the order tracking page."
+    },
+    {
+      "id": 3,
+      "question": "Can I cancel my order?",
+      "answer": "Yes, you can cancel your order before it is dispatched. Once dispatched, the cancellation policy depends on the seller."
+    },
+    {
+      "id": 4,
+      "question": "What are the available payment methods?",
+      "answer": "We accept various payment methods, including credit cards, debit cards, and online payment gateways like PayPal."
+    },
+    {
+      "id": 5,
+      "question": "How do I return a product?",
+      "answer": "To return a product, visit the return section of our website, and follow the instructions to initiate a return request."
     }
   ]
 }

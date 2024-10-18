@@ -8,7 +8,8 @@ export const API_ENDPOINTS = {
     DELETE_ADDRESS: (id) => `/AddressesBook/${id}`,
     Add_Card: '/carts', 
     ADD_WALLET: '/wallet',  
- 
+    GET_FAQ: '/FAQ',          
+
     
   
   };
