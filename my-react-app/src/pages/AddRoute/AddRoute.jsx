@@ -8,87 +8,194 @@ import { styled } from '@mui/material/styles';
 import Slider from '@mui/material/Slider';
 import Checkbox from '@mui/material/Checkbox';
 import AllerRetourCheckbox from "./AllerRetourCheckbox";
+import { postData } from "../../components/apiAndFunction/apiService";
+import { API_ENDPOINTS } from "../../components/apiAndFunction/apiEndpoints";
+
 const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
 const AddRoute = () => {
+  const daysOfWeek = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi', 'Dimanche'];
+  const [checkedDays, setCheckedDays] = useState([]);
+  const [checkAll, setCheckAll] = useState(false);
   const [selectedValue, setSelectedValue] = useState("a");
   const [selectedValue2, setSelectedValue2] = useState("c");
   const [showInput, setShowInput] = useState(false); // State to track input visibility
+  const [loading, setLoading] = useState(false); // Loading state for form submission
   const [isAllerRetourChecked, setIsAllerRetourChecked] = useState(false);
+  const [etapes, setEtapes] = useState([""]);
+  const [selectedDays, setSelectedDays] = useState([]);
 
-    const handleAllerRetourChange = (event) => {
-        setIsAllerRetourChecked(event.target.checked);
-    };
-  // Toggle input visibility when the checkbox is checked/unchecked
+  const handleDayChange = (event) => {
+    const { value, checked } = event.target;
+    if (checked) {
+        setCheckedDays([...checkedDays, value]);
+    } else {
+        setCheckedDays(checkedDays.filter(day => day !== value));
+    }
+};
+
+const handleCheckAllChange = (event) => {
+    const { checked } = event.target;
+    setCheckAll(checked);
+    if (checked) {
+        setCheckedDays(daysOfWeek);
+    } else {
+        setCheckedDays([]);
+    }
+};
+
+
+  const [routesFormData, setRoutesFormData] = useState({
+    departCity: "",
+    arrivalCity: "",
+    address: "",
+    RayonAction: 0,
+    minPrice: "",
+    dateAller: "",
+    dateRetour: "",
+    frequency: "once",
+    allerRetour: false,
+    etapes: [""],
+  });
+
+  // Handle input changes and update form state
+  const SubmithandleChange = (e) => {
+    const { name, value, type, checked } = e.target;
+    setRoutesFormData((prevData) => ({
+      ...prevData,
+      [name]: type === 'checkbox' ? checked : value,
+    }));
+  };
+
+  // Handle form submission
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true); // Start loading state
+    try {
+        const dataToSubmit = {
+            ...routesFormData,
+        };
+      await postData(API_ENDPOINTS.Add_Route, dataToSubmit);
+      alert("Route added successfully!");
+      setRoutesFormData({
+        departCity: "",
+        arrivalCity: "",
+        address: "",
+        RayonAction: 0,
+        minPrice: "",
+        dateAller: "",
+        dateRetour: "",
+        frequency: "",
+        allerRetour: false,
+        etapes: [],
+
+      });
+
+    } catch (error) {
+      console.error("Error adding route:", error);
+      alert("Failed to add route. Please try again.");
+    } finally {
+      setLoading(false); // End loading state
+    }
+  };
+  const handleEtapeChange = (e, index) => {
+    const { value } = e.target;
+    const updatedEtapes = etapes.map((etape, i) => (i === index ? value : etape));
+    setEtapes(updatedEtapes);
+    setRoutesFormData((prev) => ({ ...prev, etapes: updatedEtapes })); // Update form data state with etapes
+  };
+
+  // Handle aller-retour checkbox changes
+  const handleAllerRetourChange = (event) => {
+    setIsAllerRetourChecked(event.target.checked);
+  };
+
   const handleCheckboxChange = () => {
     setShowInput(!showInput);
   };
-  const [etapes, setEtapes] = useState([]);
 
   const handleChange = (event) => {
     setSelectedValue(event.target.value);
   };
+
   const handleChange2 = (event) => {
-    setSelectedValue2(event.target.value);
+    const selectedFrequency = event.target.value;
+    setSelectedValue2(selectedFrequency);
+    
+    // Update the routesFormData with the selected frequency
+    setRoutesFormData((prevData) => ({
+      ...prevData,
+      frequency: selectedFrequency === 'c' ? 'once' : 'regular', // Map radio button values to form field values
+    }));
   };
+
+  // Add a new step
   const addEtape = () => {
-    setEtapes([...etapes, {}]); // Add a new step
+    setEtapes([...etapes, ""]);
   };
 
+  // Remove a step by index
   const deleteEtapes = (index) => {
-    setEtapes(etapes.filter((etape, i) => i !== index)); // Remove the step at the given index
+    const updatedEtapes = etapes.filter((_, i) => i !== index); // Create a new array without the deleted etape
+    
+    // Update both the local etapes state and the form data with the updated etapes array
+    setEtapes(updatedEtapes);
+    setRoutesFormData((prevData) => ({
+      ...prevData,
+      etapes: updatedEtapes,
+    }));
   };
-
   const controlProps = (item) => ({
     checked: selectedValue === item,
     onChange: handleChange,
     value: item,
-    name: 'color-radio-button-demo',
-    inputProps: { 'aria-label': item },
+    name: "color-radio-button-demo",
+    inputProps: { "aria-label": item },
   });
+
   const controlProps2 = (item) => ({
     checked: selectedValue2 === item,
     onChange: handleChange2,
     value: item,
-    name: 'color-radio-button-demo',
-    inputProps: { 'aria-label': item },
+    name: "color-radio-button-demo",
+    inputProps: { "aria-label": item },
   });
 
   const PrettoSlider = styled(Slider)({
-    color:'#fac53f',
+    color: "#fac53f",
     height: 8,
-    '& .MuiSlider-track': {
-      border: 'none',
+    "& .MuiSlider-track": {
+      border: "none",
     },
-    '& .MuiSlider-thumb': {
+    "& .MuiSlider-thumb": {
       height: 24,
       width: 24,
-      backgroundColor: '#fff',
-      border: '2px solid currentColor',
-      '&:focus, &:hover, &.Mui-active, &.Mui-focusVisible': {
-        boxShadow: 'inherit',
+      backgroundColor: "#fff",
+      border: "2px solid currentColor",
+      "&:focus, &:hover, &.Mui-active, &.Mui-focusVisible": {
+        boxShadow: "inherit",
       },
-      '&::before': {
-        display: 'none',
+      "&::before": {
+        display: "none",
       },
     },
-    '& .MuiSlider-valueLabel': {
+    "& .MuiSlider-valueLabel": {
       lineHeight: 1.2,
       fontSize: 12,
-      background: 'unset',
+      background: "unset",
       padding: 0,
       width: 50,
       height: 50,
-      borderRadius: '50% 50% 50% 0',
-      backgroundColor: '#fbbf24',
-      transformOrigin: 'bottom left',
-      transform: 'translate(50%, -100%) rotate(-45deg) scale(0)',
-      '&::before': { display: 'none' },
-      '&.MuiSlider-valueLabelOpen': {
-        transform: 'translate(50%, -100%) rotate(-45deg) scale(1)',
+      borderRadius: "50% 50% 50% 0",
+      backgroundColor: "#fbbf24",
+      transformOrigin: "bottom left",
+      transform: "translate(50%, -100%) rotate(-45deg) scale(0)",
+      "&::before": { display: "none" },
+      "&.MuiSlider-valueLabelOpen": {
+        transform: "translate(50%, -100%) rotate(-45deg) scale(1)",
       },
-      '& > *': {
-        transform: 'rotate(45deg)',
+      "& > *": {
+        transform: "rotate(45deg)",
       },
     },
   });
@@ -98,7 +205,7 @@ const AddRoute = () => {
     <div className="container w-full lg:w-full lg:px-[20%] md:w-[70%] p-5 mt-10">
       <h1 className="font-semibold text-[30px] text-gray-800">Votre itinéraire</h1>
 
-
+      <form  onSubmit={handleSubmit}> 
       <div>
         <div className="flex items-center justify-between mt-5">
           <div className="font-semibold text-[15px] text-gray-600 ml-3">Je recherche des livraisons</div>
@@ -116,7 +223,13 @@ const AddRoute = () => {
           <>
             <div className="mt-4 ml-3">
                 <label className="font-semibold text-[13px] mb-3 text-gray-500">Adresse</label>
-                <Inpute placeholder="Exp: 13 rue de Rilover , 70021 Paris" type="text" />
+                <Inpute 
+                    placeholder="Exp: 13 rue de Rilover , 70021 Paris" 
+                    type="text"
+                    name="address"
+                    value={routesFormData.address}
+                    onChange={SubmithandleChange}
+                />
             </div>
             <div className="mt-4 ml-3" >
             <label className="font-semibold text-[13px] text-gray-500">Rayon d'action</label>
@@ -125,30 +238,50 @@ const AddRoute = () => {
               valueLabelDisplay="auto"
               aria-label="pretto slider"
               max={300}
-              defaultValue={20}
-              valueLabelFormat={value => `${value} km`}
-            />
+              defaultValue={routesFormData.RayonAction}
+              onChange={(e, value) => setRoutesFormData((prev) => ({ ...prev, RayonAction: value }))}
+              valueLabelFormat={(value) => `${value} km`}         
+                 />
             </div>
           </>
         ):(
           <>
           <div  className="mt-4 ml-3">
             <label className="font-semibold text-[13px] mb-3 text-gray-500">Ville de départ</label>
-            <Inpute  placeholder="Exp: 13 rue de Rilover , 70021 Paris" type="text" />
-            {etapes.map((etape, index) => (
+            <Inpute  
+                   placeholder="Exp: 13 rue de Rilover , 70021 Paris" 
+                   type="text" 
+                   name="departCity"
+                   value={routesFormData.departCity}
+                   onChange={SubmithandleChange}
+            />
+           {etapes.map((etape, index) => (
             <div key={index} className="flex items-center">
-              <Inpute  placeholder="Exp: Etape 1" type="text" />
-              <IconButton aria-label="delete" onClick={() => deleteEtapes(index)} disableRipple>
+                <Inpute
+                placeholder={`Étape ${index + 1}`}
+                type="text"
+                name={`etape-${index}`}
+                value={etape}
+                onChange={(e) => handleEtapeChange(e, index)}
+                />
+                <IconButton aria-label="delete" onClick={() => deleteEtapes(index)} disableRipple>
                 <DeleteIcon className="mt-2" sx={{ color: 'red' }} />
-              </IconButton>
+                </IconButton>
             </div>
             ))}
+
 
           </div>
 
             <div className="mt-4 ml-3">
               <label className="font-semibold text-[13px] mb-3 text-gray-500">Ville d'arrivée</label>
-              <Inpute  placeholder="Exp: 13 rue de Rilover , 70021 Marsielle" type="text" />
+              <Inpute  
+                    placeholder="Exp: 13 rue de Rilover , 70021 Marsielle" 
+                    type="text" 
+                    name="arrivalCity"
+                    value={routesFormData.arrivalCity}
+                    onChange={SubmithandleChange}
+              />
             </div>
 
             <div className="flex flex-col items-end mt-5">
@@ -167,7 +300,13 @@ const AddRoute = () => {
         </div>
         <div className="mt-4 ml-3 mb-3">
                 <label className="font-semibold text-[13px] mb-3 text-gray-500">Prix minimum accepté</label>
-                <Inpute placeholder="Exp: 60$" type="text" />
+                <Inpute 
+                      placeholder="Exp: 60$" 
+                      type="text" 
+                      name="minPrice"
+                      value={routesFormData.minPrice}
+                      onChange={SubmithandleChange}
+                />
         </div>
       </div>
 
@@ -192,7 +331,13 @@ const AddRoute = () => {
         </div>
         <div className="mt-4 ml-3 mb-3">
                 <label className="font-semibold text-[13px] mb-3 text-gray-500">Date du trajet aller</label>
-                <Inpute placeholder="Exp: 60$" type="date" />
+                <Inpute 
+                       placeholder="Exp: 60$" 
+                       type="date" 
+                       name="dateAller"
+                       value={routesFormData.dateAller}
+                       onChange={SubmithandleChange}
+                />
         </div>
         {selectedValue ==='a' && selectedValue2 ==='c'?(
           <>
@@ -214,7 +359,13 @@ const AddRoute = () => {
           <div className="mt-4 ml-3 mb-3">
             <label className="font-semibold text-[13px] mb-3 text-gray-500">Date du trajet retour
             </label>
-            <Inpute placeholder="Exp: 60$" type="date" />
+            <Inpute 
+                  placeholder="Exp: 60$" 
+                  type="date" 
+                  name="dateRetour"
+                  value={routesFormData.dateRetour}
+                  onChange={SubmithandleChange}
+            />
           </div> 
         )}
         </div>
@@ -222,32 +373,79 @@ const AddRoute = () => {
 
       ):null}
 
-{selectedValue === 'a'  && selectedValue2 === 'd' ?(
-  <>
-    <div className="flex items-center justify-between mt-5">
-            <div className="font-semibold text-[15px] text-gray-600 ml-3">Date</div>
-            <div className="flex-1  border-b border-gray-200  rounded-[3px] dark:border-gray-200 ml-4" style={{ height: '5px' }}/>
-    </div>
-    <Checkbox
-          {...label}
-          sx={{
-            color: '#d8d8d8',
-            '&.Mui-checked': {
-              color: '#fbbf24',
-            },
+      {selectedValue === 'a'  && selectedValue2 === 'd' ?(
+        <>
+          <div className="flex items-center justify-between mt-5">
+                  <div className="font-semibold text-[15px] text-gray-600 ml-3">Date</div>
+                  <div className="flex-1  border-b border-gray-200  rounded-[3px] dark:border-gray-200 ml-4" style={{ height: '5px' }}/>
+          </div>
+          <Checkbox
+                {...label}
+                sx={{
+                  color: '#d8d8d8',
+                  '&.Mui-checked': {
+                    color: '#fbbf24',
+                  },
 
-          }}
-          onChange={handleAllerRetourChange}
+                }}
+                onChange={handleAllerRetourChange}
 
-    /><label className="font-semibold text-[13px] mb-5 text-gray-500">Aller-retour</label>
-    <AllerRetourCheckbox name ="Aller le(s)"/>
-    {isAllerRetourChecked && <AllerRetourCheckbox name="Retour le(s)" />}
+          /><label className="font-semibold text-[13px] mb-5 text-gray-500">Aller-retour</label>
+          <AllerRetourCheckbox 
+              name="Aller le(s)"
+              date={routesFormData.dateAller}
+          />
+             <div>
+            <label className="font-semibold text-[13px] mb-5 ml-3 text-gray-500">Aller le(s)</label>
+                <>
+                    <div className="flex flex-wrap items-center">
+                        {daysOfWeek.map((day) => (
+                            <div key={day} className="flex items-center mr-4 mb-2">
+                                <Checkbox
+                                    value={day}
+                                    checked={checkedDays.includes(day)}
+                                    onChange={handleDayChange}
+                                    sx={{
+                                        color: '#d8d8d8',
+                                        '&.Mui-checked': {
+                                            color: '#fbbf24',
+                                        },
+                                    }}
+                                />
+                                <label className="font-semibold text-[12px] ml-1 text-gray-500">{day}</label>
+                            </div>
+                        ))}
+                    </div>
+                    <div className="mt-4">
+                        <Checkbox
+                            checked={checkAll}
+                            onChange={handleCheckAllChange}
+                            sx={{
+                                color: '#d8d8d8',
+                                '&.Mui-checked': {
+                                    color: '#fbbf24',
+                                },
+                            }}
+                        />
+                        <label className="font-semibold text-[13px] mb-3 text-gray-500">Tous les jours</label>
+                    </div>
+                </>
+          
+        </div>
+          {isAllerRetourChecked && 
+            <AllerRetourCheckbox 
+                name="Retour le(s)"
+                date={routesFormData.dateRetour}
+            />
+          }
 
-  </>
-):null}
+        </>
+      ):null}
       <div className="flex flex-col items-center mt-5">
-              <Button buttonName="Valider" handleClick={addEtape} />
+      <Button buttonName={loading ? "En cours..." : "Valider"} type="submit" disabled={loading} />
+
       </div>
+      </form>
     </div>
   );
 };

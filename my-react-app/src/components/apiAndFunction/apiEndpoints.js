@@ -9,6 +9,7 @@ export const API_ENDPOINTS = {
     Add_Card: '/carts', 
     ADD_WALLET: '/wallet',  
     GET_FAQ: '/FAQ',          
+    Add_Route: '/routes', 
 
     
   

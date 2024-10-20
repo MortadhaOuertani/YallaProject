@@ -1,4 +1,3 @@
-import React from "react";
 import CardAdd from "./CardAdd";
 
 const AddAnnouncement = () => {

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import  { useState } from "react";
 import Inpute from "../../components/forms/Inpute";
 import Select from 'react-select';
 import { styled } from '@mui/material/styles';
@@ -80,7 +80,7 @@ function StepsItems(props) {
     <Inpute  placeholder="Exp: 13 rue de Rilover , 70021 Paris" type="tel" />
     </div>
     
-    <label className="font-semibold text-[13px]  text-gray-600">Type d'enlèvement</label>
+    <label className="font-semibold text-[13px]  text-gray-600">Type d enlèvement</label>
     <Select
       className="flex-grow w-full mr-2 mt-3 text-sm  border border-gray-200 py  rounded bg-color  "
       options={Options1}
@@ -142,7 +142,7 @@ function StepsItems(props) {
     <Inpute  placeholder="Exp: 13 rue de Rilover , 70021 Paris" type="tel" />
     </div>
     <label className="font-semibold text-[13px] text-gray-600">
-    Instructions d'enlèvement
+    Instructions d enlèvement
     </label>
     <textarea
       className="w-full p-3 pr-4 mt-4 border rounded text-sm focus:outline-none focus:shadow-outline-yellow"
@@ -150,7 +150,7 @@ function StepsItems(props) {
       style={InputeStyles}
       placeholder="Ex : Rue étroite, stationnement complique , appelez quand vous arrivez"
     />
-          <p className="text-xs text-gray-500 mt-2">Ces informations sont privées et ne seront partagées avec le transporteur qu'après réservation.</p>
+          <p className="text-xs text-gray-500 mt-2">Ces informations sont privées et ne seront partagées avec le transporteur qu après réservation.</p>
 
 </>
 ) : (
