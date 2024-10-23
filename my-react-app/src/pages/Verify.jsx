@@ -2,7 +2,59 @@ import "tailwindcss/tailwind.css";
 import Button from "../components/forms/Button";
 import Inpute from "../components/forms/Inpute";
 import Icons from "../components/Icons/Icons";
+import {  useState } from "react";
+import { postData } from '../components/apiAndFunction/apiService';
+import { API_ENDPOINTS } from '../components/apiAndFunction/apiEndpoints';
 export default function Component() {
+  const [PhoneNbr, setPhoneNbr] = useState({
+    PhoneNbr:"",
+  });
+  const [CodeMail, setCodeMail] = useState({
+    CodeMail:"",
+  });
+  const CodeMailhandleChange = (e) => {
+    const { name, value } = e.target;
+    setCodeMail((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+  const PhoneNbrhandleChange = (e) => {
+    const { name, value } = e.target;
+    setPhoneNbr((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const PhonehandleSubmit = async (e) => {
+    e.preventDefault(); // Prevent default form submission
+    try {
+      // Post the card form data to the backend API
+     await postData(API_ENDPOINTS.Verification_Phone, PhoneNbr);
+      alert("Code Sended successfully!");
+      // Reset form data after submission
+      setPhoneNbr({
+        PhoneNbr:"",
+      }); 
+       } catch (error) {
+      console.error("Error Verification Phone Number:", error);
+    }
+  };
+  const MailhandleSubmit = async (e) => {
+    e.preventDefault(); 
+    try {
+      // Post the card form data to the backend API
+      await postData(API_ENDPOINTS.Verification_Mail, CodeMail);
+      alert("Code Sended successfully!");
+      // Reset form data after submission
+      setCodeMail({
+        CodeMail:"",
+      }); 
+      } catch (error) {
+      console.error("Error Code:", error);
+    }
+  };
   return (
     <div className="flex w-full p-10 min-h-screen flex-col items-center   bg-white dark:bg-gray-950">
       <h1 className="mb-8 text-3xl font-bold">Verification</h1>
@@ -23,15 +75,21 @@ export default function Component() {
                 </span>
               </div>
             </div>
-            <form className="space-y-4 p-6">
+            <form className="space-y-4 p-6" onSubmit={PhonehandleSubmit}>
               <div className="grid grid-cols-[auto_1fr] items-center gap-4">
                 <div className="flex items-center space-x-3">
                   <span className="text-sm font-medium">+1</span>
                 </div>
-                <Inpute placeholder="Enter your mobile number" type="tel" />
+                <Inpute 
+                       placeholder="Enter your mobile number" 
+                       type="tel" 
+                       name="PhoneNbr"
+                       value={PhoneNbr.PhoneNbr}
+                       onChange={PhoneNbrhandleChange}
+                />
               </div>
               <div className="flex justify-end">
-                <Button buttonName="Verification Code" />
+                <Button buttonName="Verification Code" type="submit"/>
               </div>
             </form>
           </div>
@@ -50,15 +108,22 @@ export default function Component() {
                 </span>
               </div>
             </div>
-            <form className="space-y-4 p-6">
+            <form className="space-y-4 p-6" onSubmit={MailhandleSubmit}>
               <div className="grid grid-cols-[auto_1fr] items-center gap-4">
                 <div className="flex items-center space-x-3">
                   <span className="text-sm font-medium">Code</span>
                 </div>
-                <Inpute placeholder="Enter verification code" type="text" />
+                <Inpute 
+                        placeholder="Enter verification code" 
+                        type="text" 
+                        name="CodeMail"
+                        value={CodeMail.CodeMail}
+                        onChange={CodeMailhandleChange}
+                />
               </div>
               <div className="flex justify-end">
-                <Button buttonName="Verify Email" />
+                <Button buttonName="Verify Email"   type="submit" />
+              
               </div>
             </form>
           </div>

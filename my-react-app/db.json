@@ -69,13 +69,6 @@
       "code_postal": "75008",
       "pays": "France",
       "id": "0e8b"
-    },
-    {
-      "adresse_ligne_1": "321 Rue du Faubourg Saint-Honoré",
-      "ville": "Paris",
-      "code_postal": "75008",
-      "pays": "France",
-      "id": "3f2c"
     }
   ],
   "cards": [
@@ -94,6 +87,38 @@
       "id": "a4db",
       "walletName": "My Savings Wallet",
       "walletId": "WAL123456789"
+    }
+  ],
+  "VerificationPhone": [
+    {
+      "id": "29f8",
+      "PhoneNbr": "58 178242"
+    },
+    {
+      "id": "25c8",
+      "PhoneNbr": "58 178242"
+    }
+  ],
+  "VerificationMail": [
+    {
+      "id": "0182",
+      "CodeMail": "4545"
+    },
+    {
+      "id": "a01e",
+      "CodeMail": "4545"
+    },
+    {
+      "id": "2bb4",
+      "CodeMail": "4545"
+    }
+  ],
+  "UpdatePassword": [
+    {
+      "id": "da95",
+      "currentPassword": "saber123",
+      "newPassword": "sabersaber123",
+      "vefifiedPassword": "sabersaber123"
     }
   ],
   "FAQ": [
@@ -250,6 +275,34 @@
       "etapes": [
         "Tboulba 5476"
       ]
+    },
+    {
+      "id": "22fa",
+      "departCity": "Moknine RUE Bayrem tounsi 5050",
+      "arrivalCity": "Monastir  4904",
+      "address": "5050",
+      "RayonAction": 84,
+      "minPrice": "1001",
+      "dateAller": "2024-10-19",
+      "dateRetour": "2024-10-25",
+      "frequency": "once",
+      "allerRetour": false,
+      "etapes": [
+        "Tboulba 5476"
+      ]
+    },
+    {
+      "id": "dbba",
+      "departCity": "Moknine RUE Bayrem tounsi 5050",
+      "arrivalCity": "Monastir  4904",
+      "address": "",
+      "RayonAction": 0,
+      "minPrice": "100",
+      "dateAller": "",
+      "dateRetour": "",
+      "frequency": "regular",
+      "allerRetour": false,
+      "etapes": []
     }
   ]
 }

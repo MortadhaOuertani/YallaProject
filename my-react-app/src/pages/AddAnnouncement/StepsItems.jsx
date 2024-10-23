@@ -5,6 +5,9 @@ import { styled } from '@mui/material/styles';
 import Switch from '@mui/material/Switch';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import InputeStyles from "../../utils/InputeStyles";
+import Button from '../../components/forms/Button';
+import KeyboardTabIcon from "@mui/icons-material/KeyboardTab";
+import KeyboardReturnIcon from "@mui/icons-material/KeyboardReturn";
 
 const Options1 = [
     { value: "1", label: " Au pied du véhicule  " },
@@ -25,7 +28,7 @@ const Options1 = [
     { value: "2", label: " Sans ascenseur" },
   
   ];
-function StepsItems(props) {
+function StepsItems({ handleNextSteps,name,handlePrevious }) {
 
     const [selectedOption1, setSelectedOption1] = useState(null);
     const [showExactDimensions, setShowExactDimensions] = useState(false);
@@ -73,7 +76,7 @@ function StepsItems(props) {
     }));
   return (
     <div >
-    <h1 className="font-semibold text-[30px] text-gray-800 mb-5">{props.name}</h1>
+    <h1 className="font-semibold text-[30px] text-gray-800 mb-5">{name}</h1>
 
     <div className="mb-4">
     <label className="font-semibold text-[13px] mb-3 text-gray-600">Adresse</label>
@@ -122,41 +125,57 @@ function StepsItems(props) {
         label="J'ai les coordonnées de l'expéditeur"            
       />
 
-{showExactDimensions ? (
-<>
-      <div className="flex mb-4">
-      <div className="w-1/2 mr-3">
-      <label className="font-semibold text-[13px]  text-gray-600">Prénom</label>
-      <Inpute  placeholder="Exp: Saber" type="tel" />
+      {showExactDimensions ? (
+      <>
+            <div className="flex mb-4">
+            <div className="w-1/2 mr-3">
+            <label className="font-semibold text-[13px]  text-gray-600">Prénom</label>
+            <Inpute  placeholder="Exp: Saber" type="tel" />
 
-      </div>
-      <div className="w-1/2">
-      <label className="font-semibold text-[13px]  text-gray-600">Nom</label>
-      <Inpute  placeholder="Exp: Mgannem" type="tel" />
-      </div>
+            </div>
+            <div className="w-1/2">
+            <label className="font-semibold text-[13px]  text-gray-600">Nom</label>
+            <Inpute  placeholder="Exp: Mgannem" type="tel" />
+            </div>
 
-      </div>
-      
-    <div className="mb-4">
-    <label className="font-semibold text-[13px] mb-3 text-gray-600">Numéro de téléphone</label>
-    <Inpute  placeholder="Exp: 13 rue de Rilover , 70021 Paris" type="tel" />
-    </div>
-    <label className="font-semibold text-[13px] text-gray-600">
-    Instructions d enlèvement
-    </label>
-    <textarea
-      className="w-full p-3 pr-4 mt-4 border rounded text-sm focus:outline-none focus:shadow-outline-yellow"
-      type="textarea"
-      style={InputeStyles}
-      placeholder="Ex : Rue étroite, stationnement complique , appelez quand vous arrivez"
-    />
-          <p className="text-xs text-gray-500 mt-2">Ces informations sont privées et ne seront partagées avec le transporteur qu après réservation.</p>
+            </div>
+            
+          <div className="mb-4">
+          <label className="font-semibold text-[13px] mb-3 text-gray-600">Numéro de téléphone</label>
+          <Inpute  placeholder="Exp: 13 rue de Rilover , 70021 Paris" type="tel" />
+          </div>
+          <label className="font-semibold text-[13px] text-gray-600">
+          Instructions d enlèvement
+          </label>
+          <textarea
+            className="w-full p-3 pr-4 mt-4 border rounded text-sm focus:outline-none focus:shadow-outline-yellow"
+            type="textarea"
+            style={InputeStyles}
+            placeholder="Ex : Rue étroite, stationnement complique , appelez quand vous arrivez"
+          />
+                <p className="text-xs text-gray-500 mt-2">Ces informations sont privées et ne seront partagées avec le transporteur qu après réservation.</p>
 
-</>
-) : (
-<></>
-)}
- </div>  )
+      </>
+      ) : (
+      <></>
+      )}
+      <div className="mt-4 mb-5">
+         <div className="flex justify-between w-full">
+                <button
+                  className="btn rounded-lg shadow-none border-none min-w-[200px] bg-with py-3 text-base font-medium transition duration-200 hover:bg-gry-200 dark:bg-yellow-400 dark:text-white dark:hover:bg-yellow-200 dark:active:bg-yellow-200"
+                  onClick={handlePrevious}
+                >
+                  Précédent <KeyboardReturnIcon />
+                </button>
+                <Button
+                      buttonName="Suivant"
+                      icons={<KeyboardTabIcon className="ml-4" />}
+                      handleClick={handleNextSteps}
+                />
+          </div>
+      </div>
+ </div>  
+ )
 }
 
 export default StepsItems

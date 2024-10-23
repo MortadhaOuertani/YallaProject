@@ -1,89 +1,111 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AddCardItem from "./AddCardItem";
-import KeyboardTabIcon from "@mui/icons-material/KeyboardTab";
-import Button from "../../components/forms/Button";
-import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn';
 import StepsItems from "./StepsItems";
 import Step4 from "./Step4";
-function CardAdd(props) {
+
+function CardAdd() {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 4;
- 
-  const handleNext = () => {
-    setCurrentStep(currentStep + 1);
+
+  // State to hold the form data for all steps
+  const [formData, setFormData] = useState({
+    cartItems: [], // Data from AddCardItem
+    removalDetails: {}, // Data from StepsItems (Enlèvement)
+    deliveryDetails: {}, // Data from StepsItems (Livraison)
+    finalDetails: {}, // Data from Step4
+  });
+
+  // Function to handle the next button click
+  const handleNext = (data) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      cartItems: data, // Set the cartItems with the incoming data
+    }));
+  
+    // Log the updated formData to the console
+    console.log("Updated formData:", {
+      ...formData,
+      cartItems: data, // This will show the updated cartItems
+    });    // Proceed to the next step
+    setCurrentStep((prevStep) => prevStep + 1);
   };
+
+  // Function to handle the previous button click
   const handlePrevious = () => {
-    setCurrentStep(currentStep - 1);
+    setCurrentStep((prevStep) => prevStep - 1);
   };
-  const handleSubmit = () => {
-    // Submit logic here
-    console.log("Form submitted!");
+
+  // Function to handle form submission
+  const handleSubmit = (e) => {
+    e.preventDefault(); // Prevents page refresh
+    console.log("Form submitted with data:", formData); // Logs form data to the console
+  };
+
+  // Function to update form data from child components
+  const updateFormData = (stepData) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      ...stepData, // Merges new data into the existing formData state
+    }));
   };
 
   return (
     <>
-    <div className="container w-full lg:w-full lg:px-[20%] md:w-[70%] p-5 mt-3">
-            
-
-    <div className="flex items-center space-x-2 mb-10">
+      <div className="container w-full lg:w-full lg:px-[20%] md:w-[70%] p-5 mt-3">
+        {/* Progress Bar */}
+        <div className="flex items-center space-x-2 mb-10">
           {Array.from({ length: totalSteps }).map((_, index) => (
             <div key={index} className="relative w-30 h-1 flex-1">
-              <div className={`absolute inset-0 h-full ${currentStep > index ? 'bg-yellow-500' : 'bg-gray-200'} w-1/2 rounded-l-full`} />
-              <div className={`absolute inset-0 h-full ${currentStep > index + 1 ? 'bg-yellow-500' : 'bg-gray-200'} w-1/2 left-1/2 rounded-r-full`} />
+              <div
+                className={`absolute inset-0 h-full ${
+                  currentStep > index ? "bg-yellow-500" : "bg-gray-200"
+                } w-1/2 rounded-l-full`}
+              />
+              <div
+                className={`absolute inset-0 h-full ${
+                  currentStep > index + 1 ? "bg-yellow-500" : "bg-gray-200"
+                } w-1/2 left-1/2 rounded-r-full`}
+              />
             </div>
           ))}
         </div>
 
-            {currentStep === 1 && 
-                
-                      <AddCardItem />
-                                     
-              }
-                    {currentStep === 2 && 
-                                    <StepsItems name="Enlèvement"/>
+        {/* Step Components */}
+        <form className="grid gap-4" onSubmit={handleSubmit}>
+          {currentStep === 1 && (
+            <AddCardItem
+              cartItems={formData.cartItems}
+              handleNextSteps={handleNext}
+            />
+          )}
 
-                
-                    }
-                    {currentStep === 3 && 
-                                    <StepsItems name="Livraison"/>
-                                  }
-                    {currentStep === 4 && 
-                    <Step4/>
-                    }
+          {currentStep === 2 && (
+            <StepsItems
+              name="Enlèvement"
+              details={formData.removalDetails}
+              handleNextSteps={handleNext}
+              handlePrevious={handlePrevious}
+            />
+          )}
 
-          <div className="mt-4 mb-5">
-          <div className="flex justify-between w-full">
-            {currentStep > 1 && (
-              <button
-              className=" btn   rounded-lg  shadow-none border-none min-w-[200px]  bg-with py-3 text-base font-medium  transition duration-200 hover:bg-gry-200  dark:bg-yellow-400 dark:text-white dark:hover:bg-yellow-200 dark:active:bg-yellow-200"
-              onClick={handlePrevious}
-              >
-              Précédent <KeyboardReturnIcon/>
-            </button>
-            )}
-            {currentStep < totalSteps && (
-              <Button
-                buttonName="Suivant"
-                icons={<KeyboardTabIcon className="ml-4" />}
-                className="flex-end"
-                handleClick={handleNext}
-              />
-            )}
-            {currentStep === totalSteps && (
-              <Button
-                buttonName="Submit"
-                icons={<KeyboardTabIcon className="ml-4" />}
-                handleClick={handleSubmit}
-              />
-            )}
-          </div>
-          </div>
+          {currentStep === 3 && (
+            <StepsItems
+              name="Livraison"
+              details={formData.deliveryDetails}
+              handleNextSteps={handleNext}
+              handlePrevious={handlePrevious}
+            />
+          )}
 
-    </div>
-      
-   
+          {currentStep === 4 && (
+            <Step4
+              finalDetails={formData.finalDetails}
+              handlePrevious={handlePrevious}
+            />
+          )}
+        </form>
+      </div>
     </>
-   
   );
 }
 

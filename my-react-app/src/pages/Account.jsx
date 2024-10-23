@@ -7,8 +7,18 @@ import { styled } from '@mui/material/styles';
 import MuiSwitch from '@mui/material/Switch';
 import AddAPhotoIcon from '@mui/icons-material/AddAPhoto';
 import Profile from"../assets/Profile.png";
+
+import { postData } from "../components/apiAndFunction/apiService";
+import { API_ENDPOINTS } from "../components/apiAndFunction/apiEndpoints";
+
 const Account = () => {
   const [selectedImages, setSelectedImages] = useState("");
+  const [FormData, setFormData] = useState({
+    UserId:"21",
+    currentPassword: "",
+    newPassword: "",
+    vefifiedPassword: "",
+  });
 
   const handleImageUpload = (e) => {
     const files = Array.from(e.target.files);
@@ -53,6 +63,30 @@ const Account = () => {
       }),
     },
   }));
+  const handleSubmit = async (e) => {
+    e.preventDefault(); // Prevent default form submission
+    try {
+      // Post the card form data to the backend API
+      await postData(API_ENDPOINTS.Update_Password, FormData);
+      alert("Card added successfully!");
+
+      // Reset form data after submission
+      setFormData({
+        currentPassword: "",
+        newPassword: "",
+        vefifiedPassword: "",
+      });
+    } catch (error) {
+      console.error("Error adding card:", error);
+    }
+  };
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
   return (
     <div className="flex min-h-screen w-full bg-white dark:bg-gray-900">
       <main className="flex-1 p-2 md:p-10">
@@ -129,31 +163,55 @@ const Account = () => {
               </div>
             </CardContent>
           </Card>
+
           <Card>
+
             <CardHeader>
               <CardTitle>Changer le mot de passe</CardTitle>
               <CardDescription>
                 Mettez à jour votre mot de passe pour sécuriser votre compte.
               </CardDescription>
             </CardHeader>
+            <form  onSubmit={handleSubmit}>
             <CardContent>
+
               <div className="mb-5">
-                <Inpute placeholder="Mot de passe actuel" type="password" />
+                <Inpute 
+                        placeholder="Mot de passe actuel" 
+                        type="password" 
+                        name="currentPassword"
+                        value={FormData.currentPassword}
+                        onChange={handleChange}
+                />
               </div>
 
               <div className="mb-5">
-                 <Inpute placeholder="Mot de passe actuel" type="password" />
+                 <Inpute 
+                        placeholder="New Mot de passe " 
+                        type="password" 
+                        name="newPassword"
+                        value={FormData.newPassword}
+                        onChange={handleChange}
+                 />
               </div>
 
               <div className="mb-5">
-                 <Inpute placeholder="Confirmer le mot de passe" type="password" />
+                 <Inpute 
+                        placeholder="Confirmer le mot de passe" 
+                        type="password" 
+                        name="vefifiedPassword"
+                        value={FormData.vefifiedPassword}
+                        onChange={handleChange}
+                  />
               </div>
 
             </CardContent>
             <CardFooter>
-              <Button buttonName="Changer le mot de passe" />
+              <Button buttonName="Changer le mot de passe" type="submit"/>
             </CardFooter>
+            </form>
           </Card>
+
           <Card>
             <CardHeader>
               <CardTitle>Notifications par e-mail</CardTitle>

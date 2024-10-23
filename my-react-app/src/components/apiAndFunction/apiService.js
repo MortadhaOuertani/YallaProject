@@ -23,10 +23,19 @@ export const getData = async (url, params = {}) => {
 // POST request
 export const postData = async (url, data) => {
   try {
-    const response = await axiosInstance.post(url, data);
-    return response.data;
+    const response = await axiosInstance.post(url, data); // Send POST request
+    return response.data;  // Return response data
   } catch (error) {
-    console.error('Error in POST request:', error);
+    // Check if the error has a response (i.e., server responded with an error status)
+    if (error.response) {
+      console.error('Server responded with error:', error.response.data);  // Log server-side error message
+    } else if (error.request) {
+      console.error('No response from server:', error.request);  // Request made but no response
+    } else {
+      console.error('Error setting up request:', error.message);  // General error in setting up the request
+    }
+
+    // Optionally rethrow the error if you want to handle it in the calling function
     throw error;
   }
 };
