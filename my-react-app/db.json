@@ -89,6 +89,134 @@
       "walletId": "WAL123456789"
     }
   ],
+  "Announcements": [
+    {
+      "id": "703f",
+      "cartItems": [
+        {
+          "id": 1,
+          "image": "",
+          "qty": 1,
+          "objet": "tableau",
+          "showExactDimensions": false,
+          "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+          },
+          "format": "-5Kg",
+          "poids": "30 à 50 kg",
+          "information": "carton"
+        }
+      ],
+      "removalDetails": {
+        "adresse": "avenue beyrem tounsi,moknine, monastir",
+        "typeEnlevement": " Au pied du véhicule  ",
+        "etage": "",
+        "acces": "",
+        "prenom": "",
+        "nom": "",
+        "telephone": "",
+        "instructions": ""
+      },
+      "deliveryDetails": {
+        "adresse": "123 Rue de Paris",
+        "typeEnlevement": " Au pied du véhicule  ",
+        "etage": "",
+        "acces": "",
+        "prenom": "",
+        "nom": "",
+        "telephone": "",
+        "instructions": ""
+      },
+      "priceProposal": "222",
+      "totalPrice": 222
+    },
+    {
+      "id": "3620",
+      "cartItems": [
+        {
+          "id": 1,
+          "image": "",
+          "qty": 1,
+          "objet": "tableau",
+          "showExactDimensions": false,
+          "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+          },
+          "format": "-5Kg",
+          "poids": "30 à 50 kg",
+          "information": "carton"
+        }
+      ],
+      "removalDetails": {
+        "adresse": "avenue beyrem tounsi,moknine, monastir",
+        "typeEnlevement": " Au pied du véhicule  ",
+        "etage": "",
+        "acces": "",
+        "prenom": "",
+        "nom": "",
+        "telephone": "",
+        "instructions": ""
+      },
+      "deliveryDetails": {
+        "adresse": "123 Rue de Paris",
+        "typeEnlevement": " Au pied du véhicule  ",
+        "etage": "",
+        "acces": "",
+        "prenom": "",
+        "nom": "",
+        "telephone": "",
+        "instructions": ""
+      },
+      "priceProposal": "222",
+      "totalPrice": 222
+    },
+    {
+      "id": "9a47",
+      "cartItems": [
+        {
+          "id": 1,
+          "image": "",
+          "qty": 1,
+          "objet": "TABLEAU",
+          "showExactDimensions": false,
+          "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+          },
+          "format": "5 à 30 kg",
+          "poids": "",
+          "information": "CARTON"
+        }
+      ],
+      "removalDetails": {
+        "adresse": "avenue beyrem tounsi,moknine, monastir",
+        "typeEnlevement": " Au pied du véhicule  ",
+        "etage": "",
+        "acces": "",
+        "prenom": "",
+        "nom": "",
+        "telephone": "",
+        "instructions": ""
+      },
+      "deliveryDetails": {
+        "adresse": "avenue beyrem tounsi,moknine, monastir",
+        "typeEnlevement": " Au pied du véhicule  ",
+        "etage": "",
+        "acces": "",
+        "prenom": "saber",
+        "nom": "mgannem",
+        "telephone": "58178242",
+        "instructions": "BON ETAT"
+      },
+      "priceProposal": "55",
+      "totalPrice": 60
+    }
+  ],
   "VerificationPhone": [
     {
       "id": "29f8",

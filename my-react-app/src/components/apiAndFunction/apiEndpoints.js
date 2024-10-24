@@ -13,6 +13,8 @@ export const API_ENDPOINTS = {
     Update_Password: '/UpdatePassword', 
     Verification_Mail: '/VerificationMail',
     Verification_Phone: '/VerificationPhone', 
+    Add_Announcement: '/Announcements', 
+
 
     
   

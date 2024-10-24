@@ -12,21 +12,46 @@ function CardAdd() {
     cartItems: [], // Data from AddCardItem
     removalDetails: {}, // Data from StepsItems (Enlèvement)
     deliveryDetails: {}, // Data from StepsItems (Livraison)
-    finalDetails: {}, // Data from Step4
   });
 
   // Function to handle the next button click
   const handleNext = (data) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      cartItems: data, // Set the cartItems with the incoming data
-    }));
-  
-    // Log the updated formData to the console
+    setFormData((prevData) => {
+      if (currentStep === 1) {
+        // Update cartItems for step 1
+        return {
+          ...prevData,
+          cartItems: data, // Data from AddCardItem step
+        };
+      } else if (currentStep === 2) {
+        // Update removalDetails for step 2
+        return {
+          ...prevData,
+          removalDetails: data, // Data from Enlèvement step
+        };
+      } else if (currentStep === 3) {
+        // Update deliveryDetails for step 3
+        return {
+          ...prevData,
+          deliveryDetails: data, // Data from Livraison step
+        };
+      } else if (currentStep === 4) {
+        // Update finalDetails for step 4
+        return {
+          ...prevData,
+          finalDetails: data, // Data from Step4 (final step)
+        };
+      } else {
+        return prevData;
+      }
+    });
     console.log("Updated formData:", {
       ...formData,
-      cartItems: data, // This will show the updated cartItems
-    });    // Proceed to the next step
+      cartItems: currentStep === 1 ? data : formData.cartItems,
+      removalDetails: currentStep === 2 ? data : formData.removalDetails,
+      deliveryDetails: currentStep === 3 ? data : formData.deliveryDetails,
+    });
+    // Proceed to the next step
     setCurrentStep((prevStep) => prevStep + 1);
   };
 
@@ -39,14 +64,6 @@ function CardAdd() {
   const handleSubmit = (e) => {
     e.preventDefault(); // Prevents page refresh
     console.log("Form submitted with data:", formData); // Logs form data to the console
-  };
-
-  // Function to update form data from child components
-  const updateFormData = (stepData) => {
-    setFormData((prevData) => ({
-      ...prevData,
-      ...stepData, // Merges new data into the existing formData state
-    }));
   };
 
   return (
@@ -99,7 +116,7 @@ function CardAdd() {
 
           {currentStep === 4 && (
             <Step4
-              finalDetails={formData.finalDetails}
+              formData={formData} // Pass the entire formData to Step4
               handlePrevious={handlePrevious}
             />
           )}
