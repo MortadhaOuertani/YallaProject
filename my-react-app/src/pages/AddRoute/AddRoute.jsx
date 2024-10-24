@@ -7,7 +7,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { styled } from '@mui/material/styles';
 import Slider from '@mui/material/Slider';
 import Checkbox from '@mui/material/Checkbox';
-import AllerRetourCheckbox from "./AllerRetourCheckbox";
 import { postData } from "../../components/apiAndFunction/apiService";
 import { API_ENDPOINTS } from "../../components/apiAndFunction/apiEndpoints";
 
@@ -22,28 +21,73 @@ const AddRoute = () => {
   const [showInput, setShowInput] = useState(false); // State to track input visibility
   const [loading, setLoading] = useState(false); // Loading state for form submission
   const [isAllerRetourChecked, setIsAllerRetourChecked] = useState(false);
+  const [checkedRetourDays, setCheckedRetourDays] = useState([]);
+  const [checkAllRetour, setCheckAllRetour] = useState(false);
+
+
+
   const [etapes, setEtapes] = useState([""]);
-  const [selectedDays, setSelectedDays] = useState([]);
 
-  const handleDayChange = (event) => {
-    const { value, checked } = event.target;
-    if (checked) {
-        setCheckedDays([...checkedDays, value]);
-    } else {
-        setCheckedDays(checkedDays.filter(day => day !== value));
-    }
+
+  const handleAllerRetourChange = (event) => {
+    const isChecked = event.target.checked;
+    setIsAllerRetourChecked(isChecked);
+    setRoutesFormData((prevState) => ({
+      ...prevState,
+      allerRetour: isChecked,
+    }));
+  };
+const handleDayChange = (event) => {
+  const { value, checked } = event.target;
+  const updatedCheckedDays = checked
+    ? [...checkedDays, value]
+    : checkedDays.filter((day) => day !== value);
+  setCheckedDays(updatedCheckedDays);
+
+  // Update routesFormData with selected "Aller" days
+  setRoutesFormData((prevState) => ({
+    ...prevState,
+    dateAller: updatedCheckedDays.join(", "), // Joining the days as a string
+  }));
 };
 
-const handleCheckAllChange = (event) => {
-    const { checked } = event.target;
-    setCheckAll(checked);
-    if (checked) {
-        setCheckedDays(daysOfWeek);
-    } else {
-        setCheckedDays([]);
-    }
+const handleRetourDayChange = (event) => {
+  const { value, checked } = event.target;
+  const updatedCheckedRetourDays = checked
+    ? [...checkedRetourDays, value]
+    : checkedRetourDays.filter((day) => day !== value);
+  setCheckedRetourDays(updatedCheckedRetourDays);
+
+  // Update routesFormData with selected "Retour" days
+  setRoutesFormData((prevState) => ({
+    ...prevState,
+    dateRetour: updatedCheckedRetourDays.join(", "), // Joining the days as a string
+  }));
 };
 
+const handleCheckAllChange = () => {
+  const updatedCheckedDays = checkAll ? [] : daysOfWeek;
+  setCheckedDays(updatedCheckedDays);
+  setCheckAll(!checkAll);
+
+  // Update routesFormData for "Aller" with all days selected
+  setRoutesFormData((prevState) => ({
+    ...prevState,
+    dateAller: updatedCheckedDays.join(", "),
+  }));
+};
+
+const handleCheckAllRetourChange = () => {
+  const updatedCheckedRetourDays = checkAllRetour ? [] : daysOfWeek;
+  setCheckedRetourDays(updatedCheckedRetourDays);
+  setCheckAllRetour(!checkAllRetour);
+
+  // Update routesFormData for "Retour" with all days selected
+  setRoutesFormData((prevState) => ({
+    ...prevState,
+    dateRetour: updatedCheckedRetourDays.join(", "),
+  }));
+};
 
   const [routesFormData, setRoutesFormData] = useState({
     departCity: "",
@@ -90,6 +134,7 @@ const handleCheckAllChange = (event) => {
         etapes: [],
 
       });
+      window.location.reload();
 
     } catch (error) {
       console.error("Error adding route:", error);
@@ -105,10 +150,7 @@ const handleCheckAllChange = (event) => {
     setRoutesFormData((prev) => ({ ...prev, etapes: updatedEtapes })); // Update form data state with etapes
   };
 
-  // Handle aller-retour checkbox changes
-  const handleAllerRetourChange = (event) => {
-    setIsAllerRetourChecked(event.target.checked);
-  };
+
 
   const handleCheckboxChange = () => {
     setShowInput(!showInput);
@@ -232,7 +274,7 @@ const handleCheckAllChange = (event) => {
                 />
             </div>
             <div className="mt-4 ml-3" >
-            <label className="font-semibold text-[13px] text-gray-500">Rayon d'action</label>
+            <label className="font-semibold text-[13px] text-gray-500">Rayon d action</label>
           
             <PrettoSlider
               valueLabelDisplay="auto"
@@ -274,7 +316,7 @@ const handleCheckAllChange = (event) => {
           </div>
 
             <div className="mt-4 ml-3">
-              <label className="font-semibold text-[13px] mb-3 text-gray-500">Ville d'arrivée</label>
+              <label className="font-semibold text-[13px] mb-3 text-gray-500">Ville d arrivée</label>
               <Inpute  
                     placeholder="Exp: 13 rue de Rilover , 70021 Marsielle" 
                     type="text" 
@@ -295,7 +337,7 @@ const handleCheckAllChange = (event) => {
 
       <div>
         <div className="flex items-center justify-between mt-5">
-          <div className="font-semibold text-[15px] text-gray-600 ml-3">D'un montant minimum</div>
+          <div className="font-semibold text-[15px] text-gray-600 ml-3">D un montant minimum</div>
           <div className="flex-1  border-b border-gray-200  rounded-[3px] dark:border-gray-200 ml-4" style={{ height: '5px' }}/>
         </div>
         <div className="mt-4 ml-3 mb-3">
@@ -372,75 +414,120 @@ const handleCheckAllChange = (event) => {
       </div>
 
       ):null}
-
-      {selectedValue === 'a'  && selectedValue2 === 'd' ?(
+   {selectedValue === "a" && selectedValue2 === "d" ? (
         <>
+          {/* Date header */}
           <div className="flex items-center justify-between mt-5">
-                  <div className="font-semibold text-[15px] text-gray-600 ml-3">Date</div>
-                  <div className="flex-1  border-b border-gray-200  rounded-[3px] dark:border-gray-200 ml-4" style={{ height: '5px' }}/>
-          </div>
-          <Checkbox
-                {...label}
-                sx={{
-                  color: '#d8d8d8',
-                  '&.Mui-checked': {
-                    color: '#fbbf24',
-                  },
-
-                }}
-                onChange={handleAllerRetourChange}
-
-          /><label className="font-semibold text-[13px] mb-5 text-gray-500">Aller-retour</label>
-          <AllerRetourCheckbox 
-              name="Aller le(s)"
-              date={routesFormData.dateAller}
-          />
-             <div>
-            <label className="font-semibold text-[13px] mb-5 ml-3 text-gray-500">Aller le(s)</label>
-                <>
-                    <div className="flex flex-wrap items-center">
-                        {daysOfWeek.map((day) => (
-                            <div key={day} className="flex items-center mr-4 mb-2">
-                                <Checkbox
-                                    value={day}
-                                    checked={checkedDays.includes(day)}
-                                    onChange={handleDayChange}
-                                    sx={{
-                                        color: '#d8d8d8',
-                                        '&.Mui-checked': {
-                                            color: '#fbbf24',
-                                        },
-                                    }}
-                                />
-                                <label className="font-semibold text-[12px] ml-1 text-gray-500">{day}</label>
-                            </div>
-                        ))}
-                    </div>
-                    <div className="mt-4">
-                        <Checkbox
-                            checked={checkAll}
-                            onChange={handleCheckAllChange}
-                            sx={{
-                                color: '#d8d8d8',
-                                '&.Mui-checked': {
-                                    color: '#fbbf24',
-                                },
-                            }}
-                        />
-                        <label className="font-semibold text-[13px] mb-3 text-gray-500">Tous les jours</label>
-                    </div>
-                </>
-          
-        </div>
-          {isAllerRetourChecked && 
-            <AllerRetourCheckbox 
-                name="Retour le(s)"
-                date={routesFormData.dateRetour}
+            <div className="font-semibold text-[15px] text-gray-600 ml-3">Date</div>
+            <div
+              className="flex-1 border-b border-gray-200 rounded-[3px] dark:border-gray-200 ml-4"
+              style={{ height: "5px" }}
             />
-          }
+          </div>
 
+          {/* Aller-Retour Checkbox */}
+          <Checkbox
+            sx={{
+              color: "#d8d8d8",
+              "&.Mui-checked": {
+                color: "#fbbf24",
+              },
+            }}
+            checked={isAllerRetourChecked}
+            onChange={handleAllerRetourChange}
+          />
+          <label className="font-semibold text-[13px] mb-5 text-gray-500">
+            Aller-retour
+          </label>
+
+          {/* Aller Days Selection */}
+          <div>
+            <label className="font-semibold text-[13px] mb-5 ml-3 text-gray-500">
+              Aller le(s)
+            </label>
+            <div className="flex flex-wrap items-center">
+              {daysOfWeek.map((day) => (
+                <div key={day} className="flex items-center mr-4 mb-2">
+                  <Checkbox
+                    value={day}
+                    checked={checkedDays.includes(day)} // Using checkedDays for "Aller" days
+                    onChange={handleDayChange} // This handles "Aller" days selection
+                    sx={{
+                      color: "#d8d8d8",
+                      "&.Mui-checked": {
+                        color: "#fbbf24",
+                      },
+                    }}
+                  />
+                  <label className="font-semibold text-[12px] ml-1 text-gray-500">
+                    {day}
+                  </label>
+                </div>
+              ))}
+            </div>
+            <div className="mt-4">
+              <Checkbox
+                checked={checkAll}
+                onChange={handleCheckAllChange}
+                sx={{
+                  color: "#d8d8d8",
+                  "&.Mui-checked": {
+                    color: "#fbbf24",
+                  },
+                }}
+              />
+              <label className="font-semibold text-[13px] mb-3 text-gray-500">
+                Tous les jours
+              </label>
+            </div>
+          </div>
+
+          {/* Retour Days Selection (Conditional) */}
+          {isAllerRetourChecked && (
+            <>
+              <label className="font-semibold text-[13px] mb-5 ml-3 text-gray-500">
+                Retour le(s)
+              </label>
+              <div className="flex flex-wrap items-center">
+                {daysOfWeek.map((day) => (
+                  <div key={day} className="flex items-center mr-4 mb-2">
+                    <Checkbox
+                      value={day}
+                      checked={checkedRetourDays.includes(day)} // Using checkedRetourDays for "Retour" days
+                      onChange={handleRetourDayChange} // This handles "Retour" days selection
+                      sx={{
+                        color: "#d8d8d8",
+                        "&.Mui-checked": {
+                          color: "#fbbf24",
+                        },
+                      }}
+                    />
+                    <label className="font-semibold text-[12px] ml-1 text-gray-500">
+                      {day}
+                    </label>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-4">
+                <Checkbox
+                  checked={checkAllRetour}
+                  onChange={handleCheckAllRetourChange}
+                  sx={{
+                    color: "#d8d8d8",
+                    "&.Mui-checked": {
+                      color: "#fbbf24",
+                    },
+                  }}
+                />
+                <label className="font-semibold text-[13px] mb-3 text-gray-500">
+                  Tous les jours
+                </label>
+              </div>
+            </>
+          )}
         </>
-      ):null}
+      ) : null}
+
       <div className="flex flex-col items-center mt-5">
       <Button buttonName={loading ? "En cours..." : "Valider"} type="submit" disabled={loading} />
 
