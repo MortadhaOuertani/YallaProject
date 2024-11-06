@@ -50,7 +50,50 @@ const AddressesBook = () => {
   }
 
   if (error) {
-    return <div>Error: {error}</div>; // Display error if something goes wrong
+    return <div className="container w-full   p-2 md:p-10  mt-10  ">
+            <div className="flex items-center justify-between mb-6">
+              <h1 className="text-3xl font-bold">Carnet d'adresses</h1>
+              <Button buttonName="Ajouter une adresse" />
+            </div>
+            <div className=" dark:bg-gray-950  ">
+              <div className="relative mb-4">
+                {/* search */}
+                <input
+                  className="w-full p-3 pl-16 pr-4  border  rounded text-sm focus:outline-none  focus:shadow-outline-yellow"
+                  type="text"
+                  placeholder="Recherche par adresse"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  style={InputeStyles}
+                />
+                <div className="absolute inset-y-0 left-0 p-3 flex items-center pointer-events-none bg-yellow-500  rounded-l">
+                  <SearchIcon className="text-white" />
+                </div>
+              </div>
+              {/* Filter Options */}
+              <div className="flex mb-4">
+                <div className="flex-grow mr-2 w-70">
+                  <Select
+                    className="flex-grow w-full mr-2  text-sm  border border-gray-200 py  rounded bg-color  "
+                    options={firstSelectOptions}
+                    styles={InputeStyles}
+                    isSearchable={false}
+                  />
+                </div>
+                {/* Filter Options 2 */}
+                <div className="flex-grow  w-30">
+                  <Select
+                    className="flex-grow w-full  text-sm  border border-gray-200  rounded"
+                    options={Options2}
+                    styles={InputeStyles}
+                    isSearchable={false}
+                  />
+                </div>
+              </div>
+            Error: {error}
+            </div>
+            </div>
+      ; // Display error if something goes wrong
   }
 
   return (

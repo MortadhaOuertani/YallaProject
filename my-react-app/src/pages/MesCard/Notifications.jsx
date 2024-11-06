@@ -36,7 +36,33 @@ const Annonces = () => {
   }
 
   if (error) {
-    return <div>Error: {error}</div>; // Display error if something goes wrong
+    return <div className="container w-full p-2 lg:px-[20%] mt-10">
+       <Card 
+        name="Mes annonces" 
+        firstSelectOptions={[
+          { value: "1", label: "Toutes mes annonces" },
+          { value: "2", label: "En attente de paiement" },
+          { value: "3", label: "En attente de disponibilités " },
+          { value: "4", label: "En ligne" },
+          { value: "5", label: "En cours de livraison" },
+          { value: "6", label: "Livrées" },
+          { value: "7", label: "Expirées" },
+          { value: "8", label: "Refusées" },
+        ]}
+        Options2 = {[
+          { value: "option1", label: "Les plus anciens" },
+          { value: "option2", label: "Les plus récents" },
+        ]}
+       
+        />
+             <div>
+            <h1 className="mt-5 text-md font-normal text-center max-w-300px mx-auto">
+            Error: {error}             </h1>
+            <div className="mt-5 text-center">
+              <Button buttonName="Ajouter une Annonces!" />
+            </div>
+          </div>
+            </div>; // Display error if something goes wrong
   }
   return (
       <div className="container w-full p-2 lg:px-[20%] mt-10">

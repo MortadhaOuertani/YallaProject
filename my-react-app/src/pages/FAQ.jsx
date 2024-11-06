@@ -62,7 +62,28 @@ function App() {
   }
 
   if (error) {
-    return <div>Error: {error}</div>; // Display error if something goes wrong
+    return <div className="h-screen bg-white w-full">
+    <main className="p-5 bg-light-blue">
+      <div className="flex justify-center items-start my-2">
+        <div className="w-full sm:w-10/12 md:w-1/2 my-1">
+          <h2 className="text-xl font-semibold text-vnet-blue mb-2">
+            FAQ - Order, Shipping, Etc.
+          </h2>
+          <ul className="flex flex-col mt-10">
+
+              <div>
+                <h1 className="mt-5 text-md font-normal text-center max-w-300px mx-auto">
+                  Oups, tu n as pas encore de FAQ. Allons chercher une ?
+                </h1>
+                <div className="mt-5 text-center">
+                  <Button buttonName="Add FAQ!" />
+                </div>
+              </div>
+          </ul>
+        </div>
+      </div>
+    </main>
+  </div>
   }
 
   const handleClick = (idx) => {

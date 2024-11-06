@@ -33,6 +33,48 @@
       "price": 15000,
       "contactEmail": "seller@example.com",
       "postedDate": "2024-09-28"
+    },
+    {
+      "id": "3ba1",
+      "cartItems": [
+        {
+          "id": 1,
+          "image": "",
+          "qty": 1,
+          "objet": "Bac de fleur",
+          "showExactDimensions": false,
+          "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+          },
+          "format": "5 à 30 kg",
+          "poids": "5 à 30 kg",
+          "information": ""
+        }
+      ],
+      "removalDetails": {
+        "adresse": "avenue beyrem tounsi,moknine, monastir",
+        "typeEnlevement": " Au pied du véhicule  ",
+        "etage": "",
+        "acces": "",
+        "prenom": "",
+        "nom": "",
+        "telephone": "",
+        "instructions": ""
+      },
+      "deliveryDetails": {
+        "adresse": "avenue beyrem tounsi,moknine, monastir",
+        "typeEnlevement": " Au pied du véhicule  ",
+        "etage": "",
+        "acces": "",
+        "prenom": "",
+        "nom": "",
+        "telephone": "",
+        "instructions": ""
+      },
+      "priceProposal": "26",
+      "totalPrice": 31
     }
   ],
   "trajets": [
