@@ -57,7 +57,8 @@ const Annonces = () => {
         />
              <div>
             <h1 className="mt-5 text-md font-normal text-center max-w-300px mx-auto">
-            Error: {error}             </h1>
+            Error: {error}     
+            </h1>
             <div className="mt-5 text-center">
               <Button buttonName="Ajouter une Annonces!" />
             </div>
