@@ -6,8 +6,8 @@ const DashboardCard = (props) => {
   return (
     <>
       {" "}
-      <div className="w-full  rounded-lg border-[1px] bg-gray-50 p-3 mb-4">
-        <div className="  w-full h-full ">
+      <div className="w-full   rounded-lg bg-gray-50 p-3 mb-4">
+        <div className="   w-full h-full ">
           <div className="   flex justify-between  mt-3  items-center  w-full  ">
             <h1 className="  text-lg ml-4 font-semibold text-yellow-400 ">
               {props.header}
