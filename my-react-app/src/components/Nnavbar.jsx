@@ -19,7 +19,7 @@ function Nnavbar({
   openPorfileDropdownRef,
   messagenoti,
   verifynoti,
-  setMovesidebar
+  setMovesidebar,
 }) {
   const [supportDropdownOpen, setSupportDropdownOpen] = useState(false);
   const [searchDropdownOpen, setSearchDropdownOpen] = useState(false);
@@ -37,20 +37,24 @@ function Nnavbar({
     }, 100);
   }
   function closeDropdown(setState) {
-      setState(false);
-    }
+    setState(false);
+  }
 
   function handleMouseEnter(setState, useRef) {
     clearTimeout(useRef.current);
-    setMovesidebar(false)
+    setMovesidebar(false);
     setState(true);
-    console.log("teste");
   }
 
   return (
     <div className="w-full h-16 z-[99] top-0 left-0 fixed flex justify-between items-center bg-white border ">
       <div className="flex justify-center items-center h-full ">
-        <div onClick={() => { toggleSidebar() }} className="block  lg:hidden ml-5">
+        <div
+          onClick={() => {
+            toggleSidebar();
+          }}
+          className="block  lg:hidden ml-5"
+        >
           <MenuIcon style={{ fontSize: 24 }} />
         </div>
         <img src={logo} className="w-[100px] py-20 lg:ml-5 ml-3" alt="" />
@@ -92,14 +96,12 @@ function Nnavbar({
               />
               <span
                 onMouseEnter={() => {
-                  handleMouseEnter(setColisDropDownOpen, colisRef)
-                  setMovesidebar(false)
-                }
-                }
+                  handleMouseEnter(setColisDropDownOpen, colisRef);
+                  setMovesidebar(false);
+                }}
                 onMouseLeave={() => {
-                  handleDropdownMouseLeave(setColisDropDownOpen, colisRef)
-                  setMovesidebar(false)
-
+                  handleDropdownMouseLeave(setColisDropDownOpen, colisRef);
+                  setMovesidebar(false);
                 }}
                 className="cursor-pointer absolute right-0 h-full rounded-lg w-22  "
               >
@@ -148,13 +150,14 @@ function Nnavbar({
       <div className="flex justify-center items-center  gap-2  mr-5">
         <div className="relative">
           <button
-            onMouseEnter={() =>
-              handleMouseEnter(setTranslateDropdownOpen, timeoutRef)
-            }
-            onMouseLeave={() =>
-              handleDropdownMouseLeave(setTranslateDropdownOpen, TranslateRef)
-            }
-            className="flex items-center space-x-3 border rounded-lg bg-gray-50  p-2 "
+            // onMouseEnter={() =>
+            //   handleMouseEnter(setTranslateDropdownOpen, timeoutRef)
+            // }
+            // onMouseLeave={() =>
+            //   handleDropdownMouseLeave(setTranslateDropdownOpen, TranslateRef)
+            // }
+            onClick={() => setTranslateDropdownOpen((prev) => !prev)}
+            className="flex items-center space-x-3 border rounded-lg bg-gray-50  p-2"
           >
             <TranslateOutlinedIcon style={{ fontSize: 24, color: "#000000" }} />
           </button>
@@ -199,27 +202,30 @@ function Nnavbar({
           </Link>
         </div>
         <div className="relative">
-          {verifynoti && (
-            <div className="w-2 top-2 left-6 h-2 rounded-full bg-red-500 absolute "></div>
-          )}
           <button
-
-            onClick={() =>
-              closeDropdown(
-                setOpenPorfileDropdown,
-              )}
-            onMouseEnter={() =>
-              handleMouseEnter(setOpenPorfileDropdown, openPorfileDropdownRef)
-            }
-            onMouseLeave={() =>
-              handleDropdownMouseLeave(
-                setOpenPorfileDropdown,
-                openPorfileDropdownRef
-              )
-            }
-            className="flex items-center space-x-3 border rounded-lg bg-gray-50  p-2 "
+            id="dropdownAvatarNameButton"
+            className="flex items-center gap-3 text-sm pe-1 font-medium text-gray-900 rounded-full hover:text-blue-600 dark:hover:text-blue-500 md:me-0 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:text-white"
+            type="button"
+            onClick={() => setOpenPorfileDropdown((prev) => !prev)}
           >
+            <span className="sr-only">Open user menu</span>
             <VscAccount style={{ fontSize: 24, color: "#000000" }} />
+            Bonnie Green
+            <svg
+              className="w-2.5 h-2.5 ms-3"
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 10 6"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="m1 1 4 4 4-4"
+              />
+            </svg>
           </button>
         </div>
         {/* Add similar code for the other icons */}

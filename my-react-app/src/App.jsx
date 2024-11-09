@@ -21,7 +21,7 @@ import {
   Support,
   Login,
   SignUp,
-  
+  AnnonceDetails,
 } from "./pages";
 import { useEffect, useRef, useState } from "react";
 import LocalShippingOutlinedIcon from "@mui/icons-material/LocalShippingOutlined";
@@ -35,12 +35,12 @@ import PersonInfoPage from "./pages/PersoneInfoPage";
 import ModifyAccount from "./pages/ModifyAccount";
 import MesPayments from "./pages/MesPayments";
 import MessagesChat from "./pages/messagesChat";
-import AddAnnouncement  from "./pages/AddAnnouncement/AddAnnouncement";
-import AddRoute  from "./pages/AddRoute/AddRoute";
+import AddAnnouncement from "./pages/AddAnnouncement/AddAnnouncement";
+import AddRoute from "./pages/AddRoute/AddRoute";
 
-import RouteListe from "./pages/MesCard/RouteListe"
+import RouteListe from "./pages/MesCard/RouteListe";
 import MesLivraisons from "./pages/MesCard/MesLivraisons";
-import Notifications from"./pages/MesCard/Notifications"
+import Notifications from "./pages/MesCard/Notifications";
 
 function App() {
   const [isMobileView, setIsMobileView] = useState(false);
@@ -126,15 +126,11 @@ function App() {
               />
 
               <div
-                className="w-full h-full mt-16  lg:ml-[16rem] xl:ml-[16rem] mb-10  "
+                className="w-full h-full mt-16 lg:ml-[16rem] xl:ml-[16rem] mb-10  "
                 ref={contentRef}
               >
                 <div
-                  className={`flex ${
-                    openPorfileDropdown
-                      ? "flex-row"
-                      : " justify-center items-center"
-                  } w-full h-full`}
+                  className={`flex justify-center items-center w-full h-full`}
                 >
                   <Routes>
                     <Route
@@ -171,10 +167,17 @@ function App() {
                     <Route path="/payments" element={<Payments />} />
                     <Route path="/mespayments" element={<MesPayments />} />
                     <Route path="/mes-annonces" element={<Notifications />} />
+                    <Route
+                      path="/mes-annonces/:title/:id"
+                      element={<AnnonceDetails />}
+                    />
                     <Route path="/trajets" element={<RouteListe />} />
                     <Route path="/carnet-d-adresse" element={<AddressBook />} />
                     <Route path="/verifier" element={<Verify />} />
-                    <Route path="/messageschat/:name" element={<MessagesChat/>} />
+                    <Route
+                      path="/messageschat/:name"
+                      element={<MessagesChat />}
+                    />
                     <Route path="/account" element={<Account />} />
                     <Route path="/" element={<Home />} />
                     <Route path="/modifyaccount" element={<ModifyAccount />} />
@@ -209,7 +212,7 @@ function App() {
           <BottomNavBar />
         </div>
       )}
-      <div
+      {/* <div
         className={`bg-white border shadow-md w-60 h-28 fixed z-60 top-[-150px] right-[28%] rounded-lg transition-transform ${
           openModal ? " transform translate-y-[200%] delay-8" : ""
         }`}
@@ -233,9 +236,9 @@ function App() {
             <span>Transporteur</span>
           </Link>
         </div>
-      </div>
+      </div> */}
 
-      <div
+      {/* <div
         className={`bg-white border shadow-md w-60 h-30 fixed z-60 top-[-150px] left-[13%] rounded-lg transition-transform ${
           openModalTrans ? " transform translate-y-[142%] delay-8" : ""
         }`}
@@ -267,9 +270,9 @@ function App() {
             <span>Comment ça marche</span>
           </Link>
         </div>
-      </div>
+      </div> */}
 
-      <div
+      {/* <div
         className={`bg-white border absolute shadow-md w-60  h-30 fixed z-60 top-[-150px] left-[22%] rounded-lg transition-transform ${
           openModalTrans2 ? " transform translate-y-[125%] delay-8" : ""
         }`}
@@ -303,7 +306,7 @@ function App() {
             <span>Comment ça marche</span>
           </Link>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }

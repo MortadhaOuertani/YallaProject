@@ -9,6 +9,7 @@ import {
   CardFooter,
   CardHeader,
 } from "@/components/ui/card";
+import Carrousel from "@/components/ui/carrousel";
 import {
   Package,
   Maximize2,
@@ -19,8 +20,6 @@ import {
   Tag,
   AlertCircle,
 } from "lucide-react"; // Import the Flag icon from lucide-react
-
-import assetImage from "@/assets/Asset1.png";
 
 const Setting = () => {
   const image = "@/assets/Asset1.png"; // Image path
@@ -51,19 +50,7 @@ const Setting = () => {
           <div className="flex flex-col text-sm text-gray-500 space-y-1 mt-1"></div>
         </div>
         <div className="relative mb-4">
-          <div className=" border  overflow-hidden rounded-lg mx-auto">
-            {/* Use the standard HTML img tag */}
-            <img
-              src={assetImage}
-              alt="Image du produit"
-              width={350} // Set the width for the image
-              height={350} // Set the height for the image
-              className="object-cover p-3  justify-content "
-            />
-            <div className="text-sm text-gray-500 bg-gray-100 rounded-b-lg-space-y-1 mt-1">
-              Expire le 25/06 à 18h
-            </div>
-          </div>
+          <Carrousel assetImage={image} />
         </div>
         <div className="flex flex-col md:flex-row-reverse gap-3">
           <div className="flex-1 space-y-3  border rounded-lg  p-3  w-full">

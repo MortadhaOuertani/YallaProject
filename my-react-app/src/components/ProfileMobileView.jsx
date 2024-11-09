@@ -38,19 +38,7 @@ const ProfileMobileView = (props) => {
     <>
       {props.openPorfileDropdown && (
         <div
-          onMouseEnter={() => {
-            handleMouseEnter(
-              props.setOpenPorfileDropdown,
-              props.openPorfileDropdownRef
-            );
-          }}
-          onMouseLeave={() =>
-            handleDropdownMouseLeave(
-              props.setOpenPorfileDropdown,
-              props.openPorfileDropdownRef
-            )
-          }
-          className={`h-screen lg:w-[16.5rem] w-full right-0 absolute z-[29] pt-16 lg:relative lg:transition-all lg:duration-500 lg:ease-in-out`}
+          className={`h-screen lg:w-[28rem] w-[19rem] fixed z-[29] pt-[64px] right-0`}
         >
           <ul className="ml-auto  h-full right-0 bg-white w-full top-[70px] flex flex-col border-l ">
             <Profile />
@@ -88,9 +76,9 @@ const ProfileMobileView = (props) => {
 
       {props.translateDropdownOpen && (
         <div
-          onMouseEnter={handleTranslateMouseEnter}
-          onMouseLeave={handleTranslateMouseLeave}
-          className={`h-screen lg:w-[28rem] w-[19rem] absolute  lg:relative z-[29]  pt-[64px]  right-0`}
+          // onMouseEnter={handleTranslateMouseEnter}
+          // onMouseLeave={handleTranslateMouseLeave}
+          className={`h-screen lg:w-[28rem] w-[19rem] fixed z-[29]  pt-[64px] right-0`}
         >
           <ul className="ml-auto  h-full right-0  w-full top-[70px] flex flex-col bg-white border-l  ">
             <li className="w-full flex pl-5 items-center h-auto"></li>

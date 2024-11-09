@@ -17,3 +17,4 @@ export { default as SignUp } from "./SignUp";
 export { default as RouteListe } from "./MesCard/RouteListe";
 export { default as Support } from "./Support";
 export { default as Chat } from "./messagesChat";
+export { default as AnnonceDetails } from "./AnnonceDetails";

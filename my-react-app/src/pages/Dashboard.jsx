@@ -21,18 +21,6 @@ const Dashboard = (props) => {
     setIsOpen(!isOpen);
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-    console.log(props.openPorfileDropdown);
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, [null]);
-
   return (
     <>
       {
@@ -45,17 +33,9 @@ const Dashboard = (props) => {
 
       <div className="  w-full min-h-screen flex  overflow-hidden xl:p-16 lg:p-12 p-2     ">
         <div
-          className={`lg:grid ${
-            props.openPorfileDropdown || props.translateDropdownOpen
-              ? "lg:grid-cols-1"
-              : "lg:grid-cols-3"
-          } lg:gap-7 w-full grid grid-cols-1`}
+          className={`lg:grid lg:grid-cols-3 lg:gap-7 w-full grid grid-cols-1`}
         >
-          <div
-            className={`col-span-${
-              props.openPorfileDropdown || props.translateDropdownOpen ? 1 : 2
-            }  flex flex-col`}
-          >
+          <div className={`col-span-2 flex flex-col`}>
             <div className="flex flex-col items-center justify-between">
               <div className="w-full  h-fit rounded-lg  mb-4 p-5 flex items-center">
                 <div className="flex items-center justify-start flex-grow">

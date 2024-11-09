@@ -215,6 +215,132 @@
       },
       "priceProposal": "55",
       "totalPrice": 60
+    },
+    {
+      "id": "07e1",
+      "cartItems": [
+        {
+          "id": 1,
+          "image": "",
+          "qty": 1,
+          "objet": "",
+          "showExactDimensions": false,
+          "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+          },
+          "format": "",
+          "poids": "",
+          "information": ""
+        }
+      ],
+      "removalDetails": {
+        "adresse": "",
+        "typeEnlevement": "",
+        "etage": "",
+        "acces": "",
+        "prenom": "",
+        "nom": "",
+        "telephone": "",
+        "instructions": ""
+      },
+      "deliveryDetails": {
+        "adresse": "",
+        "typeEnlevement": "",
+        "etage": "",
+        "acces": "",
+        "prenom": "",
+        "nom": "",
+        "telephone": "",
+        "instructions": ""
+      },
+      "priceProposal": "",
+      "totalPrice": 0
+    },
+    {
+      "id": "3ded",
+      "cartItems": [
+        {
+          "id": 1,
+          "image": "",
+          "qty": 1,
+          "objet": "",
+          "showExactDimensions": true,
+          "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+          },
+          "format": "",
+          "poids": "",
+          "information": ""
+        }
+      ],
+      "removalDetails": {
+        "adresse": "",
+        "typeEnlevement": "",
+        "etage": "",
+        "acces": "",
+        "prenom": "",
+        "nom": "",
+        "telephone": "",
+        "instructions": ""
+      },
+      "deliveryDetails": {
+        "adresse": "",
+        "typeEnlevement": "",
+        "etage": "",
+        "acces": "",
+        "prenom": "",
+        "nom": "",
+        "telephone": "",
+        "instructions": ""
+      },
+      "priceProposal": "",
+      "totalPrice": 0
+    },
+    {
+      "id": "29c7",
+      "cartItems": [
+        {
+          "id": 0,
+          "image": "",
+          "qty": 1,
+          "objet": "",
+          "showExactDimensions": false,
+          "dimensions": {
+            "length": "",
+            "width": "",
+            "height": ""
+          },
+          "format": "",
+          "poids": "",
+          "information": ""
+        }
+      ],
+      "removalDetails": {
+        "adresse": "",
+        "typeEnlevement": "",
+        "etage": "",
+        "acces": "",
+        "prenom": "",
+        "nom": "",
+        "telephone": "",
+        "instructions": ""
+      },
+      "deliveryDetails": {
+        "adresse": "",
+        "typeEnlevement": "",
+        "etage": "",
+        "acces": "",
+        "prenom": "",
+        "nom": "",
+        "telephone": "",
+        "instructions": ""
+      },
+      "priceProposal": "",
+      "totalPrice": 0
     }
   ],
   "VerificationPhone": [
